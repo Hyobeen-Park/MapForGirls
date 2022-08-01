@@ -32,12 +32,19 @@ class Category1Fragment : Fragment() {
             add(Information(R.drawable.example, "220731 오늘의 일기"))
             add(Information(R.drawable.example, "220801 오늘의 일기"))
         }
-//        infoList.add(Information(R.drawable.example, "220730 오늘의 일기"))
-//        infoList.add(Information(R.drawable.example, "220731 오늘의 일기"))
-//        infoList.add(Information(R.drawable.example, "220801 오늘의 일기"))
 
         val infoRVAdapter = InfoRVAdapter(infoList)
         binding.category1CalumnRv.adapter = infoRVAdapter
+
+        infoRVAdapter.setMyItemClickListener(object : InfoRVAdapter.MyItemClickListener {
+            override fun onItemClick(info: Information) {
+                activity.let {
+                    val intent = Intent(context, InfoDetailActivity::class.java)
+                    intent.putExtra("information", info)
+                    startActivity(intent)
+                }
+            }
+        })
 
         return binding.root
     }
