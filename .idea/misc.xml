@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/amand/AndroidStudioProjects/MapForGirls/app/src/main/res/layout/activity_info_detail.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/amand/AndroidStudioProjects/MapForGirls/app/src/main/res/layout/activity_main.xml" value="0.11955420466058764" />
+        <entry key="..\:/Users/amand/AndroidStudioProjects/MapForGirls/app/src/main/res/layout/activity_test.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/amand/AndroidStudioProjects/MapForGirls/app/src/main/res/layout/fragment_category1.xml" value="0.2" />
         <entry key="..\:/Users/amand/AndroidStudioProjects/MapForGirls/app/src/main/res/layout/fragment_chatting.xml" value="0.11955420466058764" />
         <entry key="..\:/Users/amand/AndroidStudioProjects/MapForGirls/app/src/main/res/layout/fragment_info.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/amand/AndroidStudioProjects/MapForGirls/app/src/main/res/layout/fragment_map.xml" value="0.24947916666666667" />

@@ -3,10 +3,6 @@ package com.example.mapforgirls
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mapforgirls.databinding.ActivityMainBinding
-import com.example.mapforgirls.ChattingFragment
-import com.example.mapforgirls.InfoFragment
-import com.example.mapforgirls.MapFragment
-import com.example.mapforgirls.MypageFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
