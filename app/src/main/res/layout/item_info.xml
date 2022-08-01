@@ -24,6 +24,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/item_info_title_tv"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="5dp"
