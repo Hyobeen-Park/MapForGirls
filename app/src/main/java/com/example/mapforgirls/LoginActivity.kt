@@ -1,10 +1,11 @@
 package com.example.mapforgirls
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -15,19 +16,47 @@ import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
     var auth : FirebaseAuth? = null
+    var activate_login : Boolean? = false
+    var activate_pw : Boolean? = false
+
+    override fun onStart() {
+        super.onStart()
+        auth?.currentUser?.reload()  // 현재 사용자가 로그인 되어있는지 확인
+        login_btn.isEnabled = false  // 로그인 버튼 비활성화
+    }
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         auth = FirebaseAuth.getInstance()
 
-        val login_btn = findViewById<Button>(R.id.login_btn)
-        val login_email_et = findViewById<EditText>(R.id.login_email_et)
-        val login_email_warn = findViewById<TextView>(R.id.login_email_warn)
-        val login_pw_warn = findViewById<TextView>(R.id.login_pw_warn)
-        val login_pw_et = findViewById<EditText>(R.id.login_pw_et)
-        val login_signup_tvb = findViewById<TextView>(R.id.login_signup_tvb)
-        val login_pw_tvb = findViewById<TextView>(R.id.login_pw_tvb)
+        login_email_et.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                //텍스트를 입력 후
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //텍스트 입력 전
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //텍스트 입력 중
+                activate_login = isEmail(login_email_et.text.toString())  // 아이디가 이메일 형식일 경우에 로그인 버튼 활성화 준비
+                isActive(activate_login, activate_pw)
+            }
+        })
+
+        login_pw_et.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                //텍스트를 입력 후
+            }
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //텍스트 입력 전
+            }
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //텍스트 입력 중
+                activate_pw = login_pw_et.length() > 0  // 비밀번호를 한 자리 이상 입력할 경우에 로그인 버튼 활성화 준비
+                isActive(activate_login, activate_pw)
+            }
+        })
 
         login_btn.setOnClickListener{
             signinEmail()
@@ -39,10 +68,11 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun signinEmail(){  // 로그인하는 함수
+    private fun signinEmail(){  // 로그인하는 함수
         // 아이디와 비밀번호가 채워지지 않은 경우
         if(login_email_et.text.toString() == null || login_pw_et.text.toString() == null || login_email_et.text.toString().isEmpty() || login_pw_et.text.toString().isEmpty()) {
             Toast.makeText(this, "아이디와 비밀번호를 채워주세요.", Toast.LENGTH_LONG).show()
+
         } else if(!isEmail(login_email_et.text.toString())){  // 아이디가 이메일 형식이 아닐 경우
             Toast.makeText(this,"이메일 형식으로 입력해주세요.", Toast.LENGTH_LONG).show()
         } else {
@@ -65,19 +95,23 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
-    fun moveMainPage(user: FirebaseUser?){  // 메인 페이지로 이동하는 함수
+    private fun moveMainPage(user: FirebaseUser?){  // 메인 페이지로 이동하는 함수
         if(user != null){
-            startActivity(Intent(this, MainActivity::class.java))
+            val intent = Intent(this, MainActivity::class.java)
+            finishAffinity()  // 액티비티 스택을 비움
+            startActivity(intent)
         }
     }
-    fun isEmail(email: String?): Boolean {  // 아이디가 이메일 형식이 맞는지 확인하는 함수
+    private fun isEmail(email: String?): Boolean {  // 아이디가 이메일 형식이 맞는지 확인하는 함수
         var returnValue = false
-        val regex = "^[_a-zA-Z0-9-\\.]+@[\\.a-zA-Z0-9-]+\\.[a-zA-Z]+$"
-        val p: Pattern = Pattern.compile(regex)
+        val p: Pattern = Patterns.EMAIL_ADDRESS
         val m: Matcher = p.matcher(email)
-        if (m.matches()) {
+        if (m.find()) {
             returnValue = true
         }
         return returnValue
+    }
+    private fun isActive(activate_login: Boolean?, activate_pw : Boolean?){  // 로그인 버튼 활성화 함수
+            login_btn.isEnabled = activate_login == true && activate_pw == true
     }
 }
