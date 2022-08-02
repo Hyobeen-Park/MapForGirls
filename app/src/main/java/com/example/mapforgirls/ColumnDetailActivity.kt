@@ -2,15 +2,15 @@ package com.example.mapforgirls
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mapforgirls.databinding.ActivityInfoDetailBinding
+import com.example.mapforgirls.databinding.ActivityColumnDetailBinding
 
 
-class InfoDetailActivity : AppCompatActivity() {
-    lateinit var binding: ActivityInfoDetailBinding
+class ColumnDetailActivity : AppCompatActivity() {
+    lateinit var binding: ActivityColumnDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityInfoDetailBinding.inflate(layoutInflater)
+        binding = ActivityColumnDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
     }

@@ -39,7 +39,7 @@ class Category1Fragment : Fragment() {
         infoRVAdapter.setMyItemClickListener(object : InfoRVAdapter.MyItemClickListener {
             override fun onItemClick(info: Information) {
                 activity.let {
-                    val intent = Intent(context, InfoDetailActivity::class.java)
+                    val intent = Intent(context, ColumnDetailActivity::class.java)
                     intent.putExtra("information", info)
                     startActivity(intent)
                 }

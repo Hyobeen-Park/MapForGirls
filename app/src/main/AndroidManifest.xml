@@ -24,7 +24,7 @@
             android:name="com.example.mapforgirls.MainActivity">
         </activity>
         <activity android:name=".TestActivity"/>
-        <activity android:name=".InfoDetailActivity"/>
+        <activity android:name=".ColumnDetailActivity"/>
     </application>
 
 </manifest>
