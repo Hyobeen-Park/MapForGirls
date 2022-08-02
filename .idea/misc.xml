@@ -3,11 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/activity_findpw.xml" value="0.24947916666666667" />
         <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/activity_info_detail.xml" value="0.24947916666666667" />
-        <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/activity_login.xml" value="0.24947916666666667" />
+        <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/activity_mypage.xml" value="0.24947916666666667" />
-        <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/activity_signup.xml" value="0.24947916666666667" />
+        <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/activity_signup.xml" value="0.264" />
         <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/fragment_category1.xml" value="0.24947916666666667" />
         <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/fragment_chatting.xml" value="0.24947916666666667" />
         <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/fragment_info.xml" value="0.24947916666666667" />

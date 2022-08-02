@@ -7,170 +7,235 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/signup_certif_tv"
-        android:layout_width="146dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="56dp"
-        android:text="본인인증"
-        app:layout_constraintBottom_toTopOf="@+id/signup_certif_btn"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/signup_pw_warn"
-        android:layout_width="146dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginBottom="12dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/signup_pw2_tv"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/signup_email_warn"
-        android:layout_width="146dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginBottom="12dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/signup_pw_tv"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/signup_btn"
-        android:layout_width="213dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginBottom="104dp"
-        android:text="회원가입"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <EditText
-        android:id="@+id/signup_email_et"
+        android:id="@+id/signup_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
-        android:ems="10"
-        android:hint="이메일을 입력하세요."
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/signup_email_warn"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
+        android:text="회원가입"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.169" />
 
     <TextView
         android:id="@+id/signup_email_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="57dp"
+        android:layout_marginBottom="4dp"
         android:text="이메일"
-        app:layout_constraintBottom_toTopOf="@+id/signup_email_et"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.251" />
 
     <EditText
-        android:id="@+id/signup_pw_et"
+        android:id="@+id/signup_email_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginBottom="4dp"
         android:ems="10"
-        android:hint="비밀번호를 입력하세요."
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/signup_pw_warn"
-        app:layout_constraintStart_toStartOf="parent"
+        android:hint="이메일을 입력하세요."
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.288"
         tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/signup_email_warn"
+        android:layout_width="146dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.316"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.343" />
 
     <TextView
         android:id="@+id/signup_pw_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginBottom="4dp"
         android:text="비밀번호"
-        app:layout_constraintBottom_toTopOf="@+id/signup_pw_et"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.233"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.391" />
+
+    <EditText
+        android:id="@+id/signup_pw_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="비밀번호를 입력하세요."
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.436"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/signup_pw_warn"
+        android:layout_width="146dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="24dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.316"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.494" />
+
+    <TextView
+        android:id="@+id/signup_pw2_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="비밀번호 확인"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.254"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.557" />
 
     <EditText
         android:id="@+id/signup_pw2_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="비밀번호를 입력하세요."
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/signup_pw2_warn"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.609"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/signup_pw2_warn"
         android:layout_width="146dp"
         android:layout_height="18dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="4dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/signup_certif_tv"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.316"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.645" />
 
     <TextView
-        android:id="@+id/signup_pw2_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:text="비밀번호 확인"
-        app:layout_constraintBottom_toTopOf="@+id/signup_pw2_et"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/signup_certif_tv"
+        android:layout_width="146dp"
+        android:layout_height="18dp"
+        android:layout_marginBottom="4dp"
+        android:text="본인인증"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.316"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.695" />
 
     <Button
         android:id="@+id/signup_certif_btn"
         android:layout_width="213dp"
         android:layout_height="41dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginBottom="18dp"
         android:text="휴대폰 인증"
-        app:layout_constraintBottom_toTopOf="@+id/signup_name_tv"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.74"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
+    <TextView
+        android:id="@+id/signup_certif_warn"
+        android:layout_width="146dp"
+        android:layout_height="18dp"
+        android:text="textview"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.316"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.774" />
+
+    <TextView
+        android:id="@+id/signup_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginBottom="4dp"
+        android:text="닉네임"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.217"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.813" />
+
+    <EditText
+        android:id="@+id/signup_name_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:hint="닉네임울 입력하세요."
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/signup_name_warn"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.877"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/signup_name_warn"
         android:layout_width="146dp"
         android:layout_height="18dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="8dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/signup_btn"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/signup_name_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:text="닉네임"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/signup_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="179dp"
-        android:layout_marginTop="92dp"
-        android:text="회원가입"
-        app:layout_constraintBottom_toTopOf="@+id/signup_email_tv"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.907" />
+
+    <Button
+        android:id="@+id/signup_btn"
+        android:layout_width="213dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="16dp"
+        android:text="회원가입"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
