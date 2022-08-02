@@ -1,7 +1,6 @@
 package com.example.mapforgirls
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -72,7 +71,6 @@ class LoginActivity : AppCompatActivity() {
         // 아이디와 비밀번호가 채워지지 않은 경우
         if(login_email_et.text.toString() == null || login_pw_et.text.toString() == null || login_email_et.text.toString().isEmpty() || login_pw_et.text.toString().isEmpty()) {
             Toast.makeText(this, "아이디와 비밀번호를 채워주세요.", Toast.LENGTH_LONG).show()
-
         } else if(!isEmail(login_email_et.text.toString())){  // 아이디가 이메일 형식이 아닐 경우
             Toast.makeText(this,"이메일 형식으로 입력해주세요.", Toast.LENGTH_LONG).show()
         } else {
@@ -102,7 +100,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-    private fun isEmail(email: String?): Boolean {  // 아이디가 이메일 형식이 맞는지 확인하는 함수
+    fun isEmail(email: String?): Boolean {  // 아이디가 이메일 형식이 맞는지 확인하는 함수
         var returnValue = false
         val p: Pattern = Patterns.EMAIL_ADDRESS
         val m: Matcher = p.matcher(email)
@@ -111,7 +109,7 @@ class LoginActivity : AppCompatActivity() {
         }
         return returnValue
     }
-    private fun isActive(activate_login: Boolean?, activate_pw : Boolean?){  // 로그인 버튼 활성화 함수
+    fun isActive(activate_login: Boolean?, activate_pw : Boolean?){  // 로그인 버튼 활성화 함수
             login_btn.isEnabled = activate_login == true && activate_pw == true
     }
 }
