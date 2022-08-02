@@ -20,9 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.mapforgirls.MainActivity">
-        </activity>
+        <activity android:name="com.example.mapforgirls.MainActivity"/>
+        <activity android:name=".SignupActivity"/>
         <activity android:name=".TestActivity"/>
         <activity android:name=".InfoDetailActivity"/>
     </application>
