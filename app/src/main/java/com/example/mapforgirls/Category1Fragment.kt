@@ -1,7 +1,9 @@
 package com.example.mapforgirls
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +22,13 @@ class Category1Fragment : Fragment() {
     ): View? {
         binding = FragmentCategory1Binding.inflate(inflater, container, false)
 
+        //카테고리 이름 받아오기
+        val sharedPreferences = (context as MainActivity).getSharedPreferences("category", Context.MODE_PRIVATE)
+        val category = sharedPreferences.getString("category", null)
+
+        Log.d("receive", category.toString())
+        binding.category1TitleTv.text = category.toString()
+
 //        binding.category1ExampleIv.setOnClickListener {
 //            activity.let {
 //                val intent = Intent(context, InfoDetailActivity::class.java)
@@ -34,7 +43,7 @@ class Category1Fragment : Fragment() {
         }
 
         val infoRVAdapter = InfoRVAdapter(infoList)
-        binding.category1CalumnRv.adapter = infoRVAdapter
+        binding.category1ColumnRv.adapter = infoRVAdapter
 
         infoRVAdapter.setMyItemClickListener(object : InfoRVAdapter.MyItemClickListener {
             override fun onItemClick(info: Information) {
