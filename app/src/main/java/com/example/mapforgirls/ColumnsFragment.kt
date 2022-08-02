@@ -18,45 +18,57 @@ class ColumnsFragment : Fragment(), View.OnClickListener {
     ): View? {
         binding = FragmentColumnsBinding.inflate(inflater, container, false)
 
-//        binding.columnTestTv.setOnClickListener(this)
-//        binding.infoArea1Btn.setOnClickListener(this)
-//        binding.infoArea2Btn.setOnClickListener(this)
-//        binding.infoArea3Btn.setOnClickListener(this)
-//        binding.infoArea4Btn.setOnClickListener(this)
+        binding.columnsTestClayout.setOnClickListener(this)
+        binding.columnsCategory1Clayout.setOnClickListener(this)
+        binding.columnsCategory2Clayout.setOnClickListener(this)
+        binding.columnsCategory3Clayout.setOnClickListener(this)
+        binding.columnsCategory4Clayout.setOnClickListener(this)
+        binding.columnsCategory5Clayout.setOnClickListener(this)
+        binding.columnsCategory6Clayout.setOnClickListener(this)
 
         return binding.root
     }
 
 
     override fun onClick(v: View?) {
-//        when(v?.id) {
-//            R.id.info_test_tv -> {
-//                activity?.let{
-//                    val intent = Intent(context, TestActivity::class.java)
-//                    startActivity(intent)
-//                }
-//            }
-//            R.id.info_area1_btn -> {
-//                (context as MainActivity).supportFragmentManager.beginTransaction()
-//                    .replace(R.id.main_frm, Category1Fragment())
-//                    .commitAllowingStateLoss()
-//            }
-//            R.id.info_area2_btn -> {
-//                (context as MainActivity).supportFragmentManager.beginTransaction()
-//                    .replace(R.id.main_frm, Category1Fragment())
-//                    .commitAllowingStateLoss()
-//            }
-//            R.id.info_area3_btn -> {
-//                (context as MainActivity).supportFragmentManager.beginTransaction()
-//                    .replace(R.id.main_frm, Category1Fragment())
-//                    .commitAllowingStateLoss()
-//            }
-//            R.id.info_area4_btn -> {
-//                (context as MainActivity).supportFragmentManager.beginTransaction()
-//                    .replace(R.id.main_frm, Category1Fragment())
-//                    .commitAllowingStateLoss()
-//            }
-//        }
+        when(v?.id) {
+            R.id.columns_test_clayout -> {
+                activity?.let{
+                    val intent = Intent(context, TestActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            R.id.columns_category1_clayout -> {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frm, Category1Fragment())
+                    .commitAllowingStateLoss()
+            }
+            R.id.columns_category2_clayout -> {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frm, Category1Fragment())
+                    .commitAllowingStateLoss()
+            }
+            R.id.columns_category3_clayout -> {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frm, Category1Fragment())
+                    .commitAllowingStateLoss()
+            }
+            R.id.columns_category4_clayout -> {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frm, Category1Fragment())
+                    .commitAllowingStateLoss()
+            }
+            R.id.columns_category5_clayout -> {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frm, Category1Fragment())
+                    .commitAllowingStateLoss()
+            }
+            R.id.columns_category6_clayout -> {
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frm, Category1Fragment())
+                    .commitAllowingStateLoss()
+            }
+        }
     }
 
 }
