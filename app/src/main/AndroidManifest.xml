@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".MainActivity"/>
         <activity android:name=".SignupActivity"/>
+        <activity android:name=".FindpwActivity"/>
         <activity android:name=".TestActivity"/>
         <activity android:name=".InfoDetailActivity"/>
     </application>

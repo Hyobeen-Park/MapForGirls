@@ -65,6 +65,10 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
+        login_pw_tvb.setOnClickListener {
+            val intent = Intent(this, FindpwActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun signinEmail(){  // 로그인하는 함수
