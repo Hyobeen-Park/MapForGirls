@@ -3,20 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_login_scene">
 
     <EditText
         android:id="@+id/login_email_et"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="이메일 주소를 입력하세요."
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/login_pw_tv"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
+        app:layout_constraintBottom_toTopOf="@+id/login_email_warn"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/login_title"
@@ -42,13 +41,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="103dp"
-        android:layout_marginBottom="35dp"
         android:ems="10"
         android:hint="비밀번호를 입력하세요."
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/login_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/login_pw_warn"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/login_btn"
@@ -58,8 +55,7 @@
         android:layout_marginBottom="6dp"
         android:text="로그인"
         app:layout_constraintBottom_toTopOf="@+id/login_signup_tvb"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TouchTargetSizeCheck" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/login_pw_tv"
@@ -91,5 +87,25 @@
         android:text="비밀번호 찾기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/login_email_warn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="19dp"
+        android:hint="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/login_pw_tv"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/login_pw_warn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="16dp"
+        android:hint="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

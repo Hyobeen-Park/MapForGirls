@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "719405764822",
+    "firebase_url": "https://map-for-girls-default-rtdb.firebaseio.com",
+    "project_id": "map-for-girls",
+    "storage_bucket": "map-for-girls.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719405764822:android:bc51dd0d3d84c0ae40f977",
+        "android_client_info": {
+          "package_name": "com.example.mapforgirls"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719405764822-aiajndoohg44qccm52gf4ocpg6r1f817.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo04ZvcF1lrt8tTQGDsafidcfyDntjvHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719405764822-aiajndoohg44qccm52gf4ocpg6r1f817.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
