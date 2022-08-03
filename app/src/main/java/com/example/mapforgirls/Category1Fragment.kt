@@ -44,10 +44,10 @@ class Category1Fragment : Fragment() {
 
                 // 리사이클러뷰 클릭 이벤트
                 infoRVAdapter.setMyItemClickListener(object : ColumnsRVAdapter.MyItemClickListener {
-                    override fun onItemClick(info: ColumnData) {
+                    override fun onItemClick(column: ColumnData) {
                         activity.let {
                             val intent = Intent(context, ColumnDetailActivity::class.java)
-                            intent.putExtra("information", info)
+                            intent.putExtra("column", column)
                             startActivity(intent)
                         }
                     }
