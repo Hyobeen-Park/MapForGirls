@@ -13,5 +13,10 @@ class ColumnDetailActivity : AppCompatActivity() {
         binding = ActivityColumnDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var column = intent.getSerializableExtra("column") as ColumnData
+        binding.columnDetailCoverIv.setImageResource(column.cover!!)
+        binding.columnDetailAuthorTv.text = column.author
+        binding.columnDetailTitleTv.text = column.title
+        binding.columnDetailContentTv.text = column.content
     }
 }

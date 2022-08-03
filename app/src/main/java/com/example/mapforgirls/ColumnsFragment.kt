@@ -1,7 +1,9 @@
 package com.example.mapforgirls
 
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +33,10 @@ class ColumnsFragment : Fragment(), View.OnClickListener {
 
 
     override fun onClick(v: View?) {
+        // 클릭한 카테고리 이름 전달용 sharedPreferences
+        val sharedPreferences = (context as MainActivity).getSharedPreferences("category", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
         when(v?.id) {
             R.id.columns_test_clayout -> {
                 activity?.let{
@@ -39,31 +45,55 @@ class ColumnsFragment : Fragment(), View.OnClickListener {
                 }
             }
             R.id.columns_category1_clayout -> {
+                // 카테고리 이름 저장
+                editor.putString("category", binding.columnsCategory1MainTv.text.toString())
+                editor.apply()
+
                 (context as MainActivity).supportFragmentManager.beginTransaction()
                     .replace(R.id.main_frm, Category1Fragment())
                     .commitAllowingStateLoss()
             }
             R.id.columns_category2_clayout -> {
+                // 카테고리 이름 저장
+                editor.putString("category", binding.columnsCategory2MainTv.text.toString())
+                editor.apply()
+
                 (context as MainActivity).supportFragmentManager.beginTransaction()
                     .replace(R.id.main_frm, Category1Fragment())
                     .commitAllowingStateLoss()
             }
             R.id.columns_category3_clayout -> {
+                // 카테고리 이름 저장
+                editor.putString("category", binding.columnsCategory3MainTv.text.toString())
+                editor.apply()
+
                 (context as MainActivity).supportFragmentManager.beginTransaction()
                     .replace(R.id.main_frm, Category1Fragment())
                     .commitAllowingStateLoss()
             }
             R.id.columns_category4_clayout -> {
+                // 카테고리 이름 저장
+                editor.putString("category", binding.columnsCategory4MainTv.text.toString())
+                editor.apply()
+
                 (context as MainActivity).supportFragmentManager.beginTransaction()
                     .replace(R.id.main_frm, Category1Fragment())
                     .commitAllowingStateLoss()
             }
             R.id.columns_category5_clayout -> {
+                // 카테고리 이름 저장
+                editor.putString("category", binding.columnsCategory5MainTv.text.toString())
+                editor.apply()
+
                 (context as MainActivity).supportFragmentManager.beginTransaction()
                     .replace(R.id.main_frm, Category1Fragment())
                     .commitAllowingStateLoss()
             }
             R.id.columns_category6_clayout -> {
+                // 카테고리 이름 저장
+                editor.putString("category", binding.columnsCategory6MainTv.text.toString())
+                editor.apply()
+
                 (context as MainActivity).supportFragmentManager.beginTransaction()
                     .replace(R.id.main_frm, Category1Fragment())
                     .commitAllowingStateLoss()
