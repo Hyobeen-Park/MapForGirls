@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initBottomNavigation(){
         supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frm, MapFragment())
+            .replace(R.id.main_frm, MapsFragment())
             .commitAllowingStateLoss()
 
         binding.mainBnv.setOnItemSelectedListener{ item ->
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.mapFragment -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, MapFragment())
+                        .replace(R.id.main_frm, MapsFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.infoFragment -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, InfoFragment())
+                        .replace(R.id.main_frm, ColumnsFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }

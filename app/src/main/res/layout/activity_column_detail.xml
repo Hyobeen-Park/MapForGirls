@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:id="@+id/info_detail_profile_iv"
+            android:id="@+id/column_detail_cover_iv"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@drawable/example"
@@ -23,17 +23,30 @@
             app:layout_constraintBottom_toBottomOf="@id/info_detail_profile_layout"/>
 
         <TextView
+            android:id="@+id/column_detail_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="박효빈"
-            app:layout_constraintStart_toEndOf="@id/info_detail_profile_iv"
-            app:layout_constraintTop_toTopOf="@id/info_detail_profile_iv"
-            app:layout_constraintBottom_toBottomOf="@id/info_detail_profile_iv"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:text="칼럼 제목"
+            android:textSize="28sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@id/column_detail_cover_iv"
+            app:layout_constraintStart_toEndOf="@id/column_detail_cover_iv"/>
+
+        <TextView
+            android:id="@+id/column_detail_author_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="저자나 출처"
+            app:layout_constraintTop_toBottomOf="@id/column_detail_title_tv"
+            app:layout_constraintStart_toStartOf="@id/column_detail_title_tv"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
-        android:id="@+id/info_detail_context_sv"
+        android:id="@+id/column_detail_content_sv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="20dp"
@@ -48,6 +61,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/column_detail_content_tv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="오늘의 일기\n노트북 하나 달랑 들고 출근했는데 너무 심심하다.
@@ -56,6 +70,7 @@
                 너무 관종같다. 근데 너무 심심해서 집어넣을 수가 없다. 왜 아직도 3시지 얼른 퇴근하고 싶다." />
 
             <ImageView
+                android:id="@+id/column_detail_content_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/example" />
