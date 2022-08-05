@@ -3,11 +3,11 @@ package com.example.mapforgirls
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mapforgirls.databinding.ItemColumnBinding
+import com.example.mapforgirls.databinding.ItemBestColumnBinding
 import java.util.*
 
-class ColumnsRVAdapter (private val columnList : ArrayList<ColumnData>) :
-    RecyclerView.Adapter<ColumnsRVAdapter.ViewHolder>() {
+class BestColumnsRVAdapter (private val columnList : ArrayList<ColumnData>) :
+    RecyclerView.Adapter<BestColumnsRVAdapter.ViewHolder>() {
 
     interface MyItemClickListener{
         fun onItemClick(column: ColumnData)
@@ -29,7 +29,7 @@ class ColumnsRVAdapter (private val columnList : ArrayList<ColumnData>) :
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val binding : ItemColumnBinding = ItemColumnBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        val binding : ItemBestColumnBinding = ItemBestColumnBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
 
         return ViewHolder(binding)
     }
@@ -42,10 +42,10 @@ class ColumnsRVAdapter (private val columnList : ArrayList<ColumnData>) :
 
     override fun getItemCount(): Int = columnList.size
 
-    inner class ViewHolder(val binding : ItemColumnBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(val binding : ItemBestColumnBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(column: ColumnData) {
-//            binding.itemColumnMainIv.setImageResource(column.cover!!)
-            binding.itemColumnTitleTv.text = column.title
+            binding.itemBestColumnMainIv.setImageResource(column.cover!!)
+            binding.itemBestColumnTitleTv.text = column.title
         }
     }
 
