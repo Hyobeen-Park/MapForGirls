@@ -40,11 +40,11 @@ class Category1Fragment : Fragment() {
                         i.child("author").value.toString(), i.child("content").value.toString()))
                 }
                 //리사이클러뷰 어댑터 적용
-                val infoRVAdapter = ColumnsRVAdapter(columnList)
-                binding.category1ColumnRv.adapter = infoRVAdapter
+                val columnsRVAdapter = ColumnsRVAdapter(columnList)
+                binding.category1ColumnRv.adapter = columnsRVAdapter
 
                 // 리사이클러뷰 클릭 이벤트
-                infoRVAdapter.setMyItemClickListener(object : ColumnsRVAdapter.MyItemClickListener {
+                columnsRVAdapter.setMyItemClickListener(object : ColumnsRVAdapter.MyItemClickListener {
                     override fun onItemClick(column: ColumnData) {
                         activity.let {
                             val intent = Intent(context, ColumnDetailActivity::class.java)
@@ -56,6 +56,19 @@ class Category1Fragment : Fragment() {
             }
             override fun onCancelled(error: DatabaseError) {
                 Log.d("database", "Error : " + error.toString())
+            }
+        })
+
+        val bestColumnsRVAdapter = BestColumnsRVAdapter(columnList)
+        binding.category1BestColumnRv.adapter = bestColumnsRVAdapter
+
+        bestColumnsRVAdapter.setMyItemClickListener(object : BestColumnsRVAdapter.MyItemClickListener {
+            override fun onItemClick(column: ColumnData) {
+                activity.let {
+                    val intent = Intent(context, ColumnDetailActivity::class.java)
+                    intent.putExtra("column", column)
+                    startActivity(intent)
+                }
             }
         })
 

@@ -73,6 +73,13 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
+                <ImageView
+                    android:id="@+id/item_column_main_iv"
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/example"
+                    android:scaleType="centerCrop"/>
+
             </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

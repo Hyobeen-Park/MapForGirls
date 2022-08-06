@@ -44,7 +44,7 @@ class ColumnsRVAdapter (private val columnList : ArrayList<ColumnData>) :
 
     inner class ViewHolder(val binding : ItemColumnBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(column: ColumnData) {
-//            binding.itemColumnMainIv.setImageResource(column.cover!!)
+            binding.itemColumnMainIv.setImageResource(column.cover!!)
             binding.itemColumnTitleTv.text = column.title
         }
     }
