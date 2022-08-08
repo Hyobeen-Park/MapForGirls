@@ -17,8 +17,7 @@
             android:value="AIzaSyDI_qpv6fN1MOybVyooVDSzFo3ukcARXgw" />
 
         <!-- android:name=".MainActivity" -->
-        <activity
-            android:name=".LoginActivity"
+        <activity android:name="com.example.mapforgirls.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,11 +25,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".LoginActivity" android:exported="true"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".SignupActivity" />
         <activity android:name=".FindpwActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".ColumnDetailActivity" />
+
+
     </application>
 
 </manifest>
