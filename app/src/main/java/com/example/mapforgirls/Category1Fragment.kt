@@ -59,18 +59,7 @@ class Category1Fragment : Fragment() {
             }
         })
 
-        val bestColumnsRVAdapter = BestColumnsRVAdapter(columnList)
-        binding.category1BestColumnRv.adapter = bestColumnsRVAdapter
 
-        bestColumnsRVAdapter.setMyItemClickListener(object : BestColumnsRVAdapter.MyItemClickListener {
-            override fun onItemClick(column: ColumnData) {
-                activity.let {
-                    val intent = Intent(context, ColumnDetailActivity::class.java)
-                    intent.putExtra("column", column)
-                    startActivity(intent)
-                }
-            }
-        })
 
         return binding.root
     }
