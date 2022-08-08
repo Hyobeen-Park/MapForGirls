@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.mapforgirls.databinding.FragmentCategory1Binding
 import com.google.firebase.database.*
+import java.util.*
 import com.google.firebase.database.DatabaseReference
 
 
@@ -40,11 +41,11 @@ class Category1Fragment : Fragment() {
                         i.child("author").value.toString(), i.child("content").value.toString()))
                 }
                 //리사이클러뷰 어댑터 적용
-                val infoRVAdapter = ColumnsRVAdapter(columnList)
-                binding.category1ColumnRv.adapter = infoRVAdapter
+                val columnsRVAdapter = ColumnsRVAdapter(columnList)
+                binding.category1ColumnRv.adapter = columnsRVAdapter
 
                 // 리사이클러뷰 클릭 이벤트
-                infoRVAdapter.setMyItemClickListener(object : ColumnsRVAdapter.MyItemClickListener {
+                columnsRVAdapter.setMyItemClickListener(object : ColumnsRVAdapter.MyItemClickListener {
                     override fun onItemClick(column: ColumnData) {
                         activity.let {
                             val intent = Intent(context, ColumnDetailActivity::class.java)
