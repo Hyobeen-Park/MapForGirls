@@ -60,8 +60,6 @@ class Category1Fragment : Fragment() {
             }
         })
 
-
-
         return binding.root
     }
 
