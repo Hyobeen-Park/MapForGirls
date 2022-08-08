@@ -28,7 +28,7 @@
             android:layout_marginRight="20dp"
             app:cardBackgroundColor="#FFFFFF"
             app:cardCornerRadius="50dp"
-            app:cardElevation="4dp">
+            app:cardElevation="10dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageView2"
@@ -47,7 +47,8 @@
                 android:layout_marginTop="30dp"
                 android:text="약사"
                 android:textAlignment="textStart"
-                android:textColor="#4CAF50" />
+                android:textColor="#4CAF50"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/chemistTV"
@@ -66,7 +67,8 @@
                 android:layout_marginTop="50dp"
                 android:text="약국이름"
                 android:textAlignment="textStart"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/oepnTV"
@@ -76,7 +78,8 @@
                 android:layout_marginTop="90dp"
                 android:text="영업중"
                 android:textAlignment="textStart"
-                android:textColor="#4CAF50" />
+                android:textColor="#4CAF50"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/closeTV"
@@ -95,7 +98,8 @@
                 android:layout_marginTop="110dp"
                 android:text="주소"
                 android:textAlignment="textStart"
-                android:textColor="#4CAF50" />
+                android:textColor="#4CAF50"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/locationTV"
@@ -114,6 +118,7 @@
                 android:layout_marginTop="130dp"
                 android:text="연락처"
                 android:textAlignment="textStart"
+                android:textStyle="bold"
                 android:textColor="#4CAF50" />
 
             <TextView

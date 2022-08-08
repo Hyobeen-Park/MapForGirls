@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.mapforgirls.databinding.FragmentCategory1Binding
 import com.google.firebase.database.*
 import java.util.*
+import com.google.firebase.database.DatabaseReference
 
 
 class Category1Fragment : Fragment() {
