@@ -24,21 +24,91 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/category1_what_is_this_cv"
+            android:layout_width="160dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="20dp"
+            android:elevation="0dp"
+            app:cardCornerRadius="20dp"
+            android:backgroundTint="#aaaaaa"
+            app:layout_constraintTop_toBottomOf="@id/category1_title_tv"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/category1_what_is_this2_cv"
+            android:layout_width="200dp"
+            android:layout_height="140dp"
+            android:layout_marginStart="10dp"
+            android:elevation="0dp"
+            app:cardCornerRadius="20dp"
+            android:backgroundTint="#cccccc"
+            app:layout_constraintTop_toTopOf="@id/category1_what_is_this_cv"
+            app:layout_constraintStart_toEndOf="@id/category1_what_is_this_cv">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:cardCornerRadius="15dp"/>
+
+                    <TextView
+                        android:id="@+id/category1_what_is_this2_author_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:text="이작가"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/category1_what_is_this2_title_tv"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="5dp"
+                    android:text="나 자신, 나의 몸을 사랑하는 방법"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="5dp"
+                    app:cardCornerRadius="10dp">
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/category1_column_rv"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
             tools:listitem="@layout/item_column"
-            app:layout_constraintTop_toBottomOf="@id/category1_title_tv"
+            app:layout_constraintTop_toBottomOf="@id/category1_what_is_this_cv"
             app:layout_constraintStart_toStartOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 </ScrollView>
