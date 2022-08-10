@@ -61,13 +61,9 @@ class SignupActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-    private fun writeNewUser(userId: String, name: String) {
+    private fun writeNewUser(userId: String, name: String) {  // 데이터베이스에 회원을 작성하는 함수
         val user = UserInfo(userId, name)
-        database.child("users").child("userId").child(userId).setValue(name)
-    }
-
-    private fun infoMoveToDatabase(){
-
+        database.child("users").child("userName").child(userId).setValue(name)
     }
 
 }
