@@ -1,6 +1,6 @@
 package com.example.mapforgirls
 
-class UserInfo {
-
-
-}
+data class UserInfo (
+    var userId :String? = "",
+    var name: String? = ""
+)

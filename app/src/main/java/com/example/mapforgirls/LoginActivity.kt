@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login_signup_tvb.setOnClickListener {
-            val intent = Intent(this, SignupActivity::class.java)
+            val intent = Intent(this, UserActivity::class.java)
             startActivity(intent)
         }
         login_pw_tvb.setOnClickListener {
