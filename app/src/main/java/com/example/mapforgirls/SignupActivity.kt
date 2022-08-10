@@ -44,7 +44,7 @@ class SignupActivity : AppCompatActivity() {
         {
             Toast.makeText(this, "닉네임을 입력해주세요.", Toast.LENGTH_LONG).show()
         }else if (signup_pw_et.text.toString() != signup_pw2_et.text.toString()) {
-            Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "비밀번호가 일치하지 않습니다. ", Toast.LENGTH_LONG).show()
         }else {
             auth?.createUserWithEmailAndPassword(
                 signup_email_et.text.toString(),
