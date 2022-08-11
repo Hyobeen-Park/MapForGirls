@@ -1,5 +1,6 @@
 package com.example.mapforgirls
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -62,7 +63,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login_signup_tvb.setOnClickListener {
-            val intent = Intent(this, SignupActivity::class.java)
+            val intent = Intent(this, UserActivity::class.java)
             startActivity(intent)
         }
         login_pw_tvb.setOnClickListener {
@@ -73,7 +74,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun signinEmail(){  // 로그인하는 함수
         // 아이디와 비밀번호가 채워지지 않은 경우
-        if(login_email_et.text.toString() == null || login_pw_et.text.toString() == null || login_email_et.text.toString().isEmpty() || login_pw_et.text.toString().isEmpty()) {
+        if(login_email_et.text.toString().isEmpty() ||
+            login_pw_et.text.toString().isEmpty()
+        ) {
             Toast.makeText(this, "아이디와 비밀번호를 채워주세요.", Toast.LENGTH_LONG).show()
         } else if(!isEmail(login_email_et.text.toString())){  // 아이디가 이메일 형식이 아닐 경우
             Toast.makeText(this,"이메일 형식으로 입력해주세요.", Toast.LENGTH_LONG).show()
@@ -113,7 +116,7 @@ class LoginActivity : AppCompatActivity() {
         }
         return returnValue
     }
-    fun isActive(activate_login: Boolean?, activate_pw : Boolean?){  // 로그인 버튼 활성화 함수
-            login_btn.isEnabled = activate_login == true && activate_pw == true
+    fun isActive(activate_login: Boolean?, activate_pw : Boolean?) {  // 로그인 버튼 활성화 함수
+        login_btn.isEnabled = activate_login == true && activate_pw == true
     }
 }
