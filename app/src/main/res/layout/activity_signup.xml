@@ -10,232 +10,283 @@
         android:id="@+id/signup_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
+
+
+        android:fontFamily="@font/nixgon_bold"
         android:text="회원가입"
+        android:textSize="80px"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169" />
+        app:layout_constraintVertical_bias="0.103" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="소녀지도와 함께할\n당신의 정보를 입력해주세요"
+        android:textColor="#AAAAAA"
+        android:textSize="30px"
+
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_title" />
 
     <TextView
         android:id="@+id/signup_email_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+
         android:text="이메일"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
+        android:textSize="45px"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@+id/signup_email_et"
+        app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.251" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/signup_email_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:autofillHints="emailAddress"
         android:ems="10"
-        android:hint="이메일을 입력하세요."
+
+        android:layout_width="750px"
+        android:layout_height="100px"
+        android:padding="5dp"
+        android:background="@drawable/round_white"
+        android:textColorHint="#DADADA"
+        android:textSize="40px"
+        android:hint="    이메일을 입력해 주세요"
+
         android:inputType="textEmailAddress"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintHorizontal_bias="0.424"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.288"
+        app:layout_constraintVertical_bias="0.285"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/signup_email_warn"
-        android:layout_width="146dp"
-        android:layout_height="18dp"
-        android:layout_marginBottom="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.316"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:gravity="right"
+
+        android:text="이메일 형식에 맞지 않습니다"
+
+
+        android:textColor="@color/red1"
+        app:layout_constraintBottom_toTopOf="@+id/signup_email_et"
+        app:layout_constraintHorizontal_bias="0.728"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/signup_email_tv"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.343" />
+        app:layout_constraintVertical_bias="0.994" />
 
     <TextView
         android:id="@+id/signup_pw_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
         android:text="비밀번호"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.233"
+
+        android:textSize="45px"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@+id/signup_pw_et"
+        app:layout_constraintHorizontal_bias="0.151"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.391" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/signup_pw_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="750px"
+        android:layout_height="100px"
+
         android:layout_marginBottom="8dp"
+        android:background="@drawable/round_white"
         android:ems="10"
-        android:hint="비밀번호를 입력하세요."
+        android:hint="    비밀번호를 입력하세요."
         android:inputType="textPassword"
+        android:padding="5dp"
+        android:textColorHint="#DADADA"
+
+        android:textSize="40px"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.436"
+        app:layout_constraintVertical_bias="0.455"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/signup_pw_warn"
-        android:layout_width="146dp"
-        android:layout_height="18dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="229dp"
+
+        android:gravity="right"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.316"
-        app:layout_constraintLeft_toLeftOf="parent"
+
+        android:textColor="@color/red1"
+        app:layout_constraintBottom_toTopOf="@+id/signup_pw_et"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/signup_pw_tv"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.494" />
+        app:layout_constraintVertical_bias="0.986" />
 
     <TextView
         android:id="@+id/signup_pw2_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
         android:text="비밀번호 확인"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.254"
+
+
+        android:textSize="45px"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@+id/signup_pw2_et"
+        app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.557" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/signup_pw2_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="750px"
+        android:layout_height="100px"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/round_white"
         android:ems="10"
-        android:hint="비밀번호를 입력하세요."
+        android:hint="    비밀번호를 입력하세요."
         android:inputType="textPassword"
+
+        android:padding="5dp"
+        android:textColorHint="#DADADA"
+        android:textSize="40px"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.417"
+        app:layout_constraintHorizontal_bias="0.432"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.609"
+        app:layout_constraintTop_toBottomOf="@+id/signup_pw_et"
+        app:layout_constraintVertical_bias="0.106"
         tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/signup_pw2_warn"
-        android:layout_width="146dp"
-        android:layout_height="18dp"
-        android:layout_marginBottom="4dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.316"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
 
-    <TextView
-        android:id="@+id/signup_certif_tv"
-        android:layout_width="146dp"
-        android:layout_height="18dp"
-        android:layout_marginBottom="4dp"
-        android:text="본인인증"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.316"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.695" />
+        android:text="비밀번호가 일치하지 않습니다."
+        android:textColor="@color/red1"
 
-    <Button
-        android:id="@+id/signup_certif_btn"
-        android:layout_width="213dp"
-        android:layout_height="41dp"
-        android:text="휴대폰 인증"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintBottom_toTopOf="@+id/signup_pw2_et"
+        app:layout_constraintHorizontal_bias="0.693"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.74"
-        tools:ignore="TouchTargetSizeCheck" />
-
-    <TextView
-        android:id="@+id/signup_certif_warn"
-        android:layout_width="146dp"
-        android:layout_height="18dp"
-        android:text="textview"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.316"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.774" />
+        app:layout_constraintVertical_bias="0.986" />
 
     <TextView
         android:id="@+id/signup_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
         android:text="닉네임"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.217"
+
+        android:textSize="45px"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@+id/signup_name_et"
+        app:layout_constraintHorizontal_bias="0.148"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.813" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/signup_name_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_width="750px"
+
+        android:layout_height="100px"
+        android:background="@drawable/round_white"
         android:ems="10"
-        android:hint="닉네임울 입력하세요."
+        android:hint="    닉네임울 입력하세요."
         android:inputType="textPersonName"
+        android:padding="5dp"
+        android:textColorHint="#DADADA"
+
+        android:textSize="40px"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintHorizontal_bias="0.424"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.877"
+        app:layout_constraintVertical_bias="0.718"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/signup_name_warn"
-        android:layout_width="146dp"
-        android:layout_height="18dp"
-        android:layout_marginBottom="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.305"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:gravity="right"
+        android:text="이미 사용중인 닉네임 입니다"
+
+
+        android:textColor="@color/red1"
+        app:layout_constraintBottom_toTopOf="@+id/signup_name_et"
+        app:layout_constraintHorizontal_bias="0.793"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/signup_name_tv"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.907" />
+        app:layout_constraintVertical_bias="0.991" />
 
     <Button
         android:id="@+id/signup_btn"
-        android:layout_width="213dp"
-        android:layout_height="41dp"
+        android:layout_width="750px"
+        android:layout_height="150px"
         android:layout_marginBottom="16dp"
-        android:text="회원가입"
+        android:text="회원가입 완료"
+        android:textColor="#A9A9A9"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.409"
+        app:layout_constraintHorizontal_bias="0.414"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976"
-        tools:ignore="TouchTargetSizeCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_name_et"
+        app:layout_constraintVertical_bias="0.615"
+        tools:ignore="TouchTargetSizeCheck"
+        android:textStyle="bold"
+
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+
+        android:background="@drawable/round_greybtn"
+
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
