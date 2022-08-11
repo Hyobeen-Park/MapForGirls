@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     app:layoutDescription="@xml/activity_login_scene">
 
-    <EditText
-        android:id="@+id/login_email_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:ems="10"
-        android:hint="이메일 주소를 입력하세요."
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/login_email_warn"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
         android:id="@+id/login_title"
         android:layout_width="wrap_content"
@@ -32,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
+        android:layout_marginBottom="3dp"
         android:text="이메일"
         app:layout_constraintBottom_toTopOf="@+id/login_email_et"
         app:layout_constraintStart_toStartOf="parent" />
@@ -106,6 +96,18 @@
         android:layout_marginBottom="16dp"
         android:hint="TextView"
         app:layout_constraintBottom_toTopOf="@+id/login_btn"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/login_email_et"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginBottom="56dp"
+        android:ems="10"
+        android:hint="이메일 주소를 입력하세요."
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/login_pw_et"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

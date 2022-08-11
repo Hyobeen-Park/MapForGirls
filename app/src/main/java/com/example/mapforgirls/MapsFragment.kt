@@ -6,6 +6,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.Toast
+import com.example.mapforgirls.databinding.FragmentMapsBinding
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -16,7 +21,8 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.fragment_maps.*
 
-class MapsFragment : Fragment() {
+class MapsFragment : Fragment(), View.OnClickListener {
+    lateinit var binding: FragmentMapsBinding
 
     private val callback = OnMapReadyCallback { googleMap ->
 
@@ -47,6 +53,7 @@ class MapsFragment : Fragment() {
 
         //getLocationPermission()
         //updateLocationUI()
+
     }
 
     override fun onCreateView(
@@ -54,7 +61,12 @@ class MapsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_maps, container, false)
+        binding = FragmentMapsBinding.inflate(inflater, container, false)
+
+        binding.searchButton.setOnClickListener(this)
+
+        return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -63,5 +75,11 @@ class MapsFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
     }
 
+    override fun onClick(v: View?) {
+        // test 메시지
+        Toast.makeText(activity,"검색완료", Toast.LENGTH_SHORT).show()
 
+        // 버튼 클릭 시 지도 화면 변경
+    }
 }
+

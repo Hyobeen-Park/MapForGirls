@@ -25,21 +25,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    app:cardCornerRadius="15dp"
-                    android:backgroundTint="#aaaaaa"/>
+                    android:backgroundTint="#aaaaaa"
+                    app:cardCornerRadius="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:layout_marginStart="5dp"
-                    android:text="이야기"/>
+                    android:layout_marginTop="5dp"
+                    android:text="이야기" />
 
             </LinearLayout>
 
@@ -51,14 +51,14 @@
                 android:text="여드름과 부스럼,\n자연스러운 내 몸의 현상 (part 1)"
                 android:textColor="@color/black"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/item_column_llayout"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_column_llayout" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="80dp"
                 android:layout_height="30dp"
-                app:cardCornerRadius="15dp"
                 android:backgroundTint="#aaaaaa"
+                app:cardCornerRadius="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
@@ -70,15 +70,15 @@
                 android:backgroundTint="#aaaaaa"
                 app:cardCornerRadius="30dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/item_column_main_iv"
                     android:layout_width="150dp"
                     android:layout_height="120dp"
-                    android:src="@drawable/example"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/example" />
 
             </androidx.cardview.widget.CardView>
 

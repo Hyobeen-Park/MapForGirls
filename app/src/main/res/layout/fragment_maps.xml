@@ -15,6 +15,32 @@
         tools:context=".MapsFragment" />
 
     <LinearLayout
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/searchEdit"
+            android:layout_width="295dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:hint="지역구를 입력하세요"
+            android:lines="1"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/searchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:text="검색" />
+    </LinearLayout>
+
+
+    <LinearLayout
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="220dp"
