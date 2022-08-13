@@ -3,17 +3,71 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/grey_background">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/nixgon_bold"
+        android:text="본인인증"
+        android:textSize="80px"
+
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.912" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="본인 인증을 통해\n소녀지도와 함께해요"
+        android:textSize="30px"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#AAAAAA"
+
+        app:layout_constraintBottom_toTopOf="@+id/certify_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.587" />
 
     <Button
         android:id="@+id/certify_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="본인인증하기"
+
+        android:text="본인인증 하기"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+
+        android:paddingLeft="100dp"
+        android:paddingRight="100dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+
+        android:background="@drawable/round_greenbtn"
+        android:backgroundTint="#2DAF81"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.417" />
+
+    <ImageView
+        android:layout_width="500px"
+        android:layout_height="932px"
+        android:layout_marginTop="420dp"
+        android:src="@drawable/img_hug"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,83 +4,90 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/info_detail_profile_layout"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_margin="20dp"
+    <ImageView
+        android:id="@+id/column_detail_cover_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/example"
+        android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintStart_toStartOf="parent"/>
 
-        <ImageView
-            android:id="@+id/column_detail_cover_iv"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/example"
-            app:layout_constraintStart_toStartOf="@id/info_detail_profile_layout"
-            app:layout_constraintTop_toTopOf="@id/info_detail_profile_layout"
-            app:layout_constraintBottom_toBottomOf="@id/info_detail_profile_layout"/>
-
-        <TextView
-            android:id="@+id/column_detail_title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            android:text="칼럼 제목"
-            android:textSize="28sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="@id/column_detail_cover_iv"
-            app:layout_constraintStart_toEndOf="@id/column_detail_cover_iv"/>
-
-        <TextView
-            android:id="@+id/column_detail_author_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="저자나 출처"
-            app:layout_constraintTop_toBottomOf="@id/column_detail_title_tv"
-            app:layout_constraintStart_toStartOf="@id/column_detail_title_tv"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ScrollView
-        android:id="@+id/column_detail_content_sv"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="300dp"
+        android:elevation="0dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/info_detail_profile_layout"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <ScrollView
+            android:id="@+id/column_detail_content_sv"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:background="@color/white">
 
-            <TextView
-                android:id="@+id/column_detail_content_tv"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="오늘의 일기\n노트북 하나 달랑 들고 출근했는데 너무 심심하다.
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/info_detail_profile_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/column_detail_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="칼럼 제목"
+                        android:textColor="@color/black"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/column_detail_sub_title_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="칼럼 부제목"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="@id/column_detail_title_tv"
+                        app:layout_constraintTop_toBottomOf="@id/column_detail_title_tv" />
+
+                    <TextView
+                        android:id="@+id/column_detail_author_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="저자나 출처"
+                        app:layout_constraintStart_toStartOf="@id/column_detail_title_tv"
+                        app:layout_constraintTop_toBottomOf="@id/column_detail_sub_title_tv" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/column_detail_content_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="30dp"
+                    android:text="오늘의 일기\n노트북 하나 달랑 들고 출근했는데 너무 심심하다.
                 아이패드도 들고올걸
                 그리고 지금 어린이실에서 일하고 있는데 나 혼자 엄청 큰 노트북으로 안드로이드 개발하고 있으니까
-                너무 관종같다. 근데 너무 심심해서 집어넣을 수가 없다. 왜 아직도 3시지 얼른 퇴근하고 싶다." />
+                너무 관종같다. 근데 너무 심심해서 집어넣을 수가 없다. 왜 아직도 3시지 얼른 퇴근하고 싶다."
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/info_detail_profile_layout" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                android:id="@+id/column_detail_content_iv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/example" />
+        </ScrollView>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="아이유 콘서트 한다는데 나도 가고 싶다" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-    </ScrollView>
-
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
