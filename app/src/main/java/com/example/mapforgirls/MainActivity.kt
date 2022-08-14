@@ -1,16 +1,38 @@
 package com.example.mapforgirls
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mapforgirls.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuth.AuthStateListener
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
+    var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var authListener: AuthStateListener? = null
+
+    override fun onStart() {
+        super.onStart()
+        auth.addAuthStateListener(authListener!!)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        authListener = AuthStateListener {
+            val user = auth.currentUser
+            // auth = FirebaseAuth.getInstance()
+            // val user =  auth.currentUser
+
+            val userInfo = getSharedPreferences("userInfo", MODE_PRIVATE)
+            val editor = userInfo.edit()
+            editor.putString("uid", user?.uid.toString())
+            editor.apply()
+        }
 
         initBottomNavigation()
     }
@@ -60,8 +82,7 @@ class MainActivity : AppCompatActivity() {
             finish()
             return
         }
-
-        // 처음 클릭 메시지
+        // 한 번 클릭했을 시 메시지
         Toast.makeText(this, "뒤로가기 버튼을 한번 더 누르시면 앱이 종료됩니다.", Toast.LENGTH_SHORT).show()
         backPressedTime = System.currentTimeMillis()
     }

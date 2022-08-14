@@ -197,7 +197,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="right"
-
         android:text="비밀번호가 일치하지 않습니다."
         android:textColor="@color/red1"
 
@@ -248,13 +247,10 @@
     <TextView
         android:id="@+id/signup_name_warn"
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:gravity="right"
         android:text="이미 사용중인 닉네임 입니다"
-
-
         android:textColor="@color/red1"
         app:layout_constraintBottom_toTopOf="@+id/signup_name_et"
         app:layout_constraintHorizontal_bias="0.793"
@@ -285,7 +281,6 @@
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
 
-        android:background="@drawable/round_greybtn"
-        />
+        android:background="@drawable/round_greybtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

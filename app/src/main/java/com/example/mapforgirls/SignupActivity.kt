@@ -1,6 +1,5 @@
 package com.example.mapforgirls
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -14,10 +13,15 @@ import kotlinx.android.synthetic.main.activity_signup.*
 class SignupActivity : AppCompatActivity() {
     var auth : FirebaseAuth? = null
     lateinit var loginActivity : LoginActivity
-    lateinit var database : DatabaseReference
+    // lateinit var database : DatabaseReference
+    private val database by lazy { FirebaseDatabase.getInstance() }
+    private var userRef : DatabaseReference? = null
+    var temp : Int = 0
+    var tempString : String? = null
 
     override fun onStart() {
         super.onStart()
+        // readUserCount()
         // Check if user is signed in (non-null) and update UI accordingly.
         // val currentUser: FirebaseUser? = auth?.getCurrentUser()
     }
@@ -27,7 +31,6 @@ class SignupActivity : AppCompatActivity() {
         setContentView(R.layout.activity_signup)
         loginActivity = LoginActivity()
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance().reference
 
         signup_btn.setOnClickListener {
             signup()
@@ -76,13 +79,40 @@ class SignupActivity : AppCompatActivity() {
     private fun moveLoginPage(user: FirebaseUser?){  // 로그인 페이지로 이동하는 함수
         if(user != null){
             val intent = Intent(this, LoginActivity::class.java)
-            // finishAffinity()  // 액티비티 스택을 비움
+            finishAffinity()  // 액티비티 스택을 비움
             startActivity(intent)
         }
     }
-    private fun writeNewUser(userId: String, name: String) {  // 데이터베이스에 회원을 작성하는 함수
-        val user = UserInfo(userId, name)
-        database.child("users").child("userName").child(userId).setValue(name)
+    /*
+    private fun readUserCount() : Int {  // 현재 DB의 회원 수를 읽는 함수
+        userRef = database.getReference("users")
+        userRef!!.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                Toast.makeText(this@SignupActivity, "취소", Toast.LENGTH_LONG).show()
+            }
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (first_key in snapshot.children) {
+                    if (first_key.key.equals("count")) {
+                        temp = Integer.parseInt(first_key.value.toString())
+                        temp++
+                        tempString = first_key.value.toString()
+                        Toast.makeText(this@SignupActivity, temp.toString(), Toast.LENGTH_LONG).show()
+                    }
+                    else{
+                        // Toast.makeText(this@SignupActivity, "Error!!", Toast.LENGTH_LONG).show()
+                    }
+
+                }
+            }
+        })
+        return temp
+    }
+     */
+    private fun writeNewUser(uid: String, name: String) {  // DB에 회원을 작성하는 함수
+        val user = UserInfo(uid, name)
+        // database.getReference().child("users").child(temp.toString()).setValue(user)
+        database.getReference().child("users").child(uid).setValue(user)
+        //database.getReference().child("users").updateChildren("count", temp.toString());
     }
 
 }
