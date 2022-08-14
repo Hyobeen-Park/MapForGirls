@@ -141,10 +141,10 @@
         android:id="@+id/signup_pw_warn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="229dp"
+        android:layout_marginStart="152dp"
 
         android:gravity="right"
-        android:text="TextView"
+        android:text="6자 이상 입력해주세요."
 
         android:textColor="@color/red1"
         app:layout_constraintBottom_toTopOf="@+id/signup_pw_et"
@@ -286,7 +286,6 @@
         android:paddingBottom="15dp"
 
         android:background="@drawable/round_greybtn"
-
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
