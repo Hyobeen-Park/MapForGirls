@@ -54,6 +54,13 @@ class MapsFragment : Fragment(), View.OnClickListener {
             googleMap.addMarker(MarkerOptions().position(currentLocation).title("현재 위치"))
         }
 
+        binding.mylocationButton.setOnClickListener {
+            var currentLocation : LatLng = getLocation()
+            if(currentLocation != LatLng(0.0, 0.0)) {       // 현재 위치 제대로 받아왔을 때
+                googleMap.addMarker(MarkerOptions().position(currentLocation).title("현재 위치"))
+            }
+        }
+
         cardView.visibility = View.GONE
 
         // 마커 클릭 시 카드뷰 띄움
