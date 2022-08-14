@@ -31,7 +31,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:backgroundTint="#aaaaaa"
+                    android:backgroundTint="#2DAF81"
                     app:cardCornerRadius="15dp" />
 
                 <TextView
@@ -57,7 +57,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="80dp"
                 android:layout_height="30dp"
-                android:backgroundTint="#aaaaaa"
+                android:backgroundTint="#B4E2D4"
                 app:cardCornerRadius="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
