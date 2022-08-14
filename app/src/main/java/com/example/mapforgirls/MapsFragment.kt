@@ -158,8 +158,7 @@ class MapsFragment : Fragment(), View.OnClickListener {
 
         if(hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
             hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED){
-            val locatioNProvider = LocationManager.GPS_PROVIDER
-            currentLatLng = locationManager?.getLastKnownLocation(locatioNProvider)
+            currentLatLng = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER) ?: locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
         }else{
             if(ActivityCompat.shouldShowRequestPermissionRationale(mainActivity, REQUIRED_PERMISSIONS[0])){
                 Toast.makeText(mainActivity, "앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_SHORT).show()
