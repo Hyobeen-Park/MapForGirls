@@ -44,20 +44,18 @@ class MapsFragment : Fragment(), View.OnClickListener {
 
     private val callback = OnMapReadyCallback { googleMap ->
 
+        // test marker
         val point = LatLng(37.626326, 127.093241)
         googleMap.addMarker(MarkerOptions().position(point).title("서울여자대학교"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(point))
         googleMap.moveCamera(CameraUpdateFactory.zoomTo(13f))
 
-        var currentLocation : LatLng = getLocation()
-        if(currentLocation != LatLng(0.0, 0.0)) {       // 현재 위치 제대로 받아왔을 때
-            googleMap.addMarker(MarkerOptions().position(currentLocation).title("현재 위치"))
-        }
-
+        // current marker
         binding.mylocationButton.setOnClickListener {
             var currentLocation : LatLng = getLocation()
             if(currentLocation != LatLng(0.0, 0.0)) {       // 현재 위치 제대로 받아왔을 때
                 googleMap.addMarker(MarkerOptions().position(currentLocation).title("현재 위치"))
+                moveCamera(googleMap, currentLocation.latitude, currentLocation.longitude)
             }
         }
 
@@ -80,10 +78,6 @@ class MapsFragment : Fragment(), View.OnClickListener {
                 cardView.visibility = View.GONE
             }
         })
-
-        //getLocationPermission()
-        //updateLocationUI()
-
     }
 
     override fun onAttach(context: Context) {
@@ -100,9 +94,8 @@ class MapsFragment : Fragment(), View.OnClickListener {
     ): View? {
         binding = FragmentMapsBinding.inflate(inflater, container, false)
 
-        // 버큰 클릭 리스너
+        // 버튼 클릭 리스너
         binding.searchButton.setOnClickListener(this)
-        binding.mylocationButton.setOnClickListener(this)
 
         getLocation()
 
@@ -123,9 +116,6 @@ class MapsFragment : Fragment(), View.OnClickListener {
                 Toast.makeText(activity, "검색완료", Toast.LENGTH_SHORT).show()
 
                 // 버튼 클릭 시 지도 화면 변경
-            }
-            R.id.mylocationButton -> {
-
             }
         }
 
@@ -213,6 +203,13 @@ class MapsFragment : Fragment(), View.OnClickListener {
                         .show()
                 }
             }
+        }
+    }
+
+    // 지도 이동 애니메이션
+    private fun moveCamera(map: GoogleMap?, latitude: Double, longitude: Double) {
+        map?.let {
+            it.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude, longitude), 16f))
         }
     }
 }
