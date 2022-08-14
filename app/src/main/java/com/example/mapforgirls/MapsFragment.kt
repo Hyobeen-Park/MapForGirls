@@ -6,9 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.Toast
 import com.example.mapforgirls.databinding.FragmentMapsBinding
 
@@ -34,7 +31,7 @@ class MapsFragment : Fragment(), View.OnClickListener {
         cardView.visibility = View.GONE
 
         // 마커 클릭 시 카드뷰 띄움
-        googleMap!!.setOnMarkerClickListener(object: GoogleMap.OnMarkerClickListener {
+        googleMap!!.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
             override fun onMarkerClick(marker: Marker): Boolean {
                 cardView.visibility = View.VISIBLE
 
@@ -63,7 +60,9 @@ class MapsFragment : Fragment(), View.OnClickListener {
     ): View? {
         binding = FragmentMapsBinding.inflate(inflater, container, false)
 
+        // 버큰 클릭 리스너
         binding.searchButton.setOnClickListener(this)
+        binding.mylocationButton.setOnClickListener(this)
 
         return binding.root
 
@@ -76,10 +75,18 @@ class MapsFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        // test 메시지
-        Toast.makeText(activity,"검색완료", Toast.LENGTH_SHORT).show()
+        when (v?.id) {
+            R.id.searchButton -> {
+                // test 메시지
+                Toast.makeText(activity, "검색완료", Toast.LENGTH_SHORT).show()
 
-        // 버튼 클릭 시 지도 화면 변경
+                // 버튼 클릭 시 지도 화면 변경
+            }
+            R.id.mylocationButton -> {
+
+            }
+        }
+
     }
 }
 
