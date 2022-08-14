@@ -18,7 +18,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:text="카테고리 이름"
-            android:textSize="28sp"
+            android:textSize="50px"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,13 +28,19 @@
             android:id="@+id/category1_what_is_this_cv"
             android:layout_width="160dp"
             android:layout_height="140dp"
-            android:layout_marginTop="40dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#aaaaaa"
             android:elevation="0dp"
             app:cardCornerRadius="20dp"
-            android:backgroundTint="#aaaaaa"
-            app:layout_constraintTop_toBottomOf="@id/category1_title_tv"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/category1_title_tv">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img1" />
 
         </androidx.cardview.widget.CardView>
 
@@ -53,6 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:background="#B4E2D4"
                 android:padding="10dp">
 
                 <LinearLayout
@@ -62,6 +69,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:backgroundTint="#2DAF81"
                         app:cardCornerRadius="15dp"/>
 
                     <TextView
@@ -105,9 +113,9 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_column"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/category1_what_is_this_cv"
-            app:layout_constraintStart_toStartOf="parent"/>
+            tools:listitem="@layout/item_column" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
