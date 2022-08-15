@@ -1,9 +1,11 @@
 package com.example.mapforgirls
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,12 +26,6 @@ class MypageFragment : Fragment(){
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
-        /*
-        auth = FirebaseAuth.getInstance()
-        val user =  auth.currentUser
-        name = user?.displayName
-         */
 
         val userInfo: SharedPreferences = (context as MainActivity).getSharedPreferences("userInfo", MODE_PRIVATE)
         val uid = userInfo.getString("uid", null)
@@ -53,25 +49,23 @@ class MypageFragment : Fragment(){
         userRef!!.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {  // iterator
                 for (user in snapshot.children) {
+                    Log.v(TAG, user.toString())
                     if (user.key.equals(uid)) {
                         name = user.child("name").value.toString()
+                        binding.mypageGirlNameTv.text = name
+                        // callback?.loadPage(name.toString())
+                        return
                     }
-                    Toast.makeText(activity, name, Toast.LENGTH_LONG).show()
-                    binding.mypageGirlNameTv.text = name
-                    // callback?.loadPage(name.toString())
-                    return
                 }
             }
             override fun onCancelled(error: DatabaseError) {
-                // Log.d("database", "Error : " + error.toString())
+                Log.d("database", "Error : " + error.toString())
             }
         })
     }
-
     /*
     override fun loadPage(name : String){
         binding.mypageGirlNameTv.text = name
     }
      */
-
 }
