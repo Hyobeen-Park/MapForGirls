@@ -6,4 +6,5 @@ import android.view.ViewGroup
 
 interface PostListener {
     fun loadPage(name : String)
+    fun checkEmail()
 }

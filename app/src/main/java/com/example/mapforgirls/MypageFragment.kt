@@ -49,7 +49,6 @@ class MypageFragment : Fragment(){
         userRef!!.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {  // iterator
                 for (user in snapshot.children) {
-                    Log.v(TAG, user.toString())
                     if (user.key.equals(uid)) {
                         name = user.child("name").value.toString()
                         binding.mypageGirlNameTv.text = name
