@@ -36,7 +36,7 @@ class FindpwActivity : AppCompatActivity(){
     }
     private fun resetPw() {
         /*
-        suspendCoroutine<Boolean> {
+        suspendCoroutine<Boolean> {  // 동기 방식
             Handler(Looper.getMainLooper()).postDelayed({
                 userRef = database.getReference("users")
                 userRef!!.orderByChild("email").equalTo(emailAddress)
