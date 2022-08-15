@@ -10,6 +10,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="비밀번호 찾기"
+
+
+        android:fontFamily="@font/nixgon_bold"
+        android:textSize="80px"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -17,43 +22,83 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.137" />
 
-    <EditText
-        android:id="@+id/findpw_email_et"
+
+    <TextView
+        android:id="@+id/signup_email_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="이메일 주소를 입력하세요."
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+
+        android:text="이메일"
+        android:textSize="45px"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toTopOf="@+id/findpw_email_et"
+        app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.243"
-        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/findpw_email_et"
+        android:layout_width="750px"
+        android:layout_height="100px"
+        android:layout_marginBottom="4dp"
+
+        android:autofillHints="emailAddress"
+        android:background="@drawable/round_white"
+        android:ems="10"
+        android:hint="    이메일을 입력해 주세요"
+        android:inputType="textEmailAddress"
+        android:padding="5dp"
+        android:textColorHint="#DADADA"
+
+        android:textSize="40px"
+
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.319"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/findpw_info_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="이메일로 비밀번호 재셜정 코드를 전달해 드립니다."
+        android:gravity="center"
+
+
+        android:text="이메일로 비밀번호 재설정 코드를 전달해 드립니다."
+        android:textColor="#AAAAAA"
+        android:textSize="30px"
+        android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.297" />
+        app:layout_constraintVertical_bias="0.194" />
 
     <Button
         android:id="@+id/findpw_btn"
-        android:layout_width="204dp"
-        android:layout_height="40dp"
+        android:layout_width="750px"
+        android:layout_height="150px"
+        android:background="@drawable/round_greybtn"
+        android:gravity="center"
         android:text="이메일로 코드 받기"
+        android:textColor="#A9A9A9"
+
+        android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.366"
+        app:layout_constraintTop_toBottomOf="@+id/findpw_email_et"
+        app:layout_constraintVertical_bias="0.096"
         tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
