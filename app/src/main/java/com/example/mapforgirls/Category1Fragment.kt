@@ -17,7 +17,8 @@ import com.google.firebase.database.DatabaseReference
 class Category1Fragment : Fragment() {
     lateinit var binding: FragmentCategory1Binding
     var columnList = ArrayList<ColumnData>()
-    private lateinit var database : DatabaseReference
+    private var database : DatabaseReference = FirebaseDatabase.getInstance().reference
+    var isScrapped : Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,13 +32,63 @@ class Category1Fragment : Fragment() {
         val category = sharedPreferences.getString("category", null)
         binding.category1TitleTv.text = category.toString()
 
+        isScrapped = isScrappedColumn("section1", "a1")
+
+        setViews()
+        connectDatabase()
+        setOnClickListeners()
+
+        return binding.root
+    }
+
+    private fun setViews() {
+        if(isScrapped) {
+            binding.category1ScrapIv.setImageResource(R.drawable.ic_launcher_background)
+        } else {
+            binding.category1ScrapIv.setImageResource(R.drawable.ic_launcher_foreground)
+        }
+    }
+
+    private fun setOnClickListeners() {
+        binding.category1ScrapIv.setOnClickListener {
+            if(isScrapped) {
+                binding.category1ScrapIv.setImageResource(R.drawable.ic_launcher_foreground)
+                cancelScrap("section1", "00")
+            } else {
+                binding.category1ScrapIv.setImageResource(R.drawable.ic_launcher_background)
+                scrapColumn("section1", "00")
+            }
+
+            isScrapped = !isScrapped
+        }
+    }
+
+    private fun isScrappedColumn(sectionName : String, columnId: String): Boolean {
+        val columnDB = ColumnDatabase.getInstance(requireContext())!!
+
+        val isScrapped: Int? = columnDB.columnDao().isScrapedColumn(sectionName, columnId)
+
+        return isScrapped != null
+    }
+
+    private fun scrapColumn(sectionName: String, columnId: String) {
+        val columnDB = ColumnDatabase.getInstance(requireContext())!!
+        columnDB.columnDao().scrapColumn(Scrap(sectionName, columnId))
+    }
+
+    private fun cancelScrap(sectionName: String, columnId: String) {
+        val columnDB = ColumnDatabase.getInstance(requireContext())!!
+        columnDB.columnDao().cancelScrap(sectionName, columnId)
+    }
+
+    private fun connectDatabase() {
         // 데이터베이스 연결
-        database = FirebaseDatabase.getInstance().reference
         database.child("column").child("section1").child("items").addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(i in snapshot.children) {
-                    columnList.add(ColumnData(R.drawable.example, i.child("title").value.toString(),
+                    columnList.add(ColumnData(
+                        i.ref.parent?.parent?.key, i.key, R.drawable.example, i.child("title").value.toString(),
                         i.child("author").value.toString(), i.child("content").value.toString()))
                 }
                 //리사이클러뷰 어댑터 적용
@@ -59,29 +110,6 @@ class Category1Fragment : Fragment() {
                 Log.d("database", "Error : " + error.toString())
             }
         })
-
-        return binding.root
     }
-
-//    // 데이터 읽어온 후 ArrayList에 저장
-//    private fun setColumnDatabase() {
-//        var list = ArrayList<Information>()
-//        database.child("column").child("section1").child("items").addListenerForSingleValueEvent(object :
-//            ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                for(i in snapshot.children) {
-//                    list.add(Information(R.drawable.example, i.child("title").value.toString(),
-//                        i.child("author").value.toString(), i.child("content").value.toString()))
-//                }
-//                val categoryFragment = Category1Fragment()
-//                Log.d("database", list.size.toString())
-//                categoryFragment.setColumnList(list)
-//            }
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.d("database", "Error : " + error.toString())
-//            }
-//        })
-//    }
-
 
 }
