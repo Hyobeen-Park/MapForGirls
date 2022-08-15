@@ -5,59 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textUser"
-        android:layout_width="wrap_content"
-
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nixgon_bold"
-        android:text="회원유형 선택"
-
-        android:textSize="80px"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.103" />
-
-    <TextView
-        android:id="@+id/userExplain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="당신에게 알맞은\n회원 유형을 선택해주세요"
-        android:textColor="#AAAAAA"
-        android:textSize="35px"
-
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textUser" />
-
-
     <ImageView
         android:id="@+id/user_pharmacist_iv"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/user_girl_iv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/userExplain"
-        android:layout_marginTop="30dp"
-        app:srcCompat="@drawable/user_chemist" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_mypage_unselect" />
 
     <ImageView
         android:id="@+id/user_girl_iv"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/user_pharmacist_iv"
-        android:layout_marginBottom="50dp"
-        app:srcCompat="@drawable/user_girs" />
+        app:srcCompat="@drawable/icon_mypage_select" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
