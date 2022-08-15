@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_signup.*
+import kotlinx.coroutines.tasks.await
 
 class SignupActivity : AppCompatActivity() {
     var auth : FirebaseAuth? = null
@@ -58,10 +59,11 @@ class SignupActivity : AppCompatActivity() {
                         // 계정(아이디) 생성 성공
                         writeNewUser(
                             task.result.user?.uid.toString(),
-                            signup_name_et.text.toString()
+                            signup_name_et.text.toString(),
+                            task.result.user?.email.toString()
                         )
                         Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_LONG).show()
-                        moveLoginPage(task.result.user)
+                        moveLoginPage()
                     } else {
                         if(!loginActivity.isEmail(signup_email_et.text.toString())){
                             Toast.makeText(this,"이메일 형식으로 입력해주세요.", Toast.LENGTH_LONG).show()
@@ -76,12 +78,10 @@ class SignupActivity : AppCompatActivity() {
                 }
         }
     }
-    private fun moveLoginPage(user: FirebaseUser?){  // 로그인 페이지로 이동하는 함수
-        if(user != null){
-            val intent = Intent(this, LoginActivity::class.java)
-            finishAffinity()  // 액티비티 스택을 비움
-            startActivity(intent)
-        }
+    private fun moveLoginPage(){  // 로그인 페이지로 이동하는 함수
+        val intent = Intent(this, LoginActivity::class.java)
+        finishAffinity()  // 액티비티 스택을 비움
+        startActivity(intent)
     }
     /*
     private fun readUserCount() : Int {  // 현재 DB의 회원 수를 읽는 함수
@@ -108,10 +108,10 @@ class SignupActivity : AppCompatActivity() {
         return temp
     }
      */
-    private fun writeNewUser(uid: String, name: String) {  // DB에 회원을 작성하는 함수
-        val user = UserInfo(uid, name)
+    private fun writeNewUser(uid: String, name: String, email: String) {  // DB에 회원을 작성하는 함수
+        val user = UserInfo(name, email)
         // database.getReference().child("users").child(temp.toString()).setValue(user)
-        database.getReference().child("users").child(uid).setValue(user)
+        database.reference.child("users").child(uid).setValue(user)
         //database.getReference().child("users").updateChildren("count", temp.toString());
     }
 

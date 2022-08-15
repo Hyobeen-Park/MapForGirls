@@ -25,9 +25,6 @@ class MainActivity : AppCompatActivity() {
 
         authListener = AuthStateListener {
             val user = auth.currentUser
-            // auth = FirebaseAuth.getInstance()
-            // val user =  auth.currentUser
-
             val userInfo = getSharedPreferences("userInfo", MODE_PRIVATE)
             val editor = userInfo.edit()
             editor.putString("uid", user?.uid.toString())

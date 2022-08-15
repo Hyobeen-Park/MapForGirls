@@ -15,9 +15,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -31,12 +28,15 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_maps.*
 import java.io.IOException
 import java.util.*
 
 class MapsFragment : Fragment(), View.OnClickListener {
     lateinit var binding: FragmentMapsBinding
+    var db = FirebaseFirestore.getInstance()
+    var pharmacyList = arrayListOf<PharmacyData>()
 
     var locationManager : LocationManager? = null
     var latitude : Double = 0.0
@@ -47,20 +47,49 @@ class MapsFragment : Fragment(), View.OnClickListener {
 
     private val callback = OnMapReadyCallback { googleMap ->
 
+        // all pharmacy marker
+        db.collection("pharmacyInfo")
+            .get()
+            .addOnSuccessListener { result ->
+                pharmacyList.clear()
+                pharmacyList.addAll(result!!.toObjects(PharmacyData::class.java))
+
+                for (pharmacy in pharmacyList) {
+                    latitude = pharmacy.latitude
+                    longitude = pharmacy.longitude
+                    Log.d("Result", "결과: " + latitude.toString() + longitude.toString())
+
+                    val location = LatLng(latitude, longitude)
+                    googleMap.addMarker(
+                        MarkerOptions().position(location).title(pharmacy.pharmacyName)
+                    )
+                }
+            }
+            .addOnFailureListener { e ->
+                if (e != null) {
+                    Log.w("Result", "Listen failed", e)
+                }
+            }
+
+        // test marker
         val point = LatLng(37.626326, 127.093241)
         googleMap.addMarker(MarkerOptions().position(point).title("서울여자대학교"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(point))
         googleMap.moveCamera(CameraUpdateFactory.zoomTo(13f))
 
-        var currentLocation : LatLng = getLocation()
-        if(currentLocation != LatLng(0.0, 0.0)) {       // 현재 위치 제대로 받아왔을 때
-            googleMap.addMarker(MarkerOptions().position(currentLocation).title("현재 위치"))
+        // current marker
+        binding.mylocationButton.setOnClickListener {
+            var currentLocation : LatLng = getLocation()
+            if(currentLocation != LatLng(0.0, 0.0)) {       // 현재 위치 제대로 받아왔을 때
+                googleMap.addMarker(MarkerOptions().position(currentLocation).title("현재 위치"))
+                moveCamera(googleMap, currentLocation.latitude, currentLocation.longitude)
+            }
         }
 
         cardView.visibility = View.GONE
 
         // 마커 클릭 시 카드뷰 띄움
-        googleMap!!.setOnMarkerClickListener(object: GoogleMap.OnMarkerClickListener {
+        googleMap!!.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
             override fun onMarkerClick(marker: Marker): Boolean {
                 cardView.visibility = View.VISIBLE
 
@@ -76,10 +105,6 @@ class MapsFragment : Fragment(), View.OnClickListener {
                 cardView.visibility = View.GONE
             }
         })
-
-        //getLocationPermission()
-        //updateLocationUI()
-
     }
 
     override fun onAttach(context: Context) {
@@ -96,6 +121,7 @@ class MapsFragment : Fragment(), View.OnClickListener {
     ): View? {
         binding = FragmentMapsBinding.inflate(inflater, container, false)
 
+        // 버튼 클릭 리스너
         binding.searchButton.setOnClickListener(this)
 
         getLocation()
@@ -111,10 +137,15 @@ class MapsFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        // test 메시지
-        Toast.makeText(activity,"검색완료", Toast.LENGTH_SHORT).show()
+        when (v?.id) {
+            R.id.searchButton -> {
+                // test 메시지
+                Toast.makeText(activity, "검색완료", Toast.LENGTH_SHORT).show()
 
-        // 버튼 클릭 시 지도 화면 변경
+                // 버튼 클릭 시 지도 화면 변경
+            }
+        }
+
     }
 
     private fun getLocation() : LatLng {
@@ -151,8 +182,7 @@ class MapsFragment : Fragment(), View.OnClickListener {
 
         if(hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
             hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED){
-            val locatioNProvider = LocationManager.GPS_PROVIDER
-            currentLatLng = locationManager?.getLastKnownLocation(locatioNProvider)
+            currentLatLng = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER) ?: locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
         }else{
             if(ActivityCompat.shouldShowRequestPermissionRationale(mainActivity, REQUIRED_PERMISSIONS[0])){
                 Toast.makeText(mainActivity, "앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_SHORT).show()
@@ -200,6 +230,13 @@ class MapsFragment : Fragment(), View.OnClickListener {
                         .show()
                 }
             }
+        }
+    }
+
+    // 지도 이동 애니메이션
+    private fun moveCamera(map: GoogleMap?, latitude: Double, longitude: Double) {
+        map?.let {
+            it.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude, longitude), 16f))
         }
     }
 }
