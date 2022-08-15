@@ -52,7 +52,7 @@ class FindpwActivity : AppCompatActivity(){
         auth?.sendPasswordResetEmail(emailAddress.toString())
             ?.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this,"이메일이 전송되었습니다.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,"비밀번호 변경 메일을 전송했습니다.", Toast.LENGTH_LONG).show()
                     moveToLoginPage()
                 }else if(!loginActivity.isEmail(emailAddress.toString())){
                     Toast.makeText(this,"이메일 형식으로 입력해주세요.", Toast.LENGTH_LONG).show()
