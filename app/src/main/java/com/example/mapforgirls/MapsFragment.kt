@@ -28,12 +28,15 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_maps.*
 import java.io.IOException
 import java.util.*
 
 class MapsFragment : Fragment(), View.OnClickListener {
     lateinit var binding: FragmentMapsBinding
+    var db = FirebaseFirestore.getInstance()
+    var pharmacyList = arrayListOf<PharmacyData>()
 
     var locationManager : LocationManager? = null
     var latitude : Double = 0.0
@@ -43,6 +46,30 @@ class MapsFragment : Fragment(), View.OnClickListener {
     lateinit var mainActivity: MainActivity
 
     private val callback = OnMapReadyCallback { googleMap ->
+
+        // all pharmacy marker
+        db.collection("pharmacyInfo")
+            .get()
+            .addOnSuccessListener { result ->
+                pharmacyList.clear()
+                pharmacyList.addAll(result!!.toObjects(PharmacyData::class.java))
+
+                for (pharmacy in pharmacyList) {
+                    latitude = pharmacy.latitude
+                    longitude = pharmacy.longitude
+                    Log.d("Result", "결과: " + latitude.toString() + longitude.toString())
+
+                    val location = LatLng(latitude, longitude)
+                    googleMap.addMarker(
+                        MarkerOptions().position(location).title(pharmacy.pharmacyName)
+                    )
+                }
+            }
+            .addOnFailureListener { e ->
+                if (e != null) {
+                    Log.w("Result", "Listen failed", e)
+                }
+            }
 
         // test marker
         val point = LatLng(37.626326, 127.093241)
