@@ -1,17 +1,21 @@
 package com.example.mapforgirls
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mapforgirls.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
+import com.google.firebase.database.*
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var authListener: AuthStateListener? = null
+    private var database : DatabaseReference = FirebaseDatabase.getInstance().reference
 
     override fun onStart() {
         super.onStart()
@@ -32,9 +36,31 @@ class MainActivity : AppCompatActivity() {
             val editor = userInfo.edit()
             editor.putString("uid", user?.uid.toString())
             editor.apply()
+            Log.d("user11", user?.uid.toString())
         }
 
+        setScrapDatabase()
         initBottomNavigation()
+    }
+
+    private fun setScrapDatabase() {
+        val userId = getSharedPreferences("userInfo", MODE_PRIVATE).getString("uid", "").toString()
+
+        Log.d("user", userId)
+
+        database.child("users").child(userId).child("scrap").addListenerForSingleValueEvent(object :
+            ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val columnDB = ColumnDatabase.getInstance(this@MainActivity)!!
+                for(i in snapshot.children) {
+                    columnDB.columnDao().scrapColumn(Scrap(i.child("section").getValue().toString(), i.child("id").getValue().toString()))
+                    Log.d("scrap", i.child("id").value.toString())
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("database", "Error : " + error.toString())
+            }
+        })
     }
 
     private fun initBottomNavigation(){
