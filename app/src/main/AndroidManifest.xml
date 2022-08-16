@@ -37,6 +37,7 @@
         <activity android:name=".CertifyActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".ui.main.columns.ColumnDetailActivity" />
+        <activity android:name=".ui.main.chatting.ChattingDetailActivity"/>
 
     </application>
 
