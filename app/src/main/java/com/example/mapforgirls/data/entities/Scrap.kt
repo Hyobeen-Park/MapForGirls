@@ -1,4 +1,4 @@
-package com.example.mapforgirls
+package com.example.mapforgirls.data.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,11 +1,14 @@
 package com.example.mapforgirls
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mapforgirls.data.entities.Scrap
+import com.example.mapforgirls.data.local.ColumnDatabase
 import com.example.mapforgirls.databinding.ActivityMainBinding
+import com.example.mapforgirls.ui.main.chatting.ChattingFragment
+import com.example.mapforgirls.ui.main.columns.ColumnsFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.database.*
@@ -16,10 +19,11 @@ class MainActivity : AppCompatActivity() {
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var authListener: AuthStateListener? = null
     private var database : DatabaseReference = FirebaseDatabase.getInstance().reference
+    private var user = auth.currentUser  // userInfo Shared Peferences가 없어지면 사용
 
     override fun onStart() {
         super.onStart()
-        auth.addAuthStateListener(authListener!!)
+        auth.addAuthStateListener(authListener!!)  // 없어도 될 듯
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,10 +31,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        authListener = AuthStateListener {
-            val user = auth.currentUser
-            val userInfo = getSharedPreferences("userInfo", MODE_PRIVATE)
-            val editor = userInfo.edit()
+        authListener = AuthStateListener {  // 없어도 될 듯
+            val userInfoShared = getSharedPreferences("userInfo", MODE_PRIVATE)
+            val editor = userInfoShared.edit()
             editor.putString("uid", user?.uid.toString())
             editor.apply()
         }
@@ -68,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             override fun onCancelled(error: DatabaseError) {
-                Log.d("database", "Error : " + error.toString())
+                Log.d("database", "Error : $error")
             }
         })
     }
