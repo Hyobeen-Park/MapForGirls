@@ -28,19 +28,19 @@ class ColumnDetailActivity : AppCompatActivity() {
 
     private fun setViews() {
         if(isScrapped) {
-            binding.columnDetailScrapIv.setImageResource(R.drawable.ic_launcher_background)
+            binding.columnDetailBookmarkBtn.setBackgroundResource(R.drawable.bookmark_after)
         } else {
-            binding.columnDetailScrapIv.setImageResource(R.drawable.ic_launcher_foreground)
+            binding.columnDetailBookmarkBtn.setBackgroundResource(R.drawable.bookmark_before)
         }
     }
 
     private fun setOnClickListeners(column: ColumnData) {
-        binding.columnDetailScrapIv.setOnClickListener {
+        binding.columnDetailBookmarkBtn.setOnClickListener {
             if(isScrapped) {
-                binding.columnDetailScrapIv.setImageResource(R.drawable.ic_launcher_foreground)
+                binding.columnDetailBookmarkBtn.setBackgroundResource(R.drawable.bookmark_before)
                 cancelScrap(column.sectionName!!, column.columnId!!)
             } else {
-                binding.columnDetailScrapIv.setImageResource(R.drawable.ic_launcher_background)
+                binding.columnDetailBookmarkBtn.setBackgroundResource(R.drawable.bookmark_after)
                 scrapColumn(column.sectionName!!, column.columnId!!)
             }
 
