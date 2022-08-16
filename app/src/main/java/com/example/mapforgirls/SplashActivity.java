@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.mapforgirls.ui.onboarding.OnboardingActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent main = new Intent(SplashActivity.this, LoginActivity.class);
+                Intent main = new Intent(SplashActivity.this, OnboardingActivity.class);
                 startActivity(main);
                 finish();
             }

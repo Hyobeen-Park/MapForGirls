@@ -1,13 +1,15 @@
-package com.example.mapforgirls
+package com.example.mapforgirls.ui.main.columns
 
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.mapforgirls.MainActivity
+import com.example.mapforgirls.R
+import com.example.mapforgirls.TestActivity
 import com.example.mapforgirls.databinding.FragmentColumnsBinding
 
 class ColumnsFragment : Fragment(), View.OnClickListener {

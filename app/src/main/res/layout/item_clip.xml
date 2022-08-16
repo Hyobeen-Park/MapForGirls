@@ -25,7 +25,12 @@
                 android:id="@+id/item_clip_title"
                 android:layout_width="119dp"
                 android:layout_height="23dp"
+
                 android:text="칼럼 제목"
+                android:textColor="@color/black"
+                android:textSize="50px"
+                android:textStyle="bold"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.029"
@@ -35,8 +40,11 @@
 
             <Button
                 android:id="@+id/item_clip_btn"
-                android:layout_width="34dp"
-                android:layout_height="42dp"
+                android:layout_width="50px"
+                android:layout_height="60px"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/bookmark_after"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -46,6 +54,7 @@
                 android:layout_height="76dp"
                 android:layout_marginBottom="4dp"
                 android:text="칼럼 내용"
+                android:textColor="#ADADAD"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.261"

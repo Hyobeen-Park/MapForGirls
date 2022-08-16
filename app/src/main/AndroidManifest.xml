@@ -28,6 +28,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ui.onboarding.OnboardingActivity"/>
         <activity android:name=".LoginActivity" android:exported="true"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".SignupActivity" />
@@ -35,8 +36,7 @@
         <activity android:name=".UserActivity" />
         <activity android:name=".CertifyActivity" />
         <activity android:name=".TestActivity" />
-        <activity android:name=".ColumnDetailActivity" />
-
+        <activity android:name=".ui.main.columns.ColumnDetailActivity" />
 
     </application>
 

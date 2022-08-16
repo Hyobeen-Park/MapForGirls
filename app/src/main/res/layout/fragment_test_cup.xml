@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/test_end"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="나를 위한 생리용품은"
+        android:textSize="60px"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="&quot;"
+            android:textSize="110px"
+            android:textColor="@color/green1"
+            android:fontFamily="@font/nixgon_medium"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="생리컵"
+            android:textSize="100px"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nixgon_medium"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="&quot;"
+            android:textSize="110px"
+            android:textColor="@color/green1"
+            android:fontFamily="@font/nixgon_medium"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        android:src="@drawable/menstrual_cup"
+        android:layout_gravity="center"
+        android:layout_marginTop="90dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:textSize="36px"
+        android:textStyle="bold"
+        android:textColor="#AAAAAA"
+        android:text="체외형 생리대에 비해 냄새가 확연히 적어요.\n상대적으로 교체 시기도 길어, 야외활동에도 적합하답니다.
+\n다만 자신에게 맞는 생리컵의 모양과 크기를 정확히 알아야하고,\n정기적으로 소독해주는 것이 중요해요."
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/testEnd_cup"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:background="@drawable/round_greenbtn"
+        android:text="테스트 마치기"
+        android:textColor="@color/white"
+        android:textSize="40px"/>
+
+
+</LinearLayout>

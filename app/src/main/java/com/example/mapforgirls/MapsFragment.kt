@@ -28,12 +28,15 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_maps.*
 import java.io.IOException
 import java.util.*
 
 class MapsFragment : Fragment(), View.OnClickListener {
     lateinit var binding: FragmentMapsBinding
+    var db = FirebaseFirestore.getInstance()
+    var pharmacyList = arrayListOf<PharmacyData>()
 
     var locationManager : LocationManager? = null
     var latitude : Double = 0.0
@@ -44,14 +47,43 @@ class MapsFragment : Fragment(), View.OnClickListener {
 
     private val callback = OnMapReadyCallback { googleMap ->
 
+        // all pharmacy marker
+        db.collection("pharmacyInfo")
+            .get()
+            .addOnSuccessListener { result ->
+                pharmacyList.clear()
+                pharmacyList.addAll(result!!.toObjects(PharmacyData::class.java))
+
+                for (pharmacy in pharmacyList) {
+                    latitude = pharmacy.latitude
+                    longitude = pharmacy.longitude
+                    Log.d("Result", "결과: " + latitude.toString() + longitude.toString())
+
+                    val location = LatLng(latitude, longitude)
+                    googleMap.addMarker(
+                        MarkerOptions().position(location).title(pharmacy.pharmacyName)
+                    )
+                }
+            }
+            .addOnFailureListener { e ->
+                if (e != null) {
+                    Log.w("Result", "Listen failed", e)
+                }
+            }
+
+        // test marker
         val point = LatLng(37.626326, 127.093241)
         googleMap.addMarker(MarkerOptions().position(point).title("서울여자대학교"))
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(point))
         googleMap.moveCamera(CameraUpdateFactory.zoomTo(13f))
 
-        var currentLocation : LatLng = getLocation()
-        if(currentLocation != LatLng(0.0, 0.0)) {       // 현재 위치 제대로 받아왔을 때
-            googleMap.addMarker(MarkerOptions().position(currentLocation).title("현재 위치"))
+        // current marker
+        binding.mylocationButton.setOnClickListener {
+            var currentLocation : LatLng = getLocation()
+            if(currentLocation != LatLng(0.0, 0.0)) {       // 현재 위치 제대로 받아왔을 때
+                googleMap.addMarker(MarkerOptions().position(currentLocation).title("현재 위치"))
+                moveCamera(googleMap, currentLocation.latitude, currentLocation.longitude)
+            }
         }
 
         cardView.visibility = View.GONE
@@ -73,10 +105,6 @@ class MapsFragment : Fragment(), View.OnClickListener {
                 cardView.visibility = View.GONE
             }
         })
-
-        //getLocationPermission()
-        //updateLocationUI()
-
     }
 
     override fun onAttach(context: Context) {
@@ -93,9 +121,8 @@ class MapsFragment : Fragment(), View.OnClickListener {
     ): View? {
         binding = FragmentMapsBinding.inflate(inflater, container, false)
 
-        // 버큰 클릭 리스너
+        // 버튼 클릭 리스너
         binding.searchButton.setOnClickListener(this)
-        binding.mylocationButton.setOnClickListener(this)
 
         getLocation()
 
@@ -117,9 +144,6 @@ class MapsFragment : Fragment(), View.OnClickListener {
 
                 // 버튼 클릭 시 지도 화면 변경
             }
-            R.id.mylocationButton -> {
-
-            }
         }
 
     }
@@ -132,19 +156,19 @@ class MapsFragment : Fragment(), View.OnClickListener {
             longitude = userLocation.longitude
             Log.d("CheckCurrentLocation", "현재 내 위치 값: ${latitude}, ${longitude}")
 
-            var mGeoCoder =  Geocoder(mainActivity.applicationContext, Locale.KOREAN)
-            var mResultList: List<Address>? = null
-            try{
-                mResultList = mGeoCoder.getFromLocation(
-                    latitude!!, longitude!!, 1
-                )
-            }catch(e: IOException){
-                e.printStackTrace()
-            }
-            if(mResultList != null){
-                Log.d("CheckCurrentLocation", mResultList[0].getAddressLine(0))
-
-            }
+//            var mGeoCoder =  Geocoder(mainActivity.applicationContext, Locale.KOREAN)
+//            var mResultList: List<Address>? = null
+//            try{
+//                mResultList = mGeoCoder.getFromLocation(
+//                    latitude!!, longitude!!, 1
+//                )
+//            }catch(e: IOException){
+//                e.printStackTrace()
+//            }
+//            if(mResultList != null){
+//                Log.d("CheckCurrentLocation", mResultList[0].getAddressLine(0))
+//
+//            }
         }
         return LatLng(latitude, longitude)
     }
@@ -158,8 +182,7 @@ class MapsFragment : Fragment(), View.OnClickListener {
 
         if(hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
             hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED){
-            val locatioNProvider = LocationManager.GPS_PROVIDER
-            currentLatLng = locationManager?.getLastKnownLocation(locatioNProvider)
+            currentLatLng = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER) ?: locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
         }else{
             if(ActivityCompat.shouldShowRequestPermissionRationale(mainActivity, REQUIRED_PERMISSIONS[0])){
                 Toast.makeText(mainActivity, "앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_SHORT).show()
@@ -207,6 +230,13 @@ class MapsFragment : Fragment(), View.OnClickListener {
                         .show()
                 }
             }
+        }
+    }
+
+    // 지도 이동 애니메이션
+    private fun moveCamera(map: GoogleMap?, latitude: Double, longitude: Double) {
+        map?.let {
+            it.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude, longitude), 16f))
         }
     }
 }
