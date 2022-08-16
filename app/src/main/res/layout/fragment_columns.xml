@@ -19,7 +19,7 @@
             android:fontFamily="@font/nixgon_bold"
             android:text="카테고리"
             android:textColor="@color/black"
-            android:textSize="30sp"
+            android:textSize="27sp"
             android:paddingBottom="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -57,15 +57,16 @@
                     app:layout_constraintTop_toBottomOf="@id/columns_test_main_tv"
                     app:layout_constraintStart_toStartOf="@id/columns_test_main_tv"/>
 
-                <ImageView
-                    android:id="@+id/columns_test_iv"
-                    android:layout_width="50dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/puple_girls"
-                    android:scaleType="fitCenter"
-                    android:layout_marginRight="15dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+            <ImageView
+                android:id="@+id/columns_test_iv"
+                android:layout_width="80dp"
+                android:layout_height="60dp"
+                android:src="@drawable/test_emo"
+                android:scaleType="fitCenter"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -77,7 +78,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/round_white"
-            android:backgroundTint="#FA8E46"
+            android:backgroundTint="#F8B385"
             app:layout_constraintTop_toBottomOf="@id/columns_test_clayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/columns_category2_clayout">
@@ -89,7 +90,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:paddingBottom="5dp"
-                android:text="내 몸의 변화"
+                android:paddingLeft="5dp"
+                android:text="월경"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -100,9 +102,10 @@
                 android:id="@+id/columns_category1_sub_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="월경이 터졌다!"
+                android:text="미레나 수술이 궁금해요"
                 android:textSize="14sp"
                 android:textColor="@color/white"
+                android:layout_marginLeft="5dp"
                 app:layout_constraintStart_toStartOf="@id/columns_category1_main_tv"
                 app:layout_constraintTop_toBottomOf="@id/columns_category1_main_tv"/>
 
@@ -110,7 +113,7 @@
                 android:id="@+id/columns_category1_iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_launcher_foreground"
+                android:src="@drawable/categories_1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
@@ -122,7 +125,8 @@
             android:layout_height="180dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"            android:background="@drawable/round_white"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_white"
             android:backgroundTint="#94D6C2"
             app:layout_constraintTop_toBottomOf="@id/columns_test_clayout"
             app:layout_constraintEnd_toEndOf="parent"
@@ -135,18 +139,19 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:paddingBottom="5dp"
-                android:text="콤플렉스에 대하여"
+                android:text="자신의 몸"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
 
+
             <TextView
                 android:id="@+id/columns_category2_sub_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="나의 몸과 행복해지기"
+                android:text="2차 성징이 일어났다!"
                 android:textSize="14sp"
                 android:textColor="#2DAF81"
                 app:layout_constraintStart_toStartOf="@id/columns_category2_main_tv"
@@ -156,7 +161,8 @@
                 android:id="@+id/columns_category2_iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_launcher_foreground"
+                android:paddingRight="5dp"
+                android:src="@drawable/categories_2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
@@ -168,7 +174,8 @@
             android:layout_height="180dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"            android:background="@drawable/round_white"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_white"
             android:backgroundTint="#FFC9B4"
             app:layout_constraintTop_toBottomOf="@id/columns_category1_clayout"
             app:layout_constraintStart_toStartOf="parent"
@@ -181,7 +188,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:paddingBottom="5dp"
-                android:text="감정과 행동"
+                android:text="임신과 피임"
+                android:paddingLeft="5dp"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -192,7 +200,8 @@
                 android:id="@+id/columns_category3_sub_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="냐는 누구일까?"
+                android:layout_marginLeft="5dp"
+                android:text="피임약, 몸에 나쁜가요?"
                 android:textSize="14sp"
                 android:textColor="#D36666"
                 app:layout_constraintStart_toStartOf="@id/columns_category3_main_tv"
@@ -202,7 +211,7 @@
                 android:id="@+id/columns_category3_iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_launcher_foreground"
+                android:src="@drawable/categories_3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
@@ -228,7 +237,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:paddingBottom="5dp"
-                android:text="건강한 성생활"
+                android:text="성병"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -239,7 +248,7 @@
                 android:id="@+id/columns_category4_sub_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="안전하게 섹스하기"
+                android:text="성병의 종류와 예방"
                 android:textColor="#9981E9"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/columns_category4_main_tv"
@@ -249,7 +258,8 @@
                 android:id="@+id/columns_category4_iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_launcher_foreground"
+                android:src="@drawable/categories_4"
+                android:paddingRight="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -274,7 +284,8 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:paddingBottom="5dp"
-                android:text="건강관리"
+                android:text="성관계"
+                android:paddingLeft="5dp"
                 android:textSize="18sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -285,7 +296,8 @@
                 android:id="@+id/columns_category5_sub_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="나를 위해 챙겨야 할 것"
+                android:text="여성용 콘돔도 있다구요?"
+                android:layout_marginLeft="5dp"
                 android:textSize="14sp"
                 android:textColor="#2DAF81"
                 app:layout_constraintStart_toStartOf="@id/columns_category5_main_tv"
@@ -295,7 +307,7 @@
                 android:id="@+id/columns_category5_iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_launcher_foreground"
+                android:src="@drawable/categories_5"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
@@ -321,7 +333,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
                 android:paddingBottom="5dp"
-                android:text="그게 무슨 뜻이야?"
+                android:text="여성 질병"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -332,7 +344,7 @@
                 android:id="@+id/column_category6_sub_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="그 단어의 의미"
+                android:text="냉이 너무 많아요"
                 android:textColor="#D36666"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/columns_category6_main_tv"
@@ -342,12 +354,110 @@
                 android:id="@+id/columns_category6_iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_launcher_foreground"
+                android:src="@drawable/categories_6"
+                android:paddingRight="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/columns_category7_clayout"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_white"
+            android:backgroundTint="#D9CFF8"
+            app:layout_constraintTop_toBottomOf="@id/columns_category5_clayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/columns_category8_clayout">
+
+            <TextView
+                android:id="@+id/columns_category7_main_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="5dp"
+                android:text="성인지 감수성"
+                android:paddingLeft="5dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <TextView
+                android:id="@+id/columns_category7_sub_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="폭력적인 관계라는 건"
+                android:textSize="14sp"
+                android:textColor="#9981E9"
+                app:layout_constraintStart_toStartOf="@id/columns_category7_main_tv"
+                app:layout_constraintTop_toBottomOf="@id/columns_category7_main_tv"/>
+
+            <ImageView
+                android:id="@+id/columns_category7_iv"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:src="@drawable/categories_7"
+                android:layout_marginRight="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/columns_category8_clayout"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_white"
+            android:backgroundTint="#F8B385"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/columns_category7_clayout"
+            app:layout_constraintTop_toBottomOf="@id/columns_category6_clayout">
+
+            <TextView
+                android:id="@+id/columns_category8_main_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="5dp"
+                android:text="젠더 감수성"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/column_category8_sub_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="자기다움이 대체 뭐예요?"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@id/columns_category8_main_tv"
+                app:layout_constraintTop_toBottomOf="@id/columns_category8_main_tv" />
+
+            <ImageView
+                android:id="@+id/columns_category8_iv"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/categories_8"
+                android:paddingLeft="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

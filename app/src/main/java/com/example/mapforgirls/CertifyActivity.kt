@@ -3,6 +3,7 @@ package com.example.mapforgirls
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
@@ -15,10 +16,14 @@ import androidx.core.view.isInvisible
 import kotlinx.android.synthetic.main.activity_certify.*
 
 class CertifyActivity : AppCompatActivity() {
-    var userTypeShared = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
-    var userType = userTypeShared.getString("userInfo", null).toString()
+    companion object{
+        lateinit var userTypeShared : SharedPreferences
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        userTypeShared = getSharedPreferences("userType", Context.MODE_PRIVATE)!!
+        val userType = userTypeShared.getString("userType", null).toString()
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_certify)
 
@@ -63,7 +68,7 @@ class CertifyActivity : AppCompatActivity() {
          */
 
         certify_btn.setOnClickListener {
-            var id = certify_idNum_front_et.text.toString()+certify_idNum_back_et.text.toString()
+            val id = certify_idNum_front_et.text.toString()+certify_idNum_back_et.text.toString()
 
             if(isValidFemaleRegistrationID(id, userType)){
                 Toast.makeText(this, "본인인증완료",Toast.LENGTH_LONG).show()
@@ -76,9 +81,15 @@ class CertifyActivity : AppCompatActivity() {
         }
     }
     private fun isValidFemaleRegistrationID(id: String, userType: String): Boolean {  // 주민등록번호가 유효한 여성인지 확인하는 함수
+        var reg: Regex? = null
+
         if(id.length != 13)
             return false
-        val reg = Regex("^\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])[2|4][0-9]{6}$")
+        reg = if(userType == "1") {
+            Regex("^[2-9]\\d(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])[2][0-9]{6}$")
+        }else{
+            Regex("^[0]\\d(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])[4][0-9]{6}$")
+        }
         if(!id.matches(reg))
             return false
 

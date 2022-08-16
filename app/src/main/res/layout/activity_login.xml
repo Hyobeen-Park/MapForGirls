@@ -4,46 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layoutDescription="@xml/activity_login_scene">
+    app:layoutDescription="@xml/activity_login_scene"
+    android:background="#F5F5F5">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="100dp"
+        android:src="@drawable/login_pill"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/login_title"
         android:layout_width="wrap_content"
+        android:fontFamily="@font/nixgon_bold"
+        android:textSize="100px"
         android:layout_height="wrap_content"
-        android:layout_marginStart="179dp"
-        android:layout_marginBottom="60dp"
-        android:text="소녀지도"
+        android:layout_marginStart="407px"
+        android:layout_marginBottom="230dp"
+        android:text="로그인"
+        android:textColor="#303030"
         app:layout_constraintBottom_toTopOf="@+id/login_email_tv"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" /> />
 
     <TextView
         android:id="@+id/login_email_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="70dp"
         android:layout_marginBottom="3dp"
         android:text="이메일"
+        android:textSize="45px"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/login_email_et"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/login_pw_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="103dp"
+        android:layout_width="750px"
+        android:layout_height="100px"
+        android:layout_marginStart="70dp"
         android:ems="10"
-        android:hint="비밀번호를 입력하세요."
+        android:hint="   비밀번호를 입력하세요."
+        android:padding="5dp"
         android:inputType="textPassword"
+        android:background="@drawable/round_white_line"
+        android:textColorHint="#DADADA"
+        android:textSize="40px"
         app:layout_constraintBottom_toTopOf="@+id/login_pw_warn"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" /> />
 
     <Button
         android:id="@+id/login_btn"
-        android:layout_width="217dp"
+        android:layout_width="285dp"
         android:layout_height="43dp"
-        android:layout_marginStart="103dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/round_red"
         android:text="로그인"
+        android:textColor="@color/white"
+        android:textSize="45px"
         app:layout_constraintBottom_toTopOf="@+id/login_signup_tvb"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -51,8 +74,10 @@
         android:id="@+id/login_pw_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="103dp"
+        android:layout_marginStart="70dp"
         android:text="비밀번호"
+        android:textSize="45px"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/login_pw_et"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -60,10 +85,13 @@
         android:id="@+id/login_signup_tvb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="179dp"
+        android:layout_marginStart="80dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="239dp"
+        android:layout_marginBottom="130dp"
         android:text="회원가입"
+        android:textSize="40px"
+        android:textStyle="bold"
+        android:textColor="#2DAF81"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/login_pw_tvb"
         app:layout_constraintStart_toStartOf="parent" />
@@ -72,9 +100,12 @@
         android:id="@+id/login_pw_tvb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="91dp"
-        android:layout_marginBottom="239dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="130dp"
         android:text="비밀번호 찾기"
+        android:textSize="40px"
+        android:textStyle="bold"
+        android:textColor="#2DAF81"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -82,9 +113,11 @@
         android:id="@+id/login_email_warn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginBottom="19dp"
-        android:hint="TextView"
+        android:textColorHint="@color/red1"
+        android:layout_marginStart="70dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:hint="이메일 형식에 맞지 않습니다"
         app:layout_constraintBottom_toTopOf="@+id/login_pw_tv"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -92,20 +125,26 @@
         android:id="@+id/login_pw_warn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginBottom="16dp"
-        android:hint="TextView"
+        android:textColorHint="@color/red1"
+        android:layout_marginStart="70dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="5dp"
+        android:hint="비밀번호가 일치하지 않습니다"
         app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/login_email_et"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="70dp"
         android:layout_marginBottom="56dp"
         android:ems="10"
-        android:hint="이메일 주소를 입력하세요."
+        android:layout_width="750px"
+        android:layout_height="100px"
+        android:padding="5dp"
+        android:background="@drawable/round_white_line"
+        android:textColorHint="#DADADA"
+        android:textSize="40px"
+        android:hint="  이메일을 입력해 주세요"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/login_pw_et"
         app:layout_constraintStart_toStartOf="parent" />

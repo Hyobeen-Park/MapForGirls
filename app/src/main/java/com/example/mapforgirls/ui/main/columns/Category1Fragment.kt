@@ -1,4 +1,4 @@
-package com.example.mapforgirls
+package com.example.mapforgirls.ui.main.columns
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.mapforgirls.MainActivity
+import com.example.mapforgirls.data.entities.ColumnData
 import com.example.mapforgirls.databinding.FragmentCategory1Binding
 import com.google.firebase.database.*
 import java.util.*
@@ -53,16 +55,19 @@ class Category1Fragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(i in snapshot.children) {
                     var img = activity?.resources!!.getIdentifier(i.child("image").value.toString(), "drawable", activity?.packageName)
-                    columnList.add(ColumnData(
+                    columnList.add(
+                        ColumnData(
                         i.ref.parent?.parent?.key, i.key, img, i.child("title").value.toString(),
-                        i.child("author").value.toString(), i.child("content").value.toString()))
+                        i.child("author").value.toString(), i.child("content").value.toString())
+                    )
                 }
                 //리사이클러뷰 어댑터 적용
                 val columnsRVAdapter = ColumnsRVAdapter(columnList)
                 binding.category1ColumnRv.adapter = columnsRVAdapter
 
                 // 리사이클러뷰 클릭 이벤트
-                columnsRVAdapter.setMyItemClickListener(object : ColumnsRVAdapter.MyItemClickListener {
+                columnsRVAdapter.setMyItemClickListener(object :
+                    ColumnsRVAdapter.MyItemClickListener {
                     override fun onItemClick(column: ColumnData) {
                         activity.let {
                             val intent = Intent(context, ColumnDetailActivity::class.java)
