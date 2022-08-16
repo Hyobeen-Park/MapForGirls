@@ -6,12 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="288dp"
-        android:text="스크랩한 칼럼"
     <ImageView
         android:id="@+id/mypageGirl_profile_iv"
         android:layout_width="350px"
