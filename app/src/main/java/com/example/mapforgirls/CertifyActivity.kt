@@ -22,7 +22,8 @@ class CertifyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         userTypeShared = getSharedPreferences("userType", Context.MODE_PRIVATE)!!
-        var userType = userTypeShared.getString("userType", null).toString()
+        val userType = userTypeShared.getString("userType", null).toString()
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_certify)
 
@@ -67,7 +68,7 @@ class CertifyActivity : AppCompatActivity() {
          */
 
         certify_btn.setOnClickListener {
-            var id = certify_idNum_front_et.text.toString()+certify_idNum_back_et.text.toString()
+            val id = certify_idNum_front_et.text.toString()+certify_idNum_back_et.text.toString()
 
             if(isValidFemaleRegistrationID(id, userType)){
                 Toast.makeText(this, "본인인증완료",Toast.LENGTH_LONG).show()
