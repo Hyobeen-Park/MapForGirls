@@ -19,6 +19,12 @@ interface ColumnDAO {
     @Query("DELETE FROM ScrapTable WHERE sectionName = :sectionName AND columnId = :columnId")
     fun cancelScrap(sectionName: String, columnId: String)
 
+    @Query("SELECT * FROM ScrapTable")
+    fun getScrappedColumn(): List<Scrap>
+
     @Query("SELECT id FROM ScrapTable WHERE sectionName = :sectionName AND columnId = :columnId")
     fun isScrapedColumn(sectionName: String, columnId: String): Int?
+
+    @Query("DELETE FROM ScrapTable")
+    fun initScrapTable()
 }
