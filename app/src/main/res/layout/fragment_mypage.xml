@@ -5,13 +5,24 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <ImageView
+        android:id="@+id/mypageGirl_profile_iv"
+        android:layout_width="350px"
+        android:layout_height="350px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096"
+        app:srcCompat="@drawable/img_girls" />
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="86px"
 
-        android:layout_marginTop="272dp"
+        android:layout_marginTop="288dp"
         android:text="최근 본 약국"
         android:textColor="@color/black"
         android:textSize="50px"
@@ -19,7 +30,7 @@
         android:textStyle="bold"
 
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,7 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="86px"
-        android:layout_marginBottom="172dp"
+        android:layout_marginBottom="192dp"
         android:text="스크랩한 칼럼"
         android:textColor="@color/black"
         android:textSize="50px"
@@ -38,50 +49,27 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/mypageGirl_profile_iv"
-        android:layout_width="350px"
-        android:layout_height="350px"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.065"
-        app:srcCompat="@drawable/img_girls" />
-
-    <Button
-        android:id="@+id/mypageGirl_editProfile_btn"
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:background="@drawable/setting"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.193" />
 
     <TextView
         android:id="@+id/mypageGirl_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="188dp"
 
-        android:textStyle="bold"
-        android:textSize="64px"
         android:text="(유저이름)"
         android:textColor="@color/black"
+        android:textSize="64px"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="136dp"
         android:text="님"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,7 +81,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="220dp"
         android:text="반가워요"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -104,11 +92,11 @@
         android:id="@+id/mypageGirl_pharmacy_rv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+
+
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
-
-        android:layout_marginLeft="86px"
-
-
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
@@ -120,14 +108,26 @@
         android:id="@+id/mypageGirl_clip_rv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+
+
+        android:layout_marginTop="4dp"
         android:orientation="horizontal"
-
-        android:layout_marginLeft="86px"
-
-
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         tools:listitem="@layout/item_clip" />
+
+    <Button
+        android:id="@+id/mypageGirl_editProfile_btn"
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:background="@drawable/setting"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.22" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
