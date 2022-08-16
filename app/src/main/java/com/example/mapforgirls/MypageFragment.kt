@@ -73,7 +73,7 @@ class MypageFragment : Fragment(){
                 }
             }
             override fun onCancelled(error: DatabaseError) {
-                Log.d("database", "Error : " + error.toString())
+                Log.d("database", "Error : $error")
             }
         })
     }

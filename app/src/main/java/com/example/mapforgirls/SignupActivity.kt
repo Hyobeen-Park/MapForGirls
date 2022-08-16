@@ -16,8 +16,8 @@ class SignupActivity : AppCompatActivity() {
     // lateinit var database : DatabaseReference
     private val database by lazy { FirebaseDatabase.getInstance() }
     private var userRef : DatabaseReference? = null
-    var temp : Int = 0
-    var tempString : String? = null
+    // var temp : Int = 0
+    // var tempString : String? = null
 
     override fun onStart() {
         super.onStart()
