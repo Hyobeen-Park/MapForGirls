@@ -1,4 +1,4 @@
-package com.example.mapforgirls
+package com.example.mapforgirls.ui.main.columns
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.mapforgirls.MainActivity
 import com.example.mapforgirls.data.entities.ColumnData
 import com.example.mapforgirls.databinding.FragmentCategory1Binding
 import com.google.firebase.database.*
@@ -65,7 +66,8 @@ class Category1Fragment : Fragment() {
                 binding.category1ColumnRv.adapter = columnsRVAdapter
 
                 // 리사이클러뷰 클릭 이벤트
-                columnsRVAdapter.setMyItemClickListener(object : ColumnsRVAdapter.MyItemClickListener {
+                columnsRVAdapter.setMyItemClickListener(object :
+                    ColumnsRVAdapter.MyItemClickListener {
                     override fun onItemClick(column: ColumnData) {
                         activity.let {
                             val intent = Intent(context, ColumnDetailActivity::class.java)

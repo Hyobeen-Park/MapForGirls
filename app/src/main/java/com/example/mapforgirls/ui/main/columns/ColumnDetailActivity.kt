@@ -1,7 +1,8 @@
-package com.example.mapforgirls
+package com.example.mapforgirls.ui.main.columns
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mapforgirls.R
 import com.example.mapforgirls.data.entities.ColumnData
 import com.example.mapforgirls.data.entities.Scrap
 import com.example.mapforgirls.data.local.ColumnDatabase
