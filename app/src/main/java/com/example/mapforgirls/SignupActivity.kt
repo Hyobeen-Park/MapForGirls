@@ -1,19 +1,18 @@
 package com.example.mapforgirls
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_signup.*
-import kotlinx.coroutines.tasks.await
 
 class SignupActivity : AppCompatActivity() {
     var auth : FirebaseAuth? = null
-    lateinit var loginActivity : LoginActivity
+    var loginActivity = LoginActivity()
     // lateinit var database : DatabaseReference
     private val database by lazy { FirebaseDatabase.getInstance() }
     private var userRef : DatabaseReference? = null
@@ -30,7 +29,6 @@ class SignupActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-        loginActivity = LoginActivity()
         auth = FirebaseAuth.getInstance()
 
         signup_btn.setOnClickListener {
@@ -63,7 +61,7 @@ class SignupActivity : AppCompatActivity() {
                             task.result.user?.email.toString()
                         )
                         Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_LONG).show()
-                        moveLoginPage()
+                        moveLoginPage(this)
                     } else {
                         if(!loginActivity.isEmail(signup_email_et.text.toString())){
                             Toast.makeText(this,"이메일 형식으로 입력해주세요.", Toast.LENGTH_LONG).show()
@@ -78,8 +76,8 @@ class SignupActivity : AppCompatActivity() {
                 }
         }
     }
-    private fun moveLoginPage(){  // 로그인 페이지로 이동하는 함수
-        val intent = Intent(this, LoginActivity::class.java)
+    private fun moveLoginPage(context: Context){  // 로그인 페이지로 이동하는 함수
+        val intent = Intent(context, LoginActivity::class.java)
         finishAffinity()  // 액티비티 스택을 비움
         startActivity(intent)
     }

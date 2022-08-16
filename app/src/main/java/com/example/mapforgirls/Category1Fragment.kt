@@ -17,7 +17,7 @@ import com.google.firebase.database.DatabaseReference
 class Category1Fragment : Fragment() {
     lateinit var binding: FragmentCategory1Binding
     var columnList = ArrayList<ColumnData>()
-    private lateinit var database : DatabaseReference
+    private var database : DatabaseReference = FirebaseDatabase.getInstance().reference
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,13 +31,30 @@ class Category1Fragment : Fragment() {
         val category = sharedPreferences.getString("category", null)
         binding.category1TitleTv.text = category.toString()
 
+        connectDatabase()
+        setOnClickListeners()
+
+        return binding.root
+    }
+
+
+    private fun setOnClickListeners() {
+        binding.category1WhatIsThis2Cv.setOnClickListener {
+            val intent = Intent(context, ColumnDetailActivity::class.java)
+            intent.putExtra("column", columnList[0])
+            startActivity(intent)
+        }
+    }
+
+    private fun connectDatabase() {
         // 데이터베이스 연결
-        database = FirebaseDatabase.getInstance().reference
         database.child("column").child("section1").child("items").addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(i in snapshot.children) {
-                    columnList.add(ColumnData(R.drawable.example, i.child("title").value.toString(),
+                    var img = activity?.resources!!.getIdentifier(i.child("image").value.toString(), "drawable", activity?.packageName)
+                    columnList.add(ColumnData(
+                        i.ref.parent?.parent?.key, i.key, img, i.child("title").value.toString(),
                         i.child("author").value.toString(), i.child("content").value.toString()))
                 }
                 //리사이클러뷰 어댑터 적용
@@ -59,29 +76,6 @@ class Category1Fragment : Fragment() {
                 Log.d("database", "Error : " + error.toString())
             }
         })
-
-        return binding.root
     }
-
-//    // 데이터 읽어온 후 ArrayList에 저장
-//    private fun setColumnDatabase() {
-//        var list = ArrayList<Information>()
-//        database.child("column").child("section1").child("items").addListenerForSingleValueEvent(object :
-//            ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                for(i in snapshot.children) {
-//                    list.add(Information(R.drawable.example, i.child("title").value.toString(),
-//                        i.child("author").value.toString(), i.child("content").value.toString()))
-//                }
-//                val categoryFragment = Category1Fragment()
-//                Log.d("database", list.size.toString())
-//                categoryFragment.setColumnList(list)
-//            }
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.d("database", "Error : " + error.toString())
-//            }
-//        })
-//    }
-
 
 }

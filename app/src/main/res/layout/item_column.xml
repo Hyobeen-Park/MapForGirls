@@ -88,6 +88,7 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/item_column_image_cv"
                 android:layout_width="150dp"
                 android:layout_height="120dp"
                 android:backgroundTint="#aaaaaa"
@@ -104,6 +105,7 @@
                     android:src="@drawable/example" />
 
             </androidx.cardview.widget.CardView>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
