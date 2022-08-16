@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="480dp"
+            android:src="@drawable/onboarding3"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="궁금한 성 이야기"
+            android:textSize="64px"
+            android:fontFamily="@font/nixgon_bold"
+            android:textColor="#484848"
+            android:gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="누군가에게 물어보기엔 어려웠던\n궁금증을 해결하고, 올바른 성지식을 얻어요."
+            android:textSize="45px"
+            android:textColor="#484848"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="13dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/count_three"/>
+
+        <Button
+            android:id="@+id/onboarding3_start"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:text="시작하기"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:background="@drawable/round_green"/>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
