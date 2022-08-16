@@ -34,11 +34,13 @@ import kotlinx.android.synthetic.main.fragment_maps.*
 import java.io.IOException
 import java.util.*
 
-class MapsFragment : Fragment(), View.OnClickListener {
+class MapsFragment : Fragment() {
     lateinit var binding: FragmentMapsBinding
     var db = FirebaseFirestore.getInstance()
     var pharmacyList = arrayListOf<PharmacyData>()
     var choicePharmacy: ArrayList<PharmacyData> = arrayListOf()
+    var i = 0
+    val pinNum = arrayOf<PharmacyData>()
 
     var locationManager : LocationManager? = null
     var latitude : Double = 0.0
@@ -49,6 +51,30 @@ class MapsFragment : Fragment(), View.OnClickListener {
 
     private val callback = OnMapReadyCallback { googleMap ->
 
+        db.collection("pharmacyInfo")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    i++
+                    var location = LatLng(
+                        document.data["latitude"].toString().toDouble(),
+                        document.data["longitude"].toString().toDouble()
+                    )
+
+                    val markerOptions = MarkerOptions()
+                    markerOptions.title(document.data["pharmacyName"].toString())
+                    markerOptions.position(location)
+
+                    val marker: Marker? = googleMap.addMarker(markerOptions)
+                    marker?.tag =
+                        document.data["pharmacyName"] as String + "/" + document.data["address"] as String + "/" + document.data["phoneNum"] as String + "/"
+                    }
+                }
+            .addOnFailureListener { e ->
+                Log.w("Error", "Error getting documents", e)
+            }
+
+        /*
         // all pharmacy marker
         db.collection("pharmacyInfo")
             .get()
@@ -72,6 +98,7 @@ class MapsFragment : Fragment(), View.OnClickListener {
                     Log.w("Result", "Listen failed", e)
                 }
             }
+         */
 
         /*
        // current marker
@@ -84,7 +111,6 @@ class MapsFragment : Fragment(), View.OnClickListener {
         }
         */
 
-
         cardView.visibility = View.GONE
 
         // 마커 클릭 시 카드뷰 띄움
@@ -92,8 +118,15 @@ class MapsFragment : Fragment(), View.OnClickListener {
             override fun onMarkerClick(marker: Marker): Boolean {
                 cardView.visibility = View.VISIBLE
 
-                // 약국별 모이는거 다르게 보이는거 추가할 예정
-
+                // 약국별 상세정보
+                cardView.visibility = View.VISIBLE
+                var pharmacyName = binding.pharmacyTV
+                var address = binding.addressTV
+                var phoneNum = binding.phoneNumTV
+                var arr = marker.tag.toString().split("/")
+                pharmacyName.text = arr[0]
+                address.text = arr [1]
+                phoneNum.text = arr[2]
                 return false
             }
         })
@@ -129,25 +162,12 @@ class MapsFragment : Fragment(), View.OnClickListener {
         //getLocation()
 
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
         mapFragment?.getMapAsync(callback)
-    }
-
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            //R.id.searchButton -> {
-                // test 메시지
-                //Toast.makeText(activity, "검색완료", Toast.LENGTH_SHORT).show()
-
-                // 버튼 클릭 시 지도 화면 변경
-            //}
-        }
-
     }
 
     /*
