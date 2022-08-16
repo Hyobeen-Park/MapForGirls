@@ -37,7 +37,6 @@
         <activity android:name=".TestActivity" />
         <activity android:name=".ColumnDetailActivity" />
 
-
     </application>
 
 </manifest>
