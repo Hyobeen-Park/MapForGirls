@@ -55,7 +55,33 @@
         android:textColorHint="#DADADA"
         android:textSize="40px"
         app:layout_constraintBottom_toTopOf="@+id/login_pw_warn"
-        app:layout_constraintStart_toStartOf="parent" /> />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/login_pw_open"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="313dp"
+        android:inputType="textPassword"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/eye_open"
+        android:textColorHint="#DADADA"
+        android:textSize="40px"
+        app:layout_constraintBottom_toTopOf="@+id/login_pw_warn"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/login_pw_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="313dp"
+        android:inputType="textPassword"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/eye_closed"
+        android:textColorHint="#DADADA"
+        android:textSize="40px"
+        app:layout_constraintBottom_toTopOf="@+id/login_pw_warn"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/login_btn"

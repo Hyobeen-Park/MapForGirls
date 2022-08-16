@@ -26,7 +26,7 @@
             android:layout_height="50dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
-            android:hint="     서울 노원구"
+            android:hint="     약국 이름을 입력해 주세요"
             android:background="@drawable/search"
             android:textColorHint="#A0A0A0"
             android:lines="1"
@@ -111,7 +111,7 @@
                 android:textAlignment="textStart"/>
 
             <TextView
-                android:id="@+id/closeTV"
+                android:id="@+id/addressTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="187dp"
@@ -122,7 +122,7 @@
                 android:textAlignment="textStart"/>
 
             <TextView
-                android:id="@+id/locationTV"
+                android:id="@+id/phoneNumTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="187dp"
@@ -149,7 +149,7 @@
                 android:textAlignment="textStart"/>
 
             <TextView
-                android:id="@+id/phoneNumTV"
+                android:id="@+id/timeTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="187dp"
@@ -179,7 +179,7 @@
         android:layout_height="40dp"
         android:layout_below="@+id/search"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/icon_map_select" />
 </RelativeLayout>

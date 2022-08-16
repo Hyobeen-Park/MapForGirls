@@ -12,7 +12,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MapForGirls">
+        android:theme="@style/Theme.MapForGirls"
+        android:hardwareAccelerated="false">
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -37,6 +38,7 @@
         <activity android:name=".CertifyActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".ui.main.columns.ColumnDetailActivity" />
+        <activity android:name=".ui.main.chatting.ChattingDetailActivity"/>
 
     </application>
 
