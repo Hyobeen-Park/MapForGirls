@@ -33,8 +33,8 @@ class DialogPharmacist(context: Context) {
 
         // 1:1 상담 버튼
         dialog.dialog_pharmacist_chat_btn.setOnClickListener {
-//            var intent = Intent(dialog.context, ChattingDetailActivity::class.java)
-//            dialog.context.startActivity(intent)
+            var intent = Intent(dialog.context, ChattingDetailActivity::class.java)
+            dialog.context.startActivity(intent)
         }
     }
 
