@@ -52,8 +52,9 @@ class Category1Fragment : Fragment() {
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(i in snapshot.children) {
+                    var img = activity?.resources!!.getIdentifier(i.child("image").value.toString(), "drawable", activity?.packageName)
                     columnList.add(ColumnData(
-                        i.ref.parent?.parent?.key, i.key, R.drawable.example, i.child("title").value.toString(),
+                        i.ref.parent?.parent?.key, i.key, img, i.child("title").value.toString(),
                         i.child("author").value.toString(), i.child("content").value.toString()))
                 }
                 //리사이클러뷰 어댑터 적용
