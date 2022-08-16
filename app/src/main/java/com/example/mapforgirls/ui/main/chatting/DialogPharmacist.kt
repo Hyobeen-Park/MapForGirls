@@ -2,6 +2,7 @@ package com.example.mapforgirls.ui.main.chatting
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
 import com.example.mapforgirls.PharmacyData
@@ -28,6 +29,12 @@ class DialogPharmacist(context: Context) {
         // X버튼
         dialog.dialog_pharmacist_cancel_btn.setOnClickListener {
             dialog.dismiss()
+        }
+
+        // 1:1 상담 버튼
+        dialog.dialog_pharmacist_chat_btn.setOnClickListener {
+//            var intent = Intent(dialog.context, ChattingDetailActivity::class.java)
+//            dialog.context.startActivity(intent)
         }
     }
 
