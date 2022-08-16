@@ -1,7 +1,11 @@
 package com.example.mapforgirls
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +13,9 @@ import com.example.mapforgirls.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.database.*
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import kotlin.coroutines.suspendCoroutine
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,10 +23,11 @@ class MainActivity : AppCompatActivity() {
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var authListener: AuthStateListener? = null
     private var database : DatabaseReference = FirebaseDatabase.getInstance().reference
+    private var user = auth.currentUser  // userInfo Shared Peferences가 없어지면 사용
 
     override fun onStart() {
         super.onStart()
-        auth.addAuthStateListener(authListener!!)
+        auth.addAuthStateListener(authListener!!)  // 없어도 될 듯
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,10 +35,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        authListener = AuthStateListener {
-            val user = auth.currentUser
-            val userInfo = getSharedPreferences("userInfo", MODE_PRIVATE)
-            val editor = userInfo.edit()
+        authListener = AuthStateListener {  // 없어도 될 듯
+            val userInfoShared = getSharedPreferences("userInfo", MODE_PRIVATE)
+            val editor = userInfoShared.edit()
             editor.putString("uid", user?.uid.toString())
             editor.apply()
         }

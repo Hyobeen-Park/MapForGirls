@@ -2,34 +2,41 @@ package com.example.mapforgirls
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_signup.*
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import kotlin.coroutines.suspendCoroutine
 
 class SignupActivity : AppCompatActivity() {
-    var auth : FirebaseAuth? = null
+    private var auth : FirebaseAuth = FirebaseAuth.getInstance()
     var loginActivity = LoginActivity()
-    // lateinit var database : DatabaseReference
-    private val database by lazy { FirebaseDatabase.getInstance() }
-    private var userRef : DatabaseReference? = null
+    private var database : DatabaseReference = FirebaseDatabase.getInstance().reference
+    private var user = auth.currentUser
+    lateinit var userType: String
+    // private var userRef : DatabaseReference? = null
     // var temp : Int = 0
     // var tempString : String? = null
 
-    override fun onStart() {
-        super.onStart()
-        // readUserCount()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        // val currentUser: FirebaseUser? = auth?.getCurrentUser()
+    companion object{
+        lateinit var userTypeShared : SharedPreferences
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        userTypeShared = getSharedPreferences("userType", Context.MODE_PRIVATE)!!
+        userType = userTypeShared.getString("userType", null).toString()
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-        auth = FirebaseAuth.getInstance()
 
         signup_btn.setOnClickListener {
             signup()
@@ -48,18 +55,21 @@ class SignupActivity : AppCompatActivity() {
         }else if (signup_pw_et.text.toString() != signup_pw2_et.text.toString()) {
             Toast.makeText(this, "비밀번호가 일치하지 않습니다. ", Toast.LENGTH_LONG).show()
         }else {
-            auth?.createUserWithEmailAndPassword(
+            auth.createUserWithEmailAndPassword(
                 signup_email_et.text.toString(),
                 signup_pw_et.text.toString()
             )
                 ?.addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         // 계정(아이디) 생성 성공
-                        writeNewUser(
-                            task.result.user?.uid.toString(),
-                            signup_name_et.text.toString(),
-                            task.result.user?.email.toString()
-                        )
+                        MainScope().launch {
+                            writeNewUser(
+                                task.result.user?.uid.toString(),
+                                signup_name_et.text.toString(),
+                                task.result.user?.email.toString(),
+                                userType
+                            )
+                        }
                         Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_LONG).show()
                         moveLoginPage(this)
                     } else {
@@ -106,11 +116,15 @@ class SignupActivity : AppCompatActivity() {
         return temp
     }
      */
-    private fun writeNewUser(uid: String, name: String, email: String) {  // DB에 회원을 작성하는 함수
-        val user = UserInfo(name, email)
+    private suspend fun writeNewUser(uid: String, name: String, email: String, userType : String){  // DB에 회원을 작성하는 함수
+        suspendCoroutine<Boolean> {  // 동기 방식
+            Handler(Looper.getMainLooper()).postDelayed({
+                val userInfo = UserInfo(name, email, userType)
+                database.child("users").child(uid).setValue(userInfo)
+            }, 500)
+        }
         // database.getReference().child("users").child(temp.toString()).setValue(user)
-        database.reference.child("users").child(uid).setValue(user)
-        //database.getReference().child("users").updateChildren("count", temp.toString());
+        //database.getReference().child("users").updateChildren("count", temp.toString())
     }
 
 }
