@@ -2,15 +2,74 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="@color/grey_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chatting"
+    <EditText
+        android:id="@+id/chatting_search_et"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="10dp"
+        android:hint="약국명, 약사명, 채팅 내역"
+        android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/chatting_search_btn"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/chatting_search_et"
+        app:layout_constraintBottom_toBottomOf="@id/chatting_search_et"
+        app:layout_constraintEnd_toEndOf="@id/chatting_search_et"/>
+
+    <TextView
+        android:id="@+id/chatting_pharmacist_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="주변 인기 약사"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/chatting_search_et"
+        app:layout_constraintStart_toStartOf="@id/chatting_search_et"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatting_pharmacist_rv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        tools:listitem="@layout/item_pharmacist"
+        app:layout_constraintTop_toBottomOf="@id/chatting_pharmacist_tv"
+        app:layout_constraintStart_toStartOf="@id/chatting_search_et"
+        app:layout_constraintEnd_toEndOf="@id/chatting_search_et"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="230dp"
+        app:cardCornerRadius="50dp"
+        app:layout_constraintTop_toBottomOf="@id/chatting_pharmacist_rv">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="20dp"
+                tools:listitem="@layout/item_chatting"/>
+
+        </ScrollView>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
