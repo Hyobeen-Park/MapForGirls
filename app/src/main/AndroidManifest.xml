@@ -38,7 +38,6 @@
         <activity android:name=".TestActivity" />
         <activity android:name=".ui.main.columns.ColumnDetailActivity" />
 
-
     </application>
 
 </manifest>
