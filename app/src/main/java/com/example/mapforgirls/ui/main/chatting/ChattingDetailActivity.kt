@@ -2,6 +2,7 @@ package com.example.mapforgirls.ui.main.chatting
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mapforgirls.PharmacyData
 import com.example.mapforgirls.databinding.ActivityChattingDetailBinding
 
 class ChattingDetailActivity: AppCompatActivity() {
@@ -11,5 +12,8 @@ class ChattingDetailActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChattingDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var pharmacist = intent.getSerializableExtra("pharmacist") as PharmacyData
+        binding.chattingDetailPharmacyTv.text = pharmacist.pharmacyName
     }
 }
