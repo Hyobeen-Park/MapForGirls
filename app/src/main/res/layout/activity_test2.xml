@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.025" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/test1_checkbox_cv"
+        android:id="@+id/test2_checkbox_cv"
         android:layout_width="900px"
         android:layout_height="1130px"
         android:backgroundTint="@color/white"
@@ -56,15 +56,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
+
         android:orientation="vertical">
+
         <TextView
-            android:id="@+id/test1_question_title_tv"
+            android:id="@+id/test2_question_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="40dp"
             android:gravity="center"
-            android:text="Q1. 생리할 때 나의 활동량은\n많은 편이에요."
+            android:text="Q2. 해당하는 항목을 선택해주세요."
             android:textColor="@color/black"
             android:textSize="50px"
             android:textStyle="bold" />
@@ -72,43 +74,100 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:paddingTop="30dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
 
-            android:paddingBottom="30dp">
+            android:gravity="center">
 
-            <ImageView
-                android:id="@+id/test1_check_ok"
-                android:layout_width="300px"
-                android:layout_height="300px"
-                android:src="@drawable/test_ok"
-                android:scaleType="centerInside"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
+            <Button
+                android:id="@+id/test2_answer1_btn"
+                android:layout_width="match_parent"
+                android:layout_height="125px"
+                android:layout_marginLeft="80px"
+                android:layout_marginRight="80px"
+                android:layout_marginTop="30px"
 
-            <ImageView
-                android:id="@+id/test1_check_no"
-                android:layout_width="300px"
-                android:layout_height="300px"
-                android:src="@drawable/test_no"
-                android:scaleType="centerInside"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
+                android:text="실리콘 알러지가 있어요."
+                android:textStyle="bold"
+                android:textSize="30px"
+
+                android:gravity="left|center"
+                android:drawablePadding="10dp"
+
+                android:background="@drawable/round_grey_stroke"
+                android:drawableLeft="@drawable/testcheck_before1"
+                android:padding="10dp" />
+
+            <Button
+                android:id="@+id/test2_answer2_btn"
+                android:layout_width="match_parent"
+                android:layout_height="125px"
+                android:layout_marginLeft="80px"
+                android:layout_marginRight="80px"
+                android:layout_marginTop="30px"
+
+                android:text="병원에서 독성 쇼크로 진단받고\n치료받은 경험이 있어요."
+                android:textStyle="bold"
+                android:textSize="27.5px"
+
+                android:gravity="left|center"
+                android:drawablePadding="10dp"
+
+                android:background="@drawable/round_grey_stroke"
+                android:drawableLeft="@drawable/testcheck_before1"
+                android:padding="10dp" />
+
+            <Button
+                android:id="@+id/test2_answer3_btn"
+                android:layout_width="match_parent"
+                android:layout_height="125px"
+                android:layout_marginLeft="80px"
+                android:layout_marginRight="80px"
+                android:layout_marginTop="30px"
+
+                android:text="질염 또는 방광염으로 치료받고 있어요."
+                android:textStyle="bold"
+                android:textSize="30px"
+
+                android:gravity="left|center"
+                android:drawablePadding="10dp"
+
+                android:background="@drawable/round_grey_stroke"
+                android:drawableLeft="@drawable/testcheck_before1"
+                android:padding="10dp" />
+
+            <Button
+                android:id="@+id/test2_answer4_btn"
+                android:layout_width="match_parent"
+                android:layout_height="125px"
+                android:layout_marginLeft="80px"
+                android:layout_marginRight="80px"
+                android:layout_marginTop="30px"
+                android:layout_marginBottom="30px"
+
+                android:text="앞선 해당사항이 없어요."
+                android:textStyle="bold"
+                android:textSize="30px"
+
+                android:gravity="left|center"
+                android:drawablePadding="10dp"
+
+                android:background="@drawable/round_grey_stroke"
+                android:drawableLeft="@drawable/testcheck_before1"
+                android:padding="10dp" />
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/test1_next_btn"
+            android:id="@+id/test2_next_btn"
             android:layout_width="750px"
             android:layout_height="150px"
+            android:layout_marginTop="30dp"
             android:background="@drawable/round_grey"
             android:gravity="center"
             android:text="다음으로"
             android:textColor="#A9A9A9"
-            android:layout_marginTop="40dp"
-            android:textStyle="bold"
-           />
+            android:textStyle="bold" />
 
 
     </LinearLayout>
@@ -116,11 +175,11 @@
     </androidx.cardview.widget.CardView>
 
     <ImageView
-        android:id="@+id/test1_bottom_iv"
+        android:id="@+id/test2_bottom_iv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitEnd"
-        android:src="@drawable/img_test1"
+        android:src="@drawable/img_test2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
