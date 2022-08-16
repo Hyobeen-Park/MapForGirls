@@ -33,25 +33,38 @@ class MainActivity : AppCompatActivity() {
             val editor = userInfo.edit()
             editor.putString("uid", user?.uid.toString())
             editor.apply()
-            Log.d("user11", user?.uid.toString())
         }
 
         setScrapDatabase()
         initBottomNavigation()
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        val userId = getSharedPreferences("userInfo", MODE_PRIVATE).getString("uid", "").toString()
+        val scrappedColumn: List<Scrap>
+        val columnDB = ColumnDatabase.getInstance(this@MainActivity)!!
+        scrappedColumn = columnDB.columnDao().getScrappedColumn()
+
+        Log.d("data", scrappedColumn.size.toString())
+        //데베 삭제
+        database.child("users").child(userId).child("scrap").removeValue()
+        for(i in 0 until scrappedColumn.size) { //데베에 스크랩한 칼럼 정보 저장
+            database.child("users").child(userId).child("scrap").child("item" + i).setValue(scrappedColumn[i])
+        }
+        columnDB.columnDao().initScrapTable()       //roomDB 데이터 삭제
+    }
+
     private fun setScrapDatabase() {
         val userId = getSharedPreferences("userInfo", MODE_PRIVATE).getString("uid", "").toString()
-
-        Log.d("user", userId)
 
         database.child("users").child(userId).child("scrap").addListenerForSingleValueEvent(object :
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val columnDB = ColumnDatabase.getInstance(this@MainActivity)!!
                 for(i in snapshot.children) {
-                    columnDB.columnDao().scrapColumn(Scrap(i.child("section").getValue().toString(), i.child("id").getValue().toString()))
-                    Log.d("scrap", i.child("id").value.toString())
+                    columnDB.columnDao().scrapColumn(Scrap(i.child("sectionName").getValue().toString(), i.child("columnId").getValue().toString()))
                 }
             }
             override fun onCancelled(error: DatabaseError) {

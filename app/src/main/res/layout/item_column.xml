@@ -81,15 +81,6 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/example" />
 
-                <ImageView
-                    android:id="@+id/item_column_scrap_iv"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_gravity="right"
-                    android:src="@drawable/ic_launcher_foreground" />
-
             </androidx.cardview.widget.CardView>
 
 

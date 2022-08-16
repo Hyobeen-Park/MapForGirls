@@ -18,7 +18,6 @@ class Category1Fragment : Fragment() {
     lateinit var binding: FragmentCategory1Binding
     var columnList = ArrayList<ColumnData>()
     private var database : DatabaseReference = FirebaseDatabase.getInstance().reference
-    var isScrapped : Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,53 +31,19 @@ class Category1Fragment : Fragment() {
         val category = sharedPreferences.getString("category", null)
         binding.category1TitleTv.text = category.toString()
 
-        isScrapped = isScrappedColumn("section1", "a1")
-
-        setViews()
         connectDatabase()
         setOnClickListeners()
 
         return binding.root
     }
 
-    private fun setViews() {
-        if(isScrapped) {
-            binding.category1ScrapIv.setImageResource(R.drawable.ic_launcher_background)
-        } else {
-            binding.category1ScrapIv.setImageResource(R.drawable.ic_launcher_foreground)
-        }
-    }
 
     private fun setOnClickListeners() {
-        binding.category1ScrapIv.setOnClickListener {
-            if(isScrapped) {
-                binding.category1ScrapIv.setImageResource(R.drawable.ic_launcher_foreground)
-                cancelScrap("section1", "00")
-            } else {
-                binding.category1ScrapIv.setImageResource(R.drawable.ic_launcher_background)
-                scrapColumn("section1", "00")
-            }
-
-            isScrapped = !isScrapped
+        binding.category1WhatIsThis2Cv.setOnClickListener {
+            val intent = Intent(context, ColumnDetailActivity::class.java)
+            intent.putExtra("column", columnList[0])
+            startActivity(intent)
         }
-    }
-
-    private fun isScrappedColumn(sectionName : String, columnId: String): Boolean {
-        val columnDB = ColumnDatabase.getInstance(requireContext())!!
-
-        val isScrapped: Int? = columnDB.columnDao().isScrapedColumn(sectionName, columnId)
-
-        return isScrapped != null
-    }
-
-    private fun scrapColumn(sectionName: String, columnId: String) {
-        val columnDB = ColumnDatabase.getInstance(requireContext())!!
-        columnDB.columnDao().scrapColumn(Scrap(sectionName, columnId))
-    }
-
-    private fun cancelScrap(sectionName: String, columnId: String) {
-        val columnDB = ColumnDatabase.getInstance(requireContext())!!
-        columnDB.columnDao().cancelScrap(sectionName, columnId)
     }
 
     private fun connectDatabase() {
