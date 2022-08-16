@@ -52,10 +52,8 @@
         android:inputType="textEmailAddress"
         android:padding="5dp"
         android:textColorHint="#DADADA"
-
         android:textSize="40px"
-
-
+        
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintLeft_toLeftOf="parent"

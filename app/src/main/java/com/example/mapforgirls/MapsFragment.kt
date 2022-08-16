@@ -156,19 +156,19 @@ class MapsFragment : Fragment(), View.OnClickListener {
             longitude = userLocation.longitude
             Log.d("CheckCurrentLocation", "현재 내 위치 값: ${latitude}, ${longitude}")
 
-            var mGeoCoder =  Geocoder(mainActivity.applicationContext, Locale.KOREAN)
-            var mResultList: List<Address>? = null
-            try{
-                mResultList = mGeoCoder.getFromLocation(
-                    latitude!!, longitude!!, 1
-                )
-            }catch(e: IOException){
-                e.printStackTrace()
-            }
-            if(mResultList != null){
-                Log.d("CheckCurrentLocation", mResultList[0].getAddressLine(0))
-
-            }
+//            var mGeoCoder =  Geocoder(mainActivity.applicationContext, Locale.KOREAN)
+//            var mResultList: List<Address>? = null
+//            try{
+//                mResultList = mGeoCoder.getFromLocation(
+//                    latitude!!, longitude!!, 1
+//                )
+//            }catch(e: IOException){
+//                e.printStackTrace()
+//            }
+//            if(mResultList != null){
+//                Log.d("CheckCurrentLocation", mResultList[0].getAddressLine(0))
+//
+//            }
         }
         return LatLng(latitude, longitude)
     }
