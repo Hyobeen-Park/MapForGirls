@@ -73,6 +73,19 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    // 뒤로가기 2번
+    private var backPressedTime : Long = 0
+    override fun onBackPressed() {
+        // 2초내 다시 클릭하면 앱 종료
+        if (System.currentTimeMillis() - backPressedTime < 2000) {
+            finishAffinity()
+            return
+        }
+        // 한 번 클릭했을 시 메시지
+        Toast.makeText(this, "뒤로가기 버튼을 한번 더 누르시면 앱이 종료됩니다.", Toast.LENGTH_SHORT).show()
+        backPressedTime = System.currentTimeMillis()
+    }
+
     private fun signinEmail(){  // 로그인하는 함수
         // 아이디와 비밀번호가 채워지지 않은 경우
         if(login_email_et.text.toString().isEmpty() ||
@@ -120,8 +133,5 @@ class LoginActivity : AppCompatActivity() {
     private fun isActive(activate_login: Boolean?, activate_pw : Boolean?) {  // 로그인 버튼 활성화 함수
         login_btn.isEnabled = activate_login == true && activate_pw == true
     }
-    override fun onBackPressed() {
-        finish()
-        return
-    }
+
 }

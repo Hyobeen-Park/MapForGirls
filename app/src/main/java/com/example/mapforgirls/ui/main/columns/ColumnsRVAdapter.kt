@@ -1,4 +1,4 @@
-package com.example.mapforgirls
+package com.example.mapforgirls.ui.main.columns
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

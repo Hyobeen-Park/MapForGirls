@@ -1,11 +1,6 @@
 package com.example.mapforgirls
 
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,12 +8,10 @@ import com.example.mapforgirls.data.entities.Scrap
 import com.example.mapforgirls.data.local.ColumnDatabase
 import com.example.mapforgirls.databinding.ActivityMainBinding
 import com.example.mapforgirls.ui.main.chatting.ChattingFragment
+import com.example.mapforgirls.ui.main.columns.ColumnsFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.database.*
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
-import kotlin.coroutines.suspendCoroutine
 
 
 class MainActivity : AppCompatActivity() {
