@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
 import kotlinx.android.synthetic.main.fragment_maps.*
 import java.io.IOException
 import java.util.*
@@ -37,6 +38,7 @@ class MapsFragment : Fragment(), View.OnClickListener {
     lateinit var binding: FragmentMapsBinding
     var db = FirebaseFirestore.getInstance()
     var pharmacyList = arrayListOf<PharmacyData>()
+    var choicePharmacy: ArrayList<PharmacyData> = arrayListOf()
 
     var locationManager : LocationManager? = null
     var latitude : Double = 0.0
@@ -57,7 +59,7 @@ class MapsFragment : Fragment(), View.OnClickListener {
                 for (pharmacy in pharmacyList) {
                     latitude = pharmacy.latitude
                     longitude = pharmacy.longitude
-                    Log.d("Result", "결과: " + latitude.toString() + longitude.toString())
+                    //Log.d("Result", "결과: " + latitude.toString() + ", "  + longitude.toString())
 
                     val location = LatLng(latitude, longitude)
                     googleMap.addMarker(
@@ -71,13 +73,8 @@ class MapsFragment : Fragment(), View.OnClickListener {
                 }
             }
 
-        // test marker
-        val point = LatLng(37.626326, 127.093241)
-        googleMap.addMarker(MarkerOptions().position(point).title("서울여자대학교"))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(point))
-        googleMap.moveCamera(CameraUpdateFactory.zoomTo(13f))
-
-        // current marker
+        /*
+       // current marker
         binding.mylocationButton.setOnClickListener {
             var currentLocation : LatLng = getLocation()
             if(currentLocation != LatLng(0.0, 0.0)) {       // 현재 위치 제대로 받아왔을 때
@@ -85,6 +82,8 @@ class MapsFragment : Fragment(), View.OnClickListener {
                 moveCamera(googleMap, currentLocation.latitude, currentLocation.longitude)
             }
         }
+        */
+
 
         cardView.visibility = View.GONE
 
@@ -105,6 +104,12 @@ class MapsFragment : Fragment(), View.OnClickListener {
                 cardView.visibility = View.GONE
             }
         })
+
+        binding.searchButton.setOnClickListener {
+            var text = binding.searchEdit.text.toString()
+            search(text)
+            moveCamera(googleMap, latitude, longitude)
+        }
     }
 
     override fun onAttach(context: Context) {
@@ -121,10 +126,7 @@ class MapsFragment : Fragment(), View.OnClickListener {
     ): View? {
         binding = FragmentMapsBinding.inflate(inflater, container, false)
 
-        // 버튼 클릭 리스너
-        binding.searchButton.setOnClickListener(this)
-
-        getLocation()
+        //getLocation()
 
         return binding.root
 
@@ -138,16 +140,17 @@ class MapsFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.searchButton -> {
+            //R.id.searchButton -> {
                 // test 메시지
-                Toast.makeText(activity, "검색완료", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(activity, "검색완료", Toast.LENGTH_SHORT).show()
 
                 // 버튼 클릭 시 지도 화면 변경
-            }
+            //}
         }
 
     }
 
+    /*
     private fun getLocation() : LatLng {
         locationManager = mainActivity.getSystemService(LOCATION_SERVICE) as LocationManager?
         var userLocation: Location = getLatLng()
@@ -232,12 +235,37 @@ class MapsFragment : Fragment(), View.OnClickListener {
             }
         }
     }
+     */
 
     // 지도 이동 애니메이션
     private fun moveCamera(map: GoogleMap?, latitude: Double, longitude: Double) {
         map?.let {
             it.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(latitude, longitude), 16f))
         }
+    }
+
+    private fun search(searchWord: String): LatLng {
+        db?.collection("pharmacyInfo")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+            choicePharmacy.clear()
+
+            for (snapshot in querySnapshot!!.documents) {
+                if (snapshot.getString("pharmacyName")!!.contains(searchWord)) {
+                    var item = snapshot.toObject(PharmacyData::class.java)
+                    choicePharmacy.add(item!!)
+
+                    Log.d("Result: ", item.latitude.toString() + ", " + item.longitude.toString())
+
+                    latitude = item.latitude
+                    longitude = item.longitude
+                }
+            }
+
+            if (choicePharmacy.isNullOrEmpty()) {
+                Toast.makeText(activity, "해당 약국은 소녀돌봄약국이 아닙니다.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        return LatLng(latitude, longitude)
     }
 }
 
