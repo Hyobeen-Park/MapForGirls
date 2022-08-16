@@ -37,10 +37,8 @@ import java.util.*
 class MapsFragment : Fragment() {
     lateinit var binding: FragmentMapsBinding
     var db = FirebaseFirestore.getInstance()
-    var pharmacyList = arrayListOf<PharmacyData>()
     var choicePharmacy: ArrayList<PharmacyData> = arrayListOf()
     var i = 0
-    val pinNum = arrayOf<PharmacyData>()
 
     var locationManager : LocationManager? = null
     var latitude : Double = 0.0
@@ -278,6 +276,7 @@ class MapsFragment : Fragment() {
                     latitude = item.latitude
                     longitude = item.longitude
                 }
+
             }
 
             if (choicePharmacy.isNullOrEmpty()) {
