@@ -40,7 +40,7 @@
         app:layout_constraintVertical_bias="0.025" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/test1_checkbox_cv"
+        android:id="@+id/test3_checkbox_cv"
         android:layout_width="900px"
         android:layout_height="1130px"
         android:backgroundTint="@color/white"
@@ -57,14 +57,15 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical">
+
         <TextView
-            android:id="@+id/test1_question_title_tv"
+            android:id="@+id/test3_question_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Q1. 생리할 때 나의 활동량은\n많은 편이에요."
+            android:text="Q3. 거부감이 있는 생리용품이 있나요? "
             android:textColor="@color/black"
             android:textSize="50px"
             android:textStyle="bold" />
@@ -72,43 +73,99 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:paddingTop="30dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:gravity="center">
 
-            android:paddingBottom="30dp">
+            <Button
+                android:id="@+id/test3_answer1_btn"
+                android:layout_width="match_parent"
+                android:layout_height="125px"
+                android:layout_marginLeft="80px"
+                android:layout_marginRight="80px"
+                android:layout_marginTop="30px"
 
-            <ImageView
-                android:id="@+id/test1_check_ok"
-                android:layout_width="300px"
-                android:layout_height="300px"
-                android:src="@drawable/test_ok"
-                android:scaleType="centerInside"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
+                android:text="삽입형 생리대가 불편해요."
+                android:textStyle="bold"
+                android:textSize="30px"
 
-            <ImageView
-                android:id="@+id/test1_check_no"
-                android:layout_width="300px"
-                android:layout_height="300px"
-                android:src="@drawable/test_no"
-                android:scaleType="centerInside"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
+                android:gravity="left|center"
+                android:drawablePadding="10dp"
+
+                android:background="@drawable/round_grey_stroke"
+                android:drawableLeft="@drawable/testcheck_before1"
+                android:padding="10dp" />
+
+            <Button
+                android:id="@+id/test3_answer2_btn"
+                android:layout_width="match_parent"
+                android:layout_height="125px"
+                android:layout_marginLeft="80px"
+                android:layout_marginRight="80px"
+                android:layout_marginTop="30px"
+
+                android:text="생리혈로 축축한 느낌이 드는게 싫어요."
+                android:textStyle="bold"
+                android:textSize="30px"
+
+                android:gravity="left|center"
+                android:drawablePadding="10dp"
+
+                android:background="@drawable/round_grey_stroke"
+                android:drawableLeft="@drawable/testcheck_before1"
+                android:padding="10dp" />
+
+            <Button
+                android:id="@+id/test3_answer3_btn"
+                android:layout_width="match_parent"
+                android:layout_height="125px"
+                android:layout_marginLeft="80px"
+                android:layout_marginRight="80px"
+                android:layout_marginTop="30px"
+
+                android:text="피부에 트러블이 일어나곤 해요."
+                android:textStyle="bold"
+                android:textSize="30px"
+
+                android:gravity="left|center"
+                android:drawablePadding="10dp"
+
+                android:background="@drawable/round_grey_stroke"
+                android:drawableLeft="@drawable/testcheck_before1"
+                android:padding="10dp" />
+
+            <Button
+                android:id="@+id/test3_answer4_btn"
+                android:layout_width="match_parent"
+                android:layout_height="125px"
+                android:layout_marginLeft="80px"
+                android:layout_marginRight="80px"
+                android:layout_marginTop="30px"
+                android:layout_marginBottom="30px"
+
+                android:text="딱히 없어요."
+                android:textStyle="bold"
+                android:textSize="30px"
+
+                android:gravity="left|center"
+                android:drawablePadding="10dp"
+
+                android:background="@drawable/round_grey_stroke"
+                android:drawableLeft="@drawable/testcheck_before1"
+                android:padding="10dp" />
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/test1_next_btn"
+            android:id="@+id/test3_next_btn"
             android:layout_width="750px"
             android:layout_height="150px"
+            android:layout_marginTop="30dp"
             android:background="@drawable/round_grey"
             android:gravity="center"
             android:text="다음으로"
             android:textColor="#A9A9A9"
-            android:layout_marginTop="40dp"
-            android:textStyle="bold"
-           />
+            android:textStyle="bold" />
 
 
     </LinearLayout>
@@ -116,11 +173,11 @@
     </androidx.cardview.widget.CardView>
 
     <ImageView
-        android:id="@+id/test1_bottom_iv"
+        android:id="@+id/test3_bottom_iv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitEnd"
-        android:src="@drawable/img_test1"
+        android:src="@drawable/img_test3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
