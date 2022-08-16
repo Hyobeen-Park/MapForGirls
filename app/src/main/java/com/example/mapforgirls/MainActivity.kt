@@ -1,33 +1,38 @@
 package com.example.mapforgirls
 
+import android.content.ContentResolver
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import com.example.mapforgirls.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.database.*
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
-import kotlin.coroutines.suspendCoroutine
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var userRef : DatabaseReference? = null
     private var authListener: AuthStateListener? = null
     private var database : DatabaseReference = FirebaseDatabase.getInstance().reference
-    private var user = auth.currentUser  // userInfo Shared Peferences가 없어지면 사용
+    private var currentUser = auth.currentUser  // userInfo Shared Peferences가 없어지면 사용
+    var userList = ArrayList<UserInfo>()
+    var userEditor: SharedPreferences.Editor? = null
 
     override fun onStart() {
         super.onStart()
         auth.addAuthStateListener(authListener!!)  // 없어도 될 듯
+        val userDataShared = getSharedPreferences("userData", MODE_PRIVATE)
+        userEditor = userDataShared.edit()
+        connectDatabase()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         authListener = AuthStateListener {  // 없어도 될 듯
             val userInfoShared = getSharedPreferences("userInfo", MODE_PRIVATE)
             val editor = userInfoShared.edit()
-            editor.putString("uid", user?.uid.toString())
+            editor.putString("uid", currentUser?.uid.toString())
             editor.apply()
         }
 
@@ -129,4 +134,45 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "뒤로가기 버튼을 한번 더 누르시면 앱이 종료됩니다.", Toast.LENGTH_SHORT).show()
         backPressedTime = System.currentTimeMillis()
     }
+    private fun connectDatabase() {
+        // 데이터베이스 연결
+        userRef = database.child("users")
+        userRef!!.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (user in snapshot.children) {
+                    if (user.key.equals(currentUser?.uid)) {
+                        val name = user.child("name").value.toString()
+                        val email = user.child("email").value.toString()
+                        val userType = user.child("userType").value.toString()
+                        val profileUri =
+                            if(user.child("profile").value != null)
+                                user.child("profile").value.toString()
+                            else
+                                Uri.parse("android.resource://" + R::class.java.getPackage().name + "/" + R.drawable.img_girls).toString()
+
+                        Log.d("----------------------------------------------------------------profileUri: ", profileUri)
+                        /*
+                        userList.add(UserInfo(
+                            name, email, userType, profileUri
+                        ))
+                         */
+
+                        userEditor?.putString("name", name)
+                        userEditor?.putString("email", email)
+                        userEditor?.putString("userType", userType)
+                        userEditor?.putString("profileUri", profileUri)
+                        userEditor?.apply()
+
+                        return
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("database", "Error : $error")
+            }
+        })
+
+
+    }
+
 }

@@ -20,7 +20,6 @@ class SignupActivity : AppCompatActivity() {
     private var auth : FirebaseAuth = FirebaseAuth.getInstance()
     var loginActivity = LoginActivity()
     private var database : DatabaseReference = FirebaseDatabase.getInstance().reference
-    private var user = auth.currentUser
     lateinit var userType: String
     // private var userRef : DatabaseReference? = null
     // var temp : Int = 0
@@ -58,18 +57,15 @@ class SignupActivity : AppCompatActivity() {
             auth.createUserWithEmailAndPassword(
                 signup_email_et.text.toString(),
                 signup_pw_et.text.toString()
-            )
-                ?.addOnCompleteListener { task ->
+            ).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         // 계정(아이디) 생성 성공
-                        MainScope().launch {
-                            writeNewUser(
-                                task.result.user?.uid.toString(),
-                                signup_name_et.text.toString(),
-                                task.result.user?.email.toString(),
-                                userType
-                            )
-                        }
+                        writeNewUser(
+                            task.result.user?.uid.toString(),
+                            signup_name_et.text.toString(),
+                            task.result.user?.email.toString(),
+                            userType
+                        )
                         Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_LONG).show()
                         moveLoginPage(this)
                     } else {
@@ -116,13 +112,9 @@ class SignupActivity : AppCompatActivity() {
         return temp
     }
      */
-    private suspend fun writeNewUser(uid: String, name: String, email: String, userType : String){  // DB에 회원을 작성하는 함수
-        suspendCoroutine<Boolean> {  // 동기 방식
-            Handler(Looper.getMainLooper()).postDelayed({
-                val userInfo = UserInfo(name, email, userType)
-                database.child("users").child(uid).setValue(userInfo)
-            }, 500)
-        }
+    private fun writeNewUser(uid: String, name: String, email: String, userType : String){  // DB에 회원을 작성하는 함수
+        val userInfo = UserInfo(name, email, userType)
+        database.child("users").child(uid).setValue(userInfo)
         // database.getReference().child("users").child(temp.toString()).setValue(user)
         //database.getReference().child("users").updateChildren("count", temp.toString())
     }

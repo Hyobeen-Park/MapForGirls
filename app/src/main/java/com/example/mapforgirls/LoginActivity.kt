@@ -120,8 +120,4 @@ class LoginActivity : AppCompatActivity() {
     private fun isActive(activate_login: Boolean?, activate_pw : Boolean?) {  // 로그인 버튼 활성화 함수
         login_btn.isEnabled = activate_login == true && activate_pw == true
     }
-    override fun onBackPressed() {
-        finish()
-        return
-    }
 }
