@@ -1,6 +1,7 @@
 package com.example.mapforgirls
 
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -14,7 +15,8 @@ import androidx.core.view.isInvisible
 import kotlinx.android.synthetic.main.activity_certify.*
 
 class CertifyActivity : AppCompatActivity() {
-    // var isVisibility : Boolean = false
+    var userTypeShared = getSharedPreferences("userInfo", Context.MODE_PRIVATE)
+    var userType = userTypeShared.getString("userInfo", null).toString()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +48,7 @@ class CertifyActivity : AppCompatActivity() {
         })
 
         /*
-        certify_check_ibtn.setOnClickListener {
+        certify_check_ibtn.setOnClickListener {  // 주민번호 뒷자리 확인
             // +이미지 변경하는 코드
             isVisibility = !isVisibility
             //certify_idNum_back_et.visibility = View.INVISIBLE
@@ -63,7 +65,7 @@ class CertifyActivity : AppCompatActivity() {
         certify_btn.setOnClickListener {
             var id = certify_idNum_front_et.text.toString()+certify_idNum_back_et.text.toString()
 
-            if(isValidFemaleRegistrationID(id)){
+            if(isValidFemaleRegistrationID(id, userType)){
                 Toast.makeText(this, "본인인증완료",Toast.LENGTH_LONG).show()
                 val intent = Intent(this, SignupActivity::class.java)
                 startActivity(intent)
@@ -73,7 +75,7 @@ class CertifyActivity : AppCompatActivity() {
             }
         }
     }
-    fun isValidFemaleRegistrationID(id: String): Boolean {  // 주민등록번호가 유효한 여성인지 확인하는 함수
+    private fun isValidFemaleRegistrationID(id: String, userType: String): Boolean {  // 주민등록번호가 유효한 여성인지 확인하는 함수
         if(id.length != 13)
             return false
         val reg = Regex("^\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])[2|4][0-9]{6}$")
