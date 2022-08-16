@@ -1,6 +1,8 @@
-package com.example.mapforgirls
+package com.example.mapforgirls.data.local
 
 import androidx.room.*
+import com.example.mapforgirls.data.entities.ColumnData
+import com.example.mapforgirls.data.entities.Scrap
 
 @Dao
 interface ColumnDAO {

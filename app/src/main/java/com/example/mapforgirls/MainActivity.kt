@@ -9,7 +9,10 @@ import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mapforgirls.data.entities.Scrap
+import com.example.mapforgirls.data.local.ColumnDatabase
 import com.example.mapforgirls.databinding.ActivityMainBinding
+import com.example.mapforgirls.ui.main.chatting.ChattingFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.database.*

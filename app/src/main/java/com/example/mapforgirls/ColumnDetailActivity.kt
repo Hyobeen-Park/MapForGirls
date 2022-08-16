@@ -2,6 +2,9 @@ package com.example.mapforgirls
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mapforgirls.data.entities.ColumnData
+import com.example.mapforgirls.data.entities.Scrap
+import com.example.mapforgirls.data.local.ColumnDatabase
 import com.example.mapforgirls.databinding.ActivityColumnDetailBinding
 
 
