@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/test_end"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="나를 위한 생리용품은"
+        android:textSize="60px"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="&quot;"
+            android:textSize="110px"
+            android:textColor="@color/green1"
+            android:fontFamily="@font/nixgon_medium"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="면 생리대"
+            android:textSize="100px"
+            android:textColor="@color/black"
+            android:fontFamily="@font/nixgon_medium"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="&quot;"
+            android:textSize="110px"
+            android:textColor="@color/green1"
+            android:fontFamily="@font/nixgon_medium"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        android:src="@drawable/cotton_sanitary"
+        android:layout_gravity="center"
+        android:layout_marginTop="90dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:textSize="36px"
+        android:textStyle="bold"
+        android:textColor="#AAAAAA"
+        android:text="속옷과 같은 편안한 착용감과\n화학 성분 걱정이 없다는 점이 큰 장점이에요.
+\n교체의 번거로움을 줄이기 위해 가정에서는 팬티형,\n 외출 시에는 패드형 면 생리대를 병행 사용하는 것도 추천해요."
+        android:textAlignment="center"/>
+
+    <Button
+        android:id="@+id/testEnd_cotton"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:background="@drawable/round_greenbtn"
+        android:text="테스트 마치기"
+        android:textColor="@color/white"
+        android:textSize="40px"/>
+
+
+</LinearLayout>
