@@ -55,11 +55,11 @@ class MainActivity : AppCompatActivity() {
         initBottomNavigation()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onStop() {
+        super.onStop()
 
-        initScrapDB()
-
+//        initScrapDB()
+        database.child("users").child("XaJxoewI9kU2wRGUXOaX9l1q65E3").child("scrap").removeValue()
     }
 
     private fun initScrapDB() {

@@ -76,7 +76,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/chatting_detail_content_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
             tools:listitem="@layout/item_message"/>
