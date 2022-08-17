@@ -12,8 +12,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_applogo_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MapForGirls"
-        android:hardwareAccelerated="false">
+        android:theme="@style/Theme.MapForGirls">
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

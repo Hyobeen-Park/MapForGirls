@@ -47,27 +47,15 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
-        android:id="@+id/dialog_pharmacist_pharmacy_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="약국명"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/green1"
-        app:layout_constraintTop_toBottomOf="@id/dialog_pharmacist_civ"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <TextView
         android:id="@+id/dialog_pharmacist_pharmacist_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="약사명"
         android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/dialog_pharmacist_pharmacy_tv"
+        app:layout_constraintTop_toBottomOf="@id/dialog_pharmacist_civ"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

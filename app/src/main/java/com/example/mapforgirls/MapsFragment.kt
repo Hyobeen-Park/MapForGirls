@@ -66,39 +66,15 @@ class MapsFragment : Fragment() {
                     val marker: Marker? = googleMap.addMarker(markerOptions)
                     marker?.tag =
                         document.data["pharmacyName"] as String + "/" + document.data["address"] as String + "/" + document.data["phoneNum"] as String + "/"
+
+                    if (result.size() <= i)
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10f))
                     }
                 }
             .addOnFailureListener { e ->
                 Log.w("Error", "Error getting documents", e)
             }
 
-        /*
-        // all pharmacy marker
-        db.collection("pharmacyInfo")
-            .get()
-            .addOnSuccessListener { result ->
-                pharmacyList.clear()
-                pharmacyList.addAll(result!!.toObjects(PharmacyData::class.java))
-
-                for (pharmacy in pharmacyList) {
-                    latitude = pharmacy.latitude
-                    longitude = pharmacy.longitude
-                    //Log.d("Result", "결과: " + latitude.toString() + ", "  + longitude.toString())
-
-                    val location = LatLng(latitude, longitude)
-                    googleMap.addMarker(
-                        MarkerOptions().position(location).title(pharmacy.pharmacyName)
-                    )
-                }
-            }
-            .addOnFailureListener { e ->
-                if (e != null) {
-                    Log.w("Result", "Listen failed", e)
-                }
-            }
-         */
-
-        /*
        // current marker
         binding.mylocationButton.setOnClickListener {
             var currentLocation : LatLng = getLocation()
@@ -107,7 +83,7 @@ class MapsFragment : Fragment() {
                 moveCamera(googleMap, currentLocation.latitude, currentLocation.longitude)
             }
         }
-        */
+
 
         cardView.visibility = View.GONE
 
@@ -157,7 +133,7 @@ class MapsFragment : Fragment() {
     ): View? {
         binding = FragmentMapsBinding.inflate(inflater, container, false)
 
-        //getLocation()
+        getLocation()
 
         return binding.root
     }
@@ -168,7 +144,7 @@ class MapsFragment : Fragment() {
         mapFragment?.getMapAsync(callback)
     }
 
-    /*
+
     private fun getLocation() : LatLng {
         locationManager = mainActivity.getSystemService(LOCATION_SERVICE) as LocationManager?
         var userLocation: Location = getLatLng()
@@ -253,7 +229,7 @@ class MapsFragment : Fragment() {
             }
         }
     }
-     */
+
 
     // 지도 이동 애니메이션
     private fun moveCamera(map: GoogleMap?, latitude: Double, longitude: Double) {
