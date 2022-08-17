@@ -83,6 +83,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <EditText
+            android:id="@+id/chatting_detail_chat_et"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:background="@color/white"
