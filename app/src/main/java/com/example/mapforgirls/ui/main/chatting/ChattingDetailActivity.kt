@@ -8,13 +8,9 @@ import com.example.mapforgirls.data.model.ChatModel
 import com.example.mapforgirls.databinding.ActivityChattingDetailBinding
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.*
-import kotlinx.android.synthetic.main.activity_chatting_detail.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.job
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class ChattingDetailActivity: AppCompatActivity() {
     lateinit var binding: ActivityChattingDetailBinding
@@ -34,7 +30,7 @@ class ChattingDetailActivity: AppCompatActivity() {
         destinationUid = intent.getStringExtra("destinationUid")!!
 
         var pharmacist = intent.getSerializableExtra("pharmacist") as PharmacyData
-        binding.chattingDetailPharmacistTv.text = pharmacist.pharmacyName + "약사"
+        binding.chattingDetailPharmacistTv.text = pharmacist.pharmacyName + " 약사"
 
         checkChatttingRooms()
         setOnClickListener()
@@ -46,8 +42,8 @@ class ChattingDetailActivity: AppCompatActivity() {
         // 전송
         binding.chattingDetailSendBtn.setOnClickListener {
             if(binding.chattingDetailChatEt.text.toString() != "") {
-                chatModel.users.put(userId, true)
-                chatModel.users.put(destinationUid, true)
+                chatModel.users!!.put(userId, true)
+                chatModel.users!!.put(destinationUid, true)
                 val dateFormat = SimpleDateFormat("MM월dd일 hh:mm")
                 var time = dateFormat.format(Date(System.currentTimeMillis())).toString()
                 var comment = ChatModel.Comment(userId, binding.chattingDetailChatEt.text.toString(), time)
@@ -80,9 +76,26 @@ class ChattingDetailActivity: AppCompatActivity() {
                         if(chatModel?.users!!.containsKey(destinationUid)){
                             chattingRoomId = item.key.toString()
                             binding.chattingDetailSendBtn.isEnabled = true
-                            val chatAdapter = ChatRVAdapter(userId)
-                            chatAdapter.addItem(chattingRoomId!!)
-                            binding.chattingDetailContentRv.adapter = chatAdapter
+
+                            var chatList = ArrayList<ChatModel.Comment>()
+                            database.child("chattingRooms").child(chattingRoomId!!).child("comments").addValueEventListener(object: ValueEventListener{
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    chatList.clear()
+                                    for(i in snapshot.children) {
+                                        chatList.add(i.getValue<ChatModel.Comment>()!!)
+                                    }
+
+                                    val chatAdapter = ChatRVAdapter(chatList, userId)
+                                    binding.chattingDetailContentRv.adapter = chatAdapter
+                                    binding.chattingDetailContentRv.scrollToPosition(chatList.size - 1)
+                                }
+                                override fun onCancelled(error: DatabaseError) {
+                                    Log.d("chatRV", error.message)
+                                }
+                            })
+
+
+
                         }
                     }
                 }
