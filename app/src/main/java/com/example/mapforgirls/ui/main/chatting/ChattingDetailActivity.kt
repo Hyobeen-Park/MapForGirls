@@ -37,7 +37,6 @@ class ChattingDetailActivity: AppCompatActivity() {
         binding.chattingDetailPharmacistTv.text = pharmacist.pharmacyName + "약사"
 
         checkChatttingRooms()
-        setView()
         setOnClickListener()
 
     }
@@ -71,17 +70,6 @@ class ChattingDetailActivity: AppCompatActivity() {
         }
     }
 
-
-    // 뷰 초기 세팅
-    private fun setView() {
-        if (chattingRoomId != null) {
-            val chatAdapter = ChatRVAdapter()
-            chatAdapter.addItem(chattingRoomId!!)
-            binding.chattingDetailContentRv.adapter = chatAdapter
-        }
-    }
-
-
     // 같은 유저들끼리 이미 만들어진 채팅창이 있는지 확인
     private fun checkChatttingRooms(){
         database.child("chattingRooms").orderByChild("users/$userId").equalTo(true)
@@ -92,6 +80,9 @@ class ChattingDetailActivity: AppCompatActivity() {
                         if(chatModel?.users!!.containsKey(destinationUid)){
                             chattingRoomId = item.key.toString()
                             binding.chattingDetailSendBtn.isEnabled = true
+                            val chatAdapter = ChatRVAdapter()
+                            chatAdapter.addItem(chattingRoomId!!)
+                            binding.chattingDetailContentRv.adapter = chatAdapter
                         }
                     }
                 }
