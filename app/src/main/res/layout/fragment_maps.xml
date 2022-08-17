@@ -5,9 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
@@ -22,21 +20,25 @@
 
         <EditText
             android:id="@+id/searchEdit"
-            android:layout_width="295dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_width="318dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
-            android:hint="지역구를 입력하세요"
+            android:hint="약국 이름을 입력해 주세요"
+            android:background="@drawable/search"
+            android:paddingLeft="30dp"
+            android:textColorHint="#A0A0A0"
             android:lines="1"
-            android:singleLine="true" />
+            android:singleLine="true"/>
+
 
         <Button
             android:id="@+id/searchButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:text="검색" />
+            android:layout_width="60dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/search_enter" />
     </LinearLayout>
 
 
@@ -62,16 +64,17 @@
                 android:layout_height="130dp"
                 android:layout_weight="1"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/example" />
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/nanum" />
 
             <TextView
                 android:id="@+id/chemist"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="180dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginLeft="165dp"
+                android:layout_marginTop="25dp"
                 android:text="약사"
+
                 android:textAlignment="textStart"
                 android:textColor="#4CAF50"
                 android:textStyle="bold" />
@@ -80,89 +83,90 @@
                 android:id="@+id/chemistTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="210dp"
-                android:layout_marginTop="30dp"
-                android:text="약사명"
+                android:layout_marginLeft="195dp"
+                android:layout_marginTop="25dp"
+                android:text="김나눔"
+                android:textColor="@color/black"
                 android:textAlignment="textStart"/>
 
             <TextView
                 android:id="@+id/pharmacyTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="180dp"
-                android:layout_marginTop="50dp"
-                android:text="약국이름"
+                android:layout_marginLeft="165dp"
+                android:layout_marginTop="53dp"
+                android:text="나눔약국"
+                android:textColor="@color/black"
                 android:textAlignment="textStart"
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/oepnTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="180dp"
-                android:layout_marginTop="90dp"
-                android:text="영업중"
-                android:textAlignment="textStart"
-                android:textColor="#4CAF50"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/closeTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="225dp"
-                android:layout_marginTop="90dp"
-                android:text="오후 10:30분에 영업종료"
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="165dp"
+                android:layout_marginTop="88dp"
+                android:src="@drawable/icon_map_select"
                 android:textAlignment="textStart"/>
 
             <TextView
-                android:id="@+id/location"
+                android:id="@+id/addressTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="180dp"
-                android:layout_marginTop="110dp"
-                android:text="주소"
-                android:textAlignment="textStart"
-                android:textColor="#4CAF50"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/locationTV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="210dp"
-                android:layout_marginTop="110dp"
-                android:text="서울특별시 노원구 상계동"
+                android:layout_marginLeft="187dp"
+                android:layout_marginTop="88dp"
+                android:textColor="#727272"
+                android:textSize="11dp"
+                android:text="서울특별시 노원구 상계동 상계로12길"
                 android:textAlignment="textStart"/>
-
-            <TextView
-                android:id="@+id/phoneNum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="180dp"
-                android:layout_marginTop="130dp"
-                android:text="연락처"
-                android:textAlignment="textStart"
-                android:textStyle="bold"
-                android:textColor="#4CAF50" />
 
             <TextView
                 android:id="@+id/phoneNumTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="225dp"
-                android:layout_marginTop="130dp"
-                android:text="02-123-4567"
+                android:layout_marginLeft="187dp"
+                android:layout_marginTop="108dp"
+                android:textSize="11dp"
+                android:textColor="#727272"
+                android:text="02)2215-1234"
+                android:textAlignment="textStart"/>
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="165dp"
+                android:layout_marginTop="108dp"
+                android:src="@drawable/phone"
+                android:textAlignment="textStart"/>
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="165dp"
+                android:layout_marginTop="128dp"
+                android:src="@drawable/clock"
+                android:textAlignment="textStart"/>
+
+            <TextView
+                android:id="@+id/timeTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="187dp"
+                android:layout_marginTop="128dp"
+                android:text="월-금) 10:00 ~ 19:00"
+                android:textSize="11dp"
+                android:textColor="#727272"
                 android:textAlignment="textStart"/>
 
             <Button
                 android:id="@+id/chatButton"
-                android:layout_width="293dp"
-                android:layout_height="wrap_content"
+                android:layout_width="285dp"
+                android:layout_height="40dp"
+                android:background="@drawable/round_red"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="160dp"
-                android:text="1:1 상담하기"/>
+                android:text="1:1 상담하기"
+                android:textColor="@color/white"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -170,11 +174,11 @@
 
     <Button
         android:id="@+id/mylocationButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200px"
+        android:layout_height="200px"
         android:layout_below="@+id/search"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="3dp"
-        android:text="내 위치" />
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/mypoint" />
 </RelativeLayout>
