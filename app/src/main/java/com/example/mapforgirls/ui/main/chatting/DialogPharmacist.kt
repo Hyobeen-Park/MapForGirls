@@ -14,6 +14,7 @@ import java.util.*
 // 약사 팝업
 class DialogPharmacist(context: Context) {
     private val dialog = Dialog(context)
+    lateinit var pharmacist: PharmacyData
 
     fun showDialog() {
         dialog.setContentView(R.layout.dialog_pharmacist)
@@ -21,7 +22,8 @@ class DialogPharmacist(context: Context) {
     }
 
     fun setViews(pharmacy: PharmacyData) {
-        dialog.dialog_pharmacist_pharmacy_tv.text = pharmacy.pharmacyName
+        this.pharmacist = pharmacy
+        dialog.dialog_pharmacist_pharmacist_tv.text = pharmacy.pharmacyName + " 약사"
         dialog.dialog_pharmacist_location_tv.text = getLocation(pharmacy)
     }
 
@@ -34,6 +36,7 @@ class DialogPharmacist(context: Context) {
         // 1:1 상담 버튼
         dialog.dialog_pharmacist_chat_btn.setOnClickListener {
             var intent = Intent(dialog.context, ChattingDetailActivity::class.java)
+            intent.putExtra("pharmacist", pharmacist)
             dialog.context.startActivity(intent)
         }
     }
