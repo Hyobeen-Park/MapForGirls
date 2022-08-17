@@ -1,55 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/onboarding3_main_iv"
             android:layout_width="wrap_content"
-            android:layout_height="480dp"
-            android:src="@drawable/onboarding3"/>
+            android:layout_height="450dp"
+            android:src="@drawable/onboarding3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
+            android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="궁금한 성 이야기"
             android:textSize="64px"
             android:fontFamily="@font/nixgon_bold"
             android:textColor="#484848"
-            android:gravity="center"/>
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/onboarding3_main_iv" />
+
 
         <TextView
+            android:id="@+id/textView6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="누군가에게 물어보기엔 어려웠던\n궁금증을 해결하고, 올바른 성지식을 얻어요."
             android:textSize="45px"
             android:textColor="#484848"
             android:gravity="center"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView7"/>
 
 
         <ImageView
+            android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="13dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/count_three"/>
+            android:src="@drawable/count_three"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"/>
 
         <Button
             android:id="@+id/onboarding3_start"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="25dp"
             android:layout_gravity="center"
             android:text="시작하기"
             android:textColor="@color/white"
             android:textSize="16dp"
-            android:background="@drawable/round_green"/>
-
-
-    </LinearLayout>
+            android:background="@drawable/round_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -74,14 +74,11 @@
             android:id="@+id/columns_category1_clayout"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/round_white"
             android:backgroundTint="#F8B385"
-            app:layout_constraintTop_toBottomOf="@id/columns_test_clayout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/columns_category2_clayout">
+            app:layout_constraintTop_toBottomOf="@id/columns_test_clayout">
 
             <TextView
                 android:id="@+id/columns_category1_main_tv"
@@ -89,33 +86,33 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:paddingBottom="5dp"
                 android:paddingLeft="5dp"
+                android:paddingBottom="5dp"
                 android:text="월경"
-                android:textSize="18sp"
                 android:textColor="@color/black"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/columns_category1_sub_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="미레나 수술이 궁금해요"
-                android:textSize="14sp"
-                android:textColor="@color/white"
                 android:layout_marginLeft="5dp"
+                android:text="미레나 수술이 궁금해요"
+                android:textColor="@color/white"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/columns_category1_main_tv"
-                app:layout_constraintTop_toBottomOf="@id/columns_category1_main_tv"/>
+                app:layout_constraintTop_toBottomOf="@id/columns_category1_main_tv" />
 
             <ImageView
                 android:id="@+id/columns_category1_iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/categories_1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -123,14 +120,11 @@
             android:id="@+id/columns_category2_clayout"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/round_white"
             android:backgroundTint="#94D6C2"
-            app:layout_constraintTop_toBottomOf="@id/columns_test_clayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/columns_category1_clayout">
+            app:layout_constraintTop_toBottomOf="@id/columns_test_clayout">
 
             <TextView
                 android:id="@+id/columns_category2_main_tv"
@@ -140,11 +134,11 @@
                 android:layout_marginTop="20dp"
                 android:paddingBottom="5dp"
                 android:text="자신의 몸"
-                android:textSize="18sp"
                 android:textColor="@color/black"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <TextView
@@ -152,10 +146,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2차 성징이 일어났다!"
-                android:textSize="14sp"
                 android:textColor="#2DAF81"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/columns_category2_main_tv"
-                app:layout_constraintTop_toBottomOf="@id/columns_category2_main_tv"/>
+                app:layout_constraintTop_toBottomOf="@id/columns_category2_main_tv" />
 
             <ImageView
                 android:id="@+id/columns_category2_iv"
@@ -163,8 +157,8 @@
                 android:layout_height="100dp"
                 android:paddingRight="5dp"
                 android:src="@drawable/categories_2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -172,14 +166,11 @@
             android:id="@+id/columns_category3_clayout"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/round_white"
             android:backgroundTint="#FFC9B4"
-            app:layout_constraintTop_toBottomOf="@id/columns_category1_clayout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/columns_category4_clayout">
+            app:layout_constraintTop_toBottomOf="@id/columns_category1_clayout">
 
             <TextView
                 android:id="@+id/columns_category3_main_tv"
@@ -187,14 +178,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
+                android:paddingLeft="5dp"
                 android:paddingBottom="5dp"
                 android:text="임신과 피임"
-                android:paddingLeft="5dp"
-                android:textSize="18sp"
                 android:textColor="@color/black"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/columns_category3_sub_tv"
@@ -202,18 +193,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="피임약, 몸에 나쁜가요?"
-                android:textSize="14sp"
                 android:textColor="#D36666"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/columns_category3_main_tv"
-                app:layout_constraintTop_toBottomOf="@id/columns_category3_main_tv"/>
+                app:layout_constraintTop_toBottomOf="@id/columns_category3_main_tv" />
 
             <ImageView
                 android:id="@+id/columns_category3_iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/categories_3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -221,13 +212,10 @@
             android:id="@+id/columns_category4_clayout"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/round_white"
             android:backgroundTint="#D9CFF8"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/columns_category3_clayout"
             app:layout_constraintTop_toBottomOf="@id/columns_category2_clayout">
 
             <TextView
@@ -258,8 +246,8 @@
                 android:id="@+id/columns_category4_iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/categories_4"
                 android:paddingRight="5dp"
+                android:src="@drawable/categories_4"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -269,13 +257,11 @@
             android:id="@+id/columns_category5_clayout"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"            android:background="@drawable/round_white"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_white"
             android:backgroundTint="#94D6C2"
-            app:layout_constraintTop_toBottomOf="@id/columns_category3_clayout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/columns_category6_clayout">
+            app:layout_constraintTop_toBottomOf="@id/columns_category3_clayout">
 
             <TextView
                 android:id="@+id/columns_category5_main_tv"
@@ -283,33 +269,33 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
+                android:paddingLeft="5dp"
                 android:paddingBottom="5dp"
                 android:text="성관계"
-                android:paddingLeft="5dp"
-                android:textSize="18sp"
                 android:textColor="@color/black"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/columns_category5_sub_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:text="여성용 콘돔도 있다구요?"
-                android:layout_marginLeft="5dp"
-                android:textSize="14sp"
                 android:textColor="#2DAF81"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/columns_category5_main_tv"
-                app:layout_constraintTop_toBottomOf="@id/columns_category5_main_tv"/>
+                app:layout_constraintTop_toBottomOf="@id/columns_category5_main_tv" />
 
             <ImageView
                 android:id="@+id/columns_category5_iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/categories_5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -317,13 +303,10 @@
             android:id="@+id/columns_category6_clayout"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/round_white"
             android:backgroundTint="#FFC9B4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/columns_category5_clayout"
             app:layout_constraintTop_toBottomOf="@id/columns_category4_clayout">
 
             <TextView
@@ -354,8 +337,8 @@
                 android:id="@+id/columns_category6_iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/categories_6"
                 android:paddingRight="5dp"
+                android:src="@drawable/categories_6"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -365,14 +348,11 @@
             android:id="@+id/columns_category7_clayout"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/round_white"
             android:backgroundTint="#D9CFF8"
-            app:layout_constraintTop_toBottomOf="@id/columns_category5_clayout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/columns_category8_clayout">
+            app:layout_constraintTop_toBottomOf="@id/columns_category5_clayout">
 
             <TextView
                 android:id="@+id/columns_category7_main_tv"
@@ -380,14 +360,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
+                android:paddingLeft="5dp"
                 android:paddingBottom="5dp"
                 android:text="성인지 감수성"
-                android:paddingLeft="5dp"
-                android:textSize="18sp"
                 android:textColor="@color/black"
+                android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/columns_category7_sub_tv"
@@ -395,19 +375,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="폭력적인 관계라는 건"
-                android:textSize="14sp"
                 android:textColor="#9981E9"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/columns_category7_main_tv"
-                app:layout_constraintTop_toBottomOf="@id/columns_category7_main_tv"/>
+                app:layout_constraintTop_toBottomOf="@id/columns_category7_main_tv" />
 
             <ImageView
                 android:id="@+id/columns_category7_iv"
                 android:layout_width="85dp"
                 android:layout_height="85dp"
-                android:src="@drawable/categories_7"
                 android:layout_marginRight="5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                android:src="@drawable/categories_7"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -415,13 +395,10 @@
             android:id="@+id/columns_category8_clayout"
             android:layout_width="180dp"
             android:layout_height="180dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/round_white"
             android:backgroundTint="#F8B385"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/columns_category7_clayout"
             app:layout_constraintTop_toBottomOf="@id/columns_category6_clayout">
 
             <TextView
@@ -452,8 +429,8 @@
                 android:id="@+id/columns_category8_iv"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/categories_8"
                 android:paddingLeft="5dp"
+                android:src="@drawable/categories_8"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 

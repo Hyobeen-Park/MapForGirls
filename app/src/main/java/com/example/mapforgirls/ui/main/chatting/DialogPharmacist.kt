@@ -5,8 +5,14 @@ import android.content.Context
 import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
+import android.util.Log
 import com.example.mapforgirls.PharmacyData
 import com.example.mapforgirls.R
+import com.example.mapforgirls.UserInfo
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.dialog_pharmacist.*
 import java.io.IOException
 import java.util.*
@@ -15,6 +21,7 @@ import java.util.*
 class DialogPharmacist(context: Context) {
     private val dialog = Dialog(context)
     lateinit var pharmacist: PharmacyData
+    private val database = FirebaseDatabase.getInstance().reference
 
     fun showDialog() {
         dialog.setContentView(R.layout.dialog_pharmacist)
@@ -35,9 +42,23 @@ class DialogPharmacist(context: Context) {
 
         // 1:1 상담 버튼
         dialog.dialog_pharmacist_chat_btn.setOnClickListener {
-            var intent = Intent(dialog.context, ChattingDetailActivity::class.java)
-            intent.putExtra("pharmacist", pharmacist)
-            dialog.context.startActivity(intent)
+            database.child("users").orderByChild("name").equalTo(pharmacist.pharmacyName).addListenerForSingleValueEvent(
+                object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        var intent = Intent(dialog.context, ChattingDetailActivity::class.java)
+                        intent.putExtra("pharmacist", pharmacist)
+                        intent.putExtra("destinationUid", snapshot.children.first().key.toString())     //상대방 uid 전달
+                        dialog.context.startActivity(intent)
+                        dialog.dismiss()
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("Dialog", error.message)
+                    }
+
+                }
+            )
+
         }
     }
 

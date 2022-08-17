@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/chatting_detail_profile_clayout"
@@ -64,6 +65,14 @@
         app:layout_constraintBottom_toTopOf="@id/chatting_detail_send_clayout"
         app:layout_constraintStart_toStartOf="parent">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chatting_detail_content_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            tools:listitem="@layout/item_message"/>
+
     </ScrollView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,6 +92,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <EditText
+            android:id="@+id/chatting_detail_chat_et"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:background="@color/white"

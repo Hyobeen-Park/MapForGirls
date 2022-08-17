@@ -102,9 +102,10 @@ class MapsFragment : Fragment() {
                 googleMap.addMarker(markerOptions.position(currentLocation))
 
                 moveCamera(googleMap, currentLocation.latitude, currentLocation.longitude)
+
+                googleMap!!.setOnMarkerClickListener(null)
             }
         }
-
 
         cardView.visibility = View.GONE
 
@@ -122,6 +123,7 @@ class MapsFragment : Fragment() {
                 pharmacyName.text = arr[0]
                 address.text = arr [1]
                 phoneNum.text = arr[2]
+
                 return false
             }
         })
