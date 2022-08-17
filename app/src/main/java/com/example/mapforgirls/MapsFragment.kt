@@ -98,11 +98,11 @@ class MapsFragment : Fragment() {
                 val markerOptions = MarkerOptions()
                 markerOptions.title("현재 위치")
                 markerOptions.icon(BitmapDescriptorFactory.fromBitmap(BitmapUtils.resizeMapIcons(requireContext(), R.drawable.marker, markerIconSize, markerIconSize)))
-                googleMap.addMarker(markerOptions.position(currentLocation))
-
+                var marker = googleMap.addMarker(markerOptions.position(currentLocation))
+                marker?.tag = "current"
                 moveCamera(googleMap, currentLocation.latitude, currentLocation.longitude)
 
-                googleMap!!.setOnMarkerClickListener(null)
+
             }
         }
 
@@ -111,6 +111,9 @@ class MapsFragment : Fragment() {
         // 마커 클릭 시 카드뷰 띄움
         googleMap!!.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
             override fun onMarkerClick(marker: Marker): Boolean {
+                if(marker.tag == "current") {
+                    return false
+                }
                 cardView.visibility = View.VISIBLE
 
                 // 약국별 상세정보
