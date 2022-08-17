@@ -1,5 +1,6 @@
 package com.example.mapforgirls.ui.test
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -39,7 +40,8 @@ class Test1Fragment : Fragment(), View.OnClickListener {
         when(v?.id) {
             R.id.test1_check_ok -> {
                 binding.test1NextBtn.isEnabled = true
-                binding.test1NextBtn.setBackgroundColor(ContextCompat.getColor(requireActivity().applicationContext, R.color.red1))
+                binding.test1NextBtn.setBackgroundResource(R.drawable.round_red)
+                binding.test1NextBtn.setTextColor(Color.WHITE)
                 binding.test1CheckOk.setBackgroundResource(R.drawable.test_ok_select)
                 binding.test1CheckNo.setBackgroundResource(R.drawable.test_no)
                 point2 = 1
@@ -47,7 +49,7 @@ class Test1Fragment : Fragment(), View.OnClickListener {
             }
             R.id.test1_check_no -> {
                 binding.test1NextBtn.isEnabled = true
-                binding.test1NextBtn.setBackgroundColor(ContextCompat.getColor(requireActivity().applicationContext, R.color.red1))
+                binding.test1NextBtn.setBackgroundResource(R.drawable.round_red)
                 binding.test1CheckOk.setBackgroundResource(R.drawable.test_ok)
                 binding.test1CheckNo.setBackgroundResource(R.drawable.test_no_select)
                 point1 = 1

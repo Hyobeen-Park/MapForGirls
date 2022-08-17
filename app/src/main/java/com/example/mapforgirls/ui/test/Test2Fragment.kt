@@ -50,7 +50,7 @@ class Test2Fragment : Fragment(), View.OnClickListener {
             R.id.test2_answer1_btn -> {
                 if(a1) {
 //                    binding.test2Answer2Btn.setBackgroundResource(R.drawable.testcheck_before1)
-                    binding.test2Answer1Btn.setBackgroundColor(Color.TRANSPARENT)
+                    binding.test2Answer1Btn.setBackgroundResource(R.drawable.round_grey_stroke)
                     point1 -= 1
                     point3 -= 1
                     point4 -= 1
@@ -66,7 +66,7 @@ class Test2Fragment : Fragment(), View.OnClickListener {
             R.id.test2_answer2_btn -> {
                 if(a2) {
 //                    binding.test2Answer2Btn.setBackgroundResource(R.drawable.testcheck_before1)
-                    binding.test2Answer2Btn.setBackgroundColor(Color.TRANSPARENT)
+                    binding.test2Answer2Btn.setBackgroundResource(R.drawable.round_grey_stroke)
                     point1 -= 1
                     point2 -= 1
                     point3 -= 1
@@ -82,7 +82,7 @@ class Test2Fragment : Fragment(), View.OnClickListener {
             R.id.test2_answer3_btn -> {
                 if(a3) {
 //                    binding.test2Answer2Btn.setBackgroundResource(R.drawable.testcheck_before1)
-                    binding.test2Answer3Btn.setBackgroundColor(Color.TRANSPARENT)
+                    binding.test2Answer3Btn.setBackgroundResource(R.drawable.round_grey_stroke)
                     point2 -= 1
                     point4 -= 1
                 } else {
@@ -96,7 +96,7 @@ class Test2Fragment : Fragment(), View.OnClickListener {
             R.id.test2_answer4_btn -> {
                 if(a4) {
 //                    binding.test2Answer2Btn.setBackgroundResource(R.drawable.testcheck_before1)
-                    binding.test2Answer4Btn.setBackgroundColor(Color.TRANSPARENT)
+                    binding.test2Answer4Btn.setBackgroundResource(R.drawable.round_grey_stroke)
                     point1 -= 1
                     point2 -= 1
                     point3 -= 1
@@ -121,9 +121,11 @@ class Test2Fragment : Fragment(), View.OnClickListener {
     fun setBtn() {
         binding.test2NextBtn.isEnabled = !(!a1 && !a2 && !a3 && !a4)
         if (binding.test2NextBtn.isEnabled) {
-            binding.test2NextBtn.setBackgroundColor(ContextCompat.getColor(requireActivity().applicationContext, R.color.red1))
+            binding.test2NextBtn.setBackgroundResource(R.drawable.round_red)
+            binding.test2NextBtn.setTextColor(Color.WHITE)
         } else {
-            binding.test2NextBtn.setBackgroundColor(Color.TRANSPARENT)
+            binding.test2NextBtn.setBackgroundResource(R.drawable.round_grey)
+            binding.test2NextBtn.setTextColor(Color.parseColor("#A9A9A9"))
         }
     }
 }

@@ -49,7 +49,7 @@ class Test4Fragment : Fragment(), View.OnClickListener {
             R.id.test4_answer1_btn -> {
                 if(a1) {
 //                    binding.test2Answer2Btn.setBackgroundResource(R.drawable.testcheck_before1)
-                    binding.test4Answer1Btn.setBackgroundColor(Color.TRANSPARENT)
+                    binding.test4Answer1Btn.setBackgroundResource(R.drawable.round_grey_stroke)
                     point1--
                 } else {
                     binding.test4Answer1Btn.setBackgroundResource(R.drawable.round_green)
@@ -61,7 +61,7 @@ class Test4Fragment : Fragment(), View.OnClickListener {
             R.id.test4_answer2_btn -> {
                 if(a2) {
 //                    binding.test2Answer2Btn.setBackgroundResource(R.drawable.testcheck_before1)
-                    binding.test4Answer2Btn.setBackgroundColor(Color.TRANSPARENT)
+                    binding.test4Answer2Btn.setBackgroundResource(R.drawable.round_grey_stroke)
                     point2--
                     point4--
                 } else {
@@ -76,7 +76,7 @@ class Test4Fragment : Fragment(), View.OnClickListener {
             R.id.test4_answer3_btn -> {
                 if(a3) {
 //                    binding.test2Answer2Btn.setBackgroundResource(R.drawable.testcheck_before1)
-                    binding.test4Answer3Btn.setBackgroundColor(Color.TRANSPARENT)
+                    binding.test4Answer3Btn.setBackgroundResource(R.drawable.round_grey_stroke)
                     point4--
                 } else {
                     binding.test4Answer3Btn.setBackgroundResource(R.drawable.round_green)
@@ -88,7 +88,7 @@ class Test4Fragment : Fragment(), View.OnClickListener {
             R.id.test4_answer4_btn -> {
                 if(a4) {
 //                    binding.test2Answer2Btn.setBackgroundResource(R.drawable.testcheck_before1)
-                    binding.test4Answer4Btn.setBackgroundColor(Color.TRANSPARENT)
+                    binding.test4Answer4Btn.setBackgroundResource(R.drawable.round_grey_stroke)
                 } else {
                     binding.test4Answer4Btn.setBackgroundResource(R.drawable.round_green)
                 }
@@ -105,9 +105,11 @@ class Test4Fragment : Fragment(), View.OnClickListener {
     fun setBtn() {
         binding.test4NextBtn.isEnabled = !(!a1 && !a2 && !a3 && !a4)
         if (binding.test4NextBtn.isEnabled) {
-            binding.test4NextBtn.setBackgroundColor(ContextCompat.getColor(requireActivity().applicationContext, R.color.red1))
+            binding.test4NextBtn.setBackgroundResource(R.drawable.round_red)
+            binding.test4NextBtn.setTextColor(Color.WHITE)
         } else {
-            binding.test4NextBtn.setBackgroundColor(Color.TRANSPARENT)
+            binding.test4NextBtn.setBackgroundResource(R.drawable.round_grey)
+            binding.test4NextBtn.setTextColor(Color.parseColor("#A9A9A9"))
         }
     }
 }
