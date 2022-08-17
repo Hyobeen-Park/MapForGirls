@@ -4,6 +4,10 @@ import android.Manifest
 import android.content.Context
 import android.content.Context.LOCATION_SERVICE
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
@@ -16,18 +20,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.DrawableCompat
+import com.example.mapforgirls.data.entities.Scrap
+import com.example.mapforgirls.data.local.ColumnDatabase
 import com.example.mapforgirls.databinding.FragmentMapsBinding
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import kotlinx.android.synthetic.main.fragment_maps.*
@@ -47,6 +55,11 @@ class MapsFragment : Fragment() {
     val PERMISSIONS_REQUEST_CODE = 100
     lateinit var mainActivity: MainActivity
 
+    companion object {
+        private val MAPVIEW_BUNDLE_KEY = "MapViewBundleKey"
+        private val markerIconSize = 100
+    }
+
     private val callback = OnMapReadyCallback { googleMap ->
 
         db.collection("pharmacyInfo")
@@ -59,9 +72,13 @@ class MapsFragment : Fragment() {
                         document.data["longitude"].toString().toDouble()
                     )
 
+                    val markerIcon = BitmapUtils.resizeMapIcons(requireContext(), R.drawable.pharmacymarker, markerIconSize, markerIconSize)
+
                     val markerOptions = MarkerOptions()
                     markerOptions.title(document.data["pharmacyName"].toString())
                     markerOptions.position(location)
+                    markerOptions.icon(BitmapDescriptorFactory.fromBitmap(markerIcon))
+
 
                     val marker: Marker? = googleMap.addMarker(markerOptions)
                     marker?.tag =
@@ -69,17 +86,21 @@ class MapsFragment : Fragment() {
 
                     if (result.size() <= i)
                         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10f))
-                    }
                 }
+            }
             .addOnFailureListener { e ->
                 Log.w("Error", "Error getting documents", e)
             }
 
-       // current marker
+        // current marker
         binding.mylocationButton.setOnClickListener {
             var currentLocation : LatLng = getLocation()
             if(currentLocation != LatLng(0.0, 0.0)) {       // 현재 위치 제대로 받아왔을 때
-                googleMap.addMarker(MarkerOptions().position(currentLocation).title("현재 위치"))
+                val markerOptions = MarkerOptions()
+                markerOptions.title("현재 위치")
+                markerOptions.icon(BitmapDescriptorFactory.fromBitmap(BitmapUtils.resizeMapIcons(requireContext(), R.drawable.marker, markerIconSize, markerIconSize)))
+                googleMap.addMarker(markerOptions.position(currentLocation))
+
                 moveCamera(googleMap, currentLocation.latitude, currentLocation.longitude)
             }
         }
@@ -264,3 +285,30 @@ class MapsFragment : Fragment() {
     }
 }
 
+object BitmapUtils {
+    fun resizeMapIcons(context: Context, iconId: Int, width: Int, height: Int): Bitmap {
+        val imageBitmap = BitmapFactory.decodeResource(context.getResources(), iconId)
+        return Bitmap.createScaledBitmap(imageBitmap, width, height, false)
+    }
+
+    /**
+     * Demonstrates converting a [Drawable] to a [BitmapDescriptor],
+     * for use as a marker icon.
+     */
+    private fun vectorToBitmap(context: Context, @DrawableRes id: Int, @ColorInt color: Int): BitmapDescriptor? {
+        val vectorDrawable =
+            ResourcesCompat.getDrawable(context.getResources(), id, null) ?: return null
+        with(vectorDrawable) {
+            val bitmap = Bitmap.createBitmap(
+                intrinsicWidth,
+                intrinsicHeight, Bitmap.Config.ARGB_8888
+            )
+            val canvas = Canvas(bitmap)
+            setBounds(0, 0, canvas.width, canvas.height)
+            DrawableCompat.setTint(this, color)
+            draw(canvas)
+            return BitmapDescriptorFactory.fromBitmap(bitmap)
+        }
+    }
+
+}
