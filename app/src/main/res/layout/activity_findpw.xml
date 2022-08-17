@@ -48,9 +48,9 @@
         android:autofillHints="emailAddress"
         android:background="@drawable/round_white"
         android:ems="10"
-        android:hint="    이메일을 입력해 주세요"
+        android:hint="이메일을 입력해 주세요"
         android:inputType="textEmailAddress"
-        android:padding="5dp"
+        android:paddingLeft="15dp"
         android:textColorHint="#DADADA"
         android:textSize="40px"
         
