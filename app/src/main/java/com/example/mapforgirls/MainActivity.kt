@@ -58,18 +58,32 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
 
-        val userId = getSharedPreferences("userInfo", MODE_PRIVATE).getString("uid", "").toString()
+        initScrapDB()
+
+    }
+
+    private fun initScrapDB() {
+        //데베 삭제
         val scrappedColumn: List<Scrap>
         val columnDB = ColumnDatabase.getInstance(this@MainActivity)!!
         scrappedColumn = columnDB.columnDao().getScrappedColumn()
-
-        Log.d("data", scrappedColumn.size.toString())
-        //데베 삭제
-        database.child("users").child(userId).child("scrap").removeValue()
-        for(i in 0 until scrappedColumn.size) { //데베에 스크랩한 칼럼 정보 저장
-            database.child("users").child(userId).child("scrap").child("item" + i).setValue(scrappedColumn[i])
-        }
         columnDB.columnDao().initScrapTable()       //roomDB 데이터 삭제
+
+        Log.d("scrappedData", scrappedColumn.size.toString())
+
+        val userId = getSharedPreferences("userInfo", MODE_PRIVATE).getString("uid", "").toString()
+        database.child("users").child(userId).child("scrap").removeValue()
+
+        database.child("users").child(userId).child("scrap").get().addOnSuccessListener {
+            if (it.childrenCount.toInt() == 0) {
+                for(i in 0 until scrappedColumn.size) { //데베에 스크랩한 칼럼 정보 저장
+                    database.child("users").child(userId).child("scrap").child("item" + i).setValue(scrappedColumn[i])
+                }
+            } else {
+                initScrapDB()
+            }
+        }
+
     }
 
     private fun setScrapDatabase() {
