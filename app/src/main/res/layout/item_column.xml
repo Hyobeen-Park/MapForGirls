@@ -49,6 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:maxWidth="190dp"
                 android:text="여드름과 부스럼,\n자연스러운 내 몸의 현상 (part 1)"
                 android:textColor="@color/black"
                 android:textStyle="bold"
