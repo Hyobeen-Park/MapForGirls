@@ -22,6 +22,7 @@ class ColumnDetailActivity : AppCompatActivity() {
         binding.columnDetailCoverIv.setImageResource(column.cover!!)
         binding.columnDetailAuthorTv.text = column.author
         binding.columnDetailTitleTv.text = column.title
+        binding.columnDetailSubTitleTv.text = column.subTitle
         binding.columnDetailContentTv.text = column.content.replace("\\n", "\n")
 
         isScrapped = isScrappedColumn(column.sectionName!!, column.columnId!!)
