@@ -194,12 +194,13 @@
         android:inputType="textEmailAddress"
         android:paddingLeft="15dp"
         android:paddingTop="5dp"
-        android:paddingBottom="5dp"
         android:paddingRight="5dp"
+        android:paddingBottom="5dp"
         android:textColorHint="#DADADA"
         android:textSize="40px"
         app:layout_constraintBottom_toTopOf="@+id/login_pw_et"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
