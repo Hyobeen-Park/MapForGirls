@@ -24,7 +24,6 @@
         <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/fragment_info.xml" value="0.24947916666666667" />
         <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/fragment_map.xml" value="0.24947916666666667" />
         <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/fragment_mypage.xml" value="0.2" />
-
         <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/item_clip.xml" value="0.264" />
         <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/item_column.xml" value="0.24947916666666667" />
         <entry key="..\:/GitHub/MapForGirls/app/src/main/res/layout/item_pharmacy.xml" value="0.264" />
@@ -39,11 +38,6 @@
         <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/drawable/searchBar_green.xml" value="0.1465" />
         <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/drawable/searchbar.xml" value="0.1465" />
         <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/drawable/searchbar_green.xml" value="0.1465" />
-        <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/activity_column_detail.xml" value="0.44665461121157324" />
-        <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/activity_findpw.xml" value="0.264" />
-        <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/activity_login.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/activity_main.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/fragment_chatting.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/activity_certify.xml" value="0.2006340579710145" />
         <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/activity_chatting_detail.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/activity_column_detail.xml" value="0.264" />
@@ -62,10 +56,6 @@
         <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/fragment_category1.xml" value="0.2" />
         <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/fragment_chatting.xml" value="0.3722689075630252" />
         <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/fragment_columns.xml" value="0.176" />
-        <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/fragment_maps.xml" value="0.264" />
-        <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/fragment_mypage.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/item_column.xml" value="0.2" />
-        <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/item_pharmacy.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/fragment_maps.xml" value="0.2" />
         <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/fragment_mypage.xml" value="0.4" />
         <entry key="..\:/Users/USER/Documents/GitHub/MapForGirls/app/src/main/res/layout/fragment_onboarding1.xml" value="0.1" />
@@ -92,6 +82,8 @@
         <entry key="..\:/Users/akdbw/github/MapForGirls/app/src/main/res/layout/fragment_map.xml" value="0.1" />
         <entry key="..\:/Users/akdbw/github/MapForGirls/app/src/main/res/layout/fragment_maps.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/akdbw/github/MapForGirls/app/src/main/res/layout/fragment_mypage.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/akdbw/github/MapForGirls/app/src/main/res/layout/fragment_test3.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/akdbw/github/MapForGirls/app/src/main/res/layout/fragment_test4.xml" value="0.187109375" />
         <entry key="..\:/Users/akdbw/github/MapForGirls/app/src/main/res/layout/item_info.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/akdbw/github/MapForGirls/app/src/main/res/menu/bottom_nav_menu.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/amand/AndroidStudioProjects/MapForGirls/app/src/main/res/drawable/round_white.xml" value="0.1955" />

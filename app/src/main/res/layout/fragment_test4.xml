@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/test_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nixgon_bold"
+        android:text="생리대 TEST"
+        android:textColor="@color/black"
+        android:textSize="80px"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.068" />
+
+    <TextView
+        android:id="@+id/test_explain_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:text="당신에게 적합한 생리대 유형과 \n올바른 사용 방법을 찾아보세요"
+        android:textColor="#AAAAAA"
+        android:textSize="30px"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_title"
+        app:layout_constraintVertical_bias="0.025" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/test4_checkbox_cv"
+        android:layout_width="900px"
+        android:layout_height="1130px"
+        android:backgroundTint="@color/white"
+        android:elevation="0dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/test_explain_tv"
+        app:layout_constraintVertical_bias="0.231">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/test4_question_title_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="Q4. 생리 중 최대 고민이 무엇인가요?"
+                android:textColor="@color/black"
+                android:textSize="50px"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/test4_answer1_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="125px"
+                    android:layout_marginLeft="80px"
+                    android:layout_marginRight="80px"
+                    android:layout_marginTop="30px"
+
+                    android:text="밤마다 샐까봐 걱정돼요."
+                    android:textStyle="bold"
+                    android:textSize="30px"
+
+                    android:gravity="left|center"
+                    android:drawablePadding="10dp"
+
+                    android:background="@drawable/round_grey_stroke"
+                    android:drawableLeft="@drawable/testcheck_before1"
+                    android:padding="10dp" />
+
+                <Button
+                    android:id="@+id/test4_answer2_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="125px"
+                    android:layout_marginLeft="80px"
+                    android:layout_marginRight="80px"
+                    android:layout_marginTop="30px"
+
+                    android:text="화학 성분이 걱정스러워요."
+                    android:textStyle="bold"
+                    android:textSize="30px"
+
+                    android:gravity="left|center"
+                    android:drawablePadding="10dp"
+
+                    android:background="@drawable/round_grey_stroke"
+                    android:drawableLeft="@drawable/testcheck_before1"
+                    android:padding="10dp" />
+
+                <Button
+                    android:id="@+id/test4_answer3_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="125px"
+                    android:layout_marginLeft="80px"
+                    android:layout_marginRight="80px"
+                    android:layout_marginTop="30px"
+
+                    android:text="수중 활동을 해야해요."
+                    android:textStyle="bold"
+                    android:textSize="30px"
+
+                    android:gravity="left|center"
+                    android:drawablePadding="10dp"
+
+                    android:background="@drawable/round_grey_stroke"
+                    android:drawableLeft="@drawable/testcheck_before1"
+                    android:padding="10dp" />
+
+                <Button
+                    android:id="@+id/test4_answer4_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="125px"
+                    android:layout_marginLeft="80px"
+                    android:layout_marginRight="80px"
+                    android:layout_marginTop="30px"
+                    android:layout_marginBottom="30px"
+
+                    android:text="없거나 잘 모르겠어요."
+                    android:textStyle="bold"
+                    android:textSize="30px"
+
+                    android:gravity="left|center"
+                    android:drawablePadding="10dp"
+
+                    android:background="@drawable/round_grey_stroke"
+                    android:drawableLeft="@drawable/testcheck_before1"
+                    android:padding="10dp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/test4_next_btn"
+                android:layout_width="750px"
+                android:layout_height="150px"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/round_grey"
+                android:gravity="center"
+                android:text="다음으로"
+                android:textColor="#A9A9A9"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/test4_bottom_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitEnd"
+        android:src="@drawable/img_test4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
