@@ -55,8 +55,8 @@ class MainActivity : AppCompatActivity() {
         initBottomNavigation()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onStop() {
+        super.onStop()
 
         initScrapDB()
 
