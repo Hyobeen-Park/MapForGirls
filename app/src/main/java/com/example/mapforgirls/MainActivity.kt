@@ -12,6 +12,7 @@ import androidx.core.net.toUri
 import com.example.mapforgirls.data.entities.Scrap
 import com.example.mapforgirls.data.local.ColumnDatabase
 import com.example.mapforgirls.databinding.ActivityMainBinding
+import com.example.mapforgirls.ui.main.myPage.MypageFragment
 import com.example.mapforgirls.ui.main.chatting.ChattingFragment
 import com.example.mapforgirls.ui.main.columns.ColumnsFragment
 import com.google.firebase.auth.FirebaseAuth

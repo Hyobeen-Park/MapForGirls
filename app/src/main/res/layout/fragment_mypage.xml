@@ -118,7 +118,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
-            tools:listitem="@layout/item_clip" />
+            tools:listitem="@layout/item_scrap" />
 
         <ImageView
             android:layout_width="match_parent"

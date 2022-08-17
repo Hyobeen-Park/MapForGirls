@@ -1,7 +1,6 @@
-package com.example.mapforgirls
+package com.example.mapforgirls.ui.main.myPage
 
 import android.content.ContentValues.TAG
-import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
@@ -12,10 +11,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.mapforgirls.LoginActivity
+import com.example.mapforgirls.MainActivity
+import com.example.mapforgirls.ProfileActivity
+import com.example.mapforgirls.R
+import com.example.mapforgirls.data.entities.ColumnData
+import com.example.mapforgirls.data.entities.Scrap
+import com.example.mapforgirls.data.local.ColumnDatabase
 import com.example.mapforgirls.databinding.FragmentMypageBinding
+import com.example.mapforgirls.ui.main.columns.ColumnDetailActivity
+import com.example.mapforgirls.ui.main.columns.ColumnsRVAdapter
+import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
@@ -31,12 +39,16 @@ class MypageFragment : Fragment(){
     var currentUser = auth.currentUser
     private var imageUri: Uri? = null
     private var dialogwithUri : Uri = Uri.parse("android.resource://" + R::class.java.getPackage().name + "/" + R.drawable.img_girls)
+    private var scrapList : List<Scrap>? = null
+    var columnList : ArrayList<ColumnData>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        binding = FragmentMypageBinding.inflate(inflater, container, false)
+
         var userData: SharedPreferences = (context as MainActivity).getSharedPreferences("userData", MODE_PRIVATE)
         var userEditor = userData.edit()
         var name = userData.getString("name", null)
@@ -44,8 +56,10 @@ class MypageFragment : Fragment(){
         var userType = userData.getString("userType", null)
         var profileUri = userData.getString("profileUri", null)
 
-        binding = FragmentMypageBinding.inflate(inflater, container, false)
-
+        val columnDB = ColumnDatabase.getInstance(context as MainActivity)
+        scrapList = columnDB!!.columnDao().getScrappedColumn()
+        connectDatabase()
+        adapter()
 
         binding.mypageGirlNameTv.text = name
         getFireBaseProfileImage(currentUser!!.uid)
@@ -67,30 +81,52 @@ class MypageFragment : Fragment(){
         return binding.root
     }
 
-    /*
-    private fun readUserName(uid: String){  // 회원 이름을 읽는 함수
-        // var name : String? = null
-        // var callback = listener
-        userRef = database.child("users")
-        userRef!!.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {  // iterator
-                for (user in snapshot.children) {
-                    if (user.key.equals(uid)) {
-                        name = user.child("name").value.toString()
-                        profileUri = user.child("profile").value.toString().toUri()
-                        readUserProfile()
-                        binding.mypageGirlNameTv.text = name
-                        // callback?.loadPage(name.toString())
-                        return
+
+
+    private fun connectDatabase() {
+        // 데이터베이스 연결
+        for (i in 0 until scrapList!!.count()) {
+            database.child("column").child(scrapList!![i].sectionName).child("items").child(scrapList!![i].ColumnId)
+                .addListenerForSingleValueEvent(object :
+                    ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        var img = activity?.resources!!.getIdentifier(snapshot.child("image").value.toString(), "drawable", activity?.packageName)
+                        Log.d("--------------------데이터: ", "$img, ${snapshot.child("title").value.toString()}, ${snapshot.child("author").value.toString()}, ${snapshot.child("content").value.toString()}")
+                        columnList?.add(
+                            ColumnData(
+                                scrapList!![i].sectionName, scrapList!![i].ColumnId,
+                                img,
+                                snapshot.child("title").value.toString(),
+                                snapshot.child("author").value.toString(),
+                                snapshot.child("content").value.toString()
+                            )
+                        )
                     }
+                    override fun onCancelled(error: DatabaseError) {
+                        Log.d("database", "Error : " + error.toString())
+                    }
+                })
+        }
+        Log.d("--------------------칼럼 사이즈: " , columnList?.size.toString())
+    }
+
+    private fun adapter(){
+        //리사이클러뷰 어댑터 적용
+        val scrapRVAdapter = ScrapRVAdapter(columnList!!)
+        binding.mypageGirlClipRv.adapter = scrapRVAdapter
+
+        // 리사이클러뷰 클릭 이벤트
+        scrapRVAdapter.setMyItemClickListener(object :
+            ScrapRVAdapter.MyItemClickListener {
+            override fun onItemClick(column: ColumnData) {
+                activity.let {
+                    val intent = Intent(context, ColumnDetailActivity::class.java)
+                    intent.putExtra("column", column)
+                    startActivity(intent)
                 }
-            }
-            override fun onCancelled(error: DatabaseError) {
-                Log.d("database", "Error : $error")
             }
         })
     }
-    */
 
     private fun deleteUser(){  // 회원을 DB에서 제거하는 함수
         currentUser?.delete()
@@ -129,7 +165,6 @@ class MypageFragment : Fragment(){
         val storage = FirebaseStorage.getInstance()
         val storageRef = storage.reference
         storageRef.child("profile_img/profile$uid.jpg").downloadUrl.addOnSuccessListener { uri ->
-            Log.d("오냐오냐", uri.toString())
             Glide.with((context as MainActivity))
                 .load(uri)
                 .into(mypageGirl_profile_iv)
