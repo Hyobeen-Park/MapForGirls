@@ -2,16 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:padding="5dp"
+    android:layout_gravity="center_horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/item_column_main_cv"
-        android:layout_width="380dp"
-        android:layout_height="170dp"
-        app:cardElevation="0dp"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        app:cardElevation="5dp"
         app:cardCornerRadius="30dp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -29,8 +29,8 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:backgroundTint="#2DAF81"
                     app:cardCornerRadius="15dp" />
 
@@ -39,7 +39,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="5dp"
-                    android:text="이야기" />
+                    android:text="이야기"
+                    android:textSize="30px"/>
 
             </LinearLayout>
 
@@ -51,6 +52,7 @@
                 android:text="여드름과 부스럼,\n자연스러운 내 몸의 현상 (part 1)"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                android:textSize="35px"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/item_column_llayout" />
 
@@ -58,13 +60,13 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/round_white"
                 android:backgroundTint="@color/green2"
                 android:paddingLeft="10dp"
-                android:paddingTop="2.5dp"
+                android:paddingTop="3dp"
                 android:paddingRight="10dp"
-                android:paddingBottom="2.dp"
+                android:paddingBottom="3dp"
                 app:layout_constraintStart_toStartOf="@+id/item_column_title_tv"
                 app:layout_constraintTop_toBottomOf="@+id/item_column_title_tv">
 
@@ -88,6 +90,7 @@
             </LinearLayout>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/item_column_image_cv"
                 android:layout_width="150dp"
                 android:layout_height="120dp"
                 android:backgroundTint="#aaaaaa"
@@ -104,6 +107,7 @@
                     android:src="@drawable/example" />
 
             </androidx.cardview.widget.CardView>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

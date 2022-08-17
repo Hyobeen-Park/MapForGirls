@@ -1,21 +1,42 @@
 package com.example.mapforgirls
 
+import android.content.ContentResolver
+import android.content.Context
+import android.content.SharedPreferences
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
+import com.example.mapforgirls.data.entities.Scrap
+import com.example.mapforgirls.data.local.ColumnDatabase
 import com.example.mapforgirls.databinding.ActivityMainBinding
+import com.example.mapforgirls.ui.main.chatting.ChattingFragment
+import com.example.mapforgirls.ui.main.columns.ColumnsFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
+import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
+import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     var auth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var userRef : DatabaseReference? = null
     private var authListener: AuthStateListener? = null
+    private var database : DatabaseReference = FirebaseDatabase.getInstance().reference
+    private var currentUser = auth.currentUser  // userInfo Shared Peferences가 없어지면 사용
+    var userList = ArrayList<UserInfo>()
+    var userEditor: SharedPreferences.Editor? = null
 
     override fun onStart() {
         super.onStart()
-        auth.addAuthStateListener(authListener!!)
+        auth.addAuthStateListener(authListener!!)  // 없어도 될 듯
+        val userDataShared = getSharedPreferences("userData", MODE_PRIVATE)
+        userEditor = userDataShared.edit()
+        connectDatabase()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,15 +44,49 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        authListener = AuthStateListener {
-            val user = auth.currentUser
-            val userInfo = getSharedPreferences("userInfo", MODE_PRIVATE)
-            val editor = userInfo.edit()
-            editor.putString("uid", user?.uid.toString())
+        authListener = AuthStateListener {  // 없어도 될 듯
+            val userInfoShared = getSharedPreferences("userInfo", MODE_PRIVATE)
+            val editor = userInfoShared.edit()
+            editor.putString("uid", currentUser?.uid.toString())
             editor.apply()
         }
 
+        setScrapDatabase()
         initBottomNavigation()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        val userId = getSharedPreferences("userInfo", MODE_PRIVATE).getString("uid", "").toString()
+        val scrappedColumn: List<Scrap>
+        val columnDB = ColumnDatabase.getInstance(this@MainActivity)!!
+        scrappedColumn = columnDB.columnDao().getScrappedColumn()
+
+        Log.d("data", scrappedColumn.size.toString())
+        //데베 삭제
+        database.child("users").child(userId).child("scrap").removeValue()
+        for(i in 0 until scrappedColumn.size) { //데베에 스크랩한 칼럼 정보 저장
+            database.child("users").child(userId).child("scrap").child("item" + i).setValue(scrappedColumn[i])
+        }
+        columnDB.columnDao().initScrapTable()       //roomDB 데이터 삭제
+    }
+
+    private fun setScrapDatabase() {
+        val userId = getSharedPreferences("userInfo", MODE_PRIVATE).getString("uid", "").toString()
+
+        database.child("users").child(userId).child("scrap").addListenerForSingleValueEvent(object :
+            ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val columnDB = ColumnDatabase.getInstance(this@MainActivity)!!
+                for(i in snapshot.children) {
+                    columnDB.columnDao().scrapColumn(Scrap(i.child("sectionName").getValue().toString(), i.child("columnId").getValue().toString()))
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("database", "Error : $error")
+            }
+        })
     }
 
     private fun initBottomNavigation(){
@@ -83,4 +138,38 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "뒤로가기 버튼을 한번 더 누르시면 앱이 종료됩니다.", Toast.LENGTH_SHORT).show()
         backPressedTime = System.currentTimeMillis()
     }
+    private fun connectDatabase() {
+        // 데이터베이스 연결
+        userRef = database.child("users")
+        userRef!!.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (user in snapshot.children) {
+                    if (user.key.equals(currentUser?.uid)) {
+                        val name = user.child("name").value.toString()
+                        val email = user.child("email").value.toString()
+                        val userType = user.child("userType").value.toString()
+                        val profileUri =
+                            if(user.child("profile").value != null)
+                                user.child("profile").value.toString()
+                            else
+                                Uri.parse("android.resource://" + R::class.java.getPackage().name + "/" + R.drawable.img_girls).toString()
+
+                        userEditor?.putString("name", name)
+                        userEditor?.putString("email", email)
+                        userEditor?.putString("userType", userType)
+                        userEditor?.putString("profileUri", profileUri)
+                        userEditor?.apply()
+
+                        return
+                    }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("database", "Error : $error")
+            }
+        })
+
+
+    }
+
 }

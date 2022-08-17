@@ -18,7 +18,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="30dp"
             android:text="카테고리 이름"
-            android:textSize="50px"
+            android:textSize="70px"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
@@ -29,10 +29,11 @@
             android:layout_width="160dp"
             android:layout_height="140dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
             android:backgroundTint="#aaaaaa"
-            android:elevation="0dp"
+            app:cardElevation="dp"
             app:cardCornerRadius="20dp"
+            app:cardUseCompatPadding="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/category1_title_tv">
 
@@ -40,7 +41,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
-                android:src="@drawable/img1" />
+                android:src="@drawable/img1"
+                app:cardUseCompatPadding="true"/>
 
         </androidx.cardview.widget.CardView>
 
@@ -48,8 +50,8 @@
             android:id="@+id/category1_what_is_this2_cv"
             android:layout_width="200dp"
             android:layout_height="140dp"
-            android:layout_marginStart="10dp"
-            android:elevation="0dp"
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true"
             app:cardCornerRadius="20dp"
             android:backgroundTint="#cccccc"
             app:layout_constraintTop_toTopOf="@id/category1_what_is_this_cv"
@@ -58,17 +60,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:background="#B4E2D4"
+                android:orientation="vertical"
                 android:padding="10dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:backgroundTint="#2DAF81"
                         app:cardCornerRadius="15dp"/>
 
@@ -80,28 +82,50 @@
                         android:layout_marginTop="5dp"
                         android:text="이작가"
                         android:textColor="@color/black"
-                        android:textSize="14sp"/>
+                        android:textSize="30px" />
+
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/category1_what_is_this2_title_tv"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
                     android:text="나 자신, 나의 몸을 사랑하는 방법"
-                    android:textSize="18sp"
                     android:textColor="@color/black"
-                    android:textStyle="bold"/>
+                    android:textSize="35px"
+                    android:textStyle="bold" />
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="50dp"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="5dp"
-                    app:cardCornerRadius="10dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="right"
+                android:background="@drawable/round_white"
+                android:paddingLeft="10dp"
+                android:paddingTop="3dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="3dp">
 
-                </androidx.cardview.widget.CardView>
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/good" />
+
+                <TextView
+                    android:id="@+id/item_column_good_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginLeft="5dp"
+
+                    android:text="34"
+                    android:textColor="@color/green1"
+                    android:textSize="25px"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -110,9 +134,9 @@
             android:id="@+id/category1_column_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/category1_what_is_this_cv"
             tools:listitem="@layout/item_column" />

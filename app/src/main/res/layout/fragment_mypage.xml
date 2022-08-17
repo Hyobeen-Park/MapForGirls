@@ -12,18 +12,21 @@
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/mypageGirl_profile_iv"
             android:layout_width="350px"
             android:layout_height="350px"
+            android:layout_gravity="center"
+            app:civ_border_color="#ffffff"
+            app:civ_border_overlay="true"
+            app:civ_border_width="10dp"
+            android:layout_marginBottom="350dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="400dp"
             app:layout_constraintVertical_bias="0.096"
-            app:srcCompat="@drawable/img_girls" />
+            android:src="@drawable/img_girls" />
 
         <TextView
             android:id="@+id/textView3"

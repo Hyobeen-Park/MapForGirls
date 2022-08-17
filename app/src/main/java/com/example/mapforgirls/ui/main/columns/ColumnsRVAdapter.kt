@@ -1,8 +1,9 @@
-package com.example.mapforgirls
+package com.example.mapforgirls.ui.main.columns
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mapforgirls.data.entities.ColumnData
 import com.example.mapforgirls.databinding.ItemColumnBinding
 import java.util.*
 

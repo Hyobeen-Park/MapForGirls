@@ -10,7 +10,6 @@
         android:id="@+id/main_frm"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-
         app:layout_constraintBottom_toTopOf="@id/main_bnv"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -18,7 +17,10 @@
         android:id="@+id/main_bnv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         app:itemIconSize="20dp"
+        app:itemIconTint="@drawable/btm_navigation_selector"
+        app:itemTextColor="@drawable/btm_navigation_selector"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

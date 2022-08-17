@@ -1,37 +1,41 @@
 package com.example.mapforgirls
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_signup.*
-import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import kotlin.coroutines.suspendCoroutine
 
 class SignupActivity : AppCompatActivity() {
-    var auth : FirebaseAuth? = null
-    lateinit var loginActivity : LoginActivity
-    // lateinit var database : DatabaseReference
-    private val database by lazy { FirebaseDatabase.getInstance() }
-    private var userRef : DatabaseReference? = null
-    var temp : Int = 0
-    var tempString : String? = null
+    private var auth : FirebaseAuth = FirebaseAuth.getInstance()
+    var loginActivity = LoginActivity()
+    private var database : DatabaseReference = FirebaseDatabase.getInstance().reference
+    lateinit var userType: String
+    // private var userRef : DatabaseReference? = null
+    // var temp : Int = 0
+    // var tempString : String? = null
 
-    override fun onStart() {
-        super.onStart()
-        // readUserCount()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        // val currentUser: FirebaseUser? = auth?.getCurrentUser()
+    companion object{
+        lateinit var userTypeShared : SharedPreferences
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        userTypeShared = getSharedPreferences("userType", Context.MODE_PRIVATE)!!
+        userType = userTypeShared.getString("userType", null).toString()
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
-        loginActivity = LoginActivity()
-        auth = FirebaseAuth.getInstance()
 
         signup_btn.setOnClickListener {
             signup()
@@ -50,20 +54,20 @@ class SignupActivity : AppCompatActivity() {
         }else if (signup_pw_et.text.toString() != signup_pw2_et.text.toString()) {
             Toast.makeText(this, "비밀번호가 일치하지 않습니다. ", Toast.LENGTH_LONG).show()
         }else {
-            auth?.createUserWithEmailAndPassword(
+            auth.createUserWithEmailAndPassword(
                 signup_email_et.text.toString(),
                 signup_pw_et.text.toString()
-            )
-                ?.addOnCompleteListener { task ->
+            ).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         // 계정(아이디) 생성 성공
                         writeNewUser(
                             task.result.user?.uid.toString(),
                             signup_name_et.text.toString(),
-                            task.result.user?.email.toString()
+                            task.result.user?.email.toString(),
+                            userType
                         )
                         Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_LONG).show()
-                        moveLoginPage()
+                        moveLoginPage(this)
                     } else {
                         if(!loginActivity.isEmail(signup_email_et.text.toString())){
                             Toast.makeText(this,"이메일 형식으로 입력해주세요.", Toast.LENGTH_LONG).show()
@@ -78,8 +82,8 @@ class SignupActivity : AppCompatActivity() {
                 }
         }
     }
-    private fun moveLoginPage(){  // 로그인 페이지로 이동하는 함수
-        val intent = Intent(this, LoginActivity::class.java)
+    private fun moveLoginPage(context: Context){  // 로그인 페이지로 이동하는 함수
+        val intent = Intent(context, LoginActivity::class.java)
         finishAffinity()  // 액티비티 스택을 비움
         startActivity(intent)
     }
@@ -108,11 +112,11 @@ class SignupActivity : AppCompatActivity() {
         return temp
     }
      */
-    private fun writeNewUser(uid: String, name: String, email: String) {  // DB에 회원을 작성하는 함수
-        val user = UserInfo(name, email)
+    private fun writeNewUser(uid: String, name: String, email: String, userType : String){  // DB에 회원을 작성하는 함수
+        val userInfo = UserInfo(name, email, userType)
+        database.child("users").child(uid).setValue(userInfo)
         // database.getReference().child("users").child(temp.toString()).setValue(user)
-        database.reference.child("users").child(uid).setValue(user)
-        //database.getReference().child("users").updateChildren("count", temp.toString());
+        //database.getReference().child("users").updateChildren("count", temp.toString())
     }
 
 }
