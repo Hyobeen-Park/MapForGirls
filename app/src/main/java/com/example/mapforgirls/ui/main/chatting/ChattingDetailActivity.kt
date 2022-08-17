@@ -62,9 +62,9 @@ class ChattingDetailActivity: AppCompatActivity() {
                         .child("comments").push().setValue(comment)
                 }
 
-                val chatAdapter = ChatRVAdapter()
-                chatAdapter.addItem(chattingRoomId!!)
-                binding.chattingDetailContentRv.adapter = chatAdapter
+//                val chatAdapter = ChatRVAdapter(userId)
+//                chatAdapter.addItem(chattingRoomId!!)
+//                binding.chattingDetailContentRv.adapter = chatAdapter
                 binding.chattingDetailChatEt.text = null
             }
         }
@@ -80,7 +80,7 @@ class ChattingDetailActivity: AppCompatActivity() {
                         if(chatModel?.users!!.containsKey(destinationUid)){
                             chattingRoomId = item.key.toString()
                             binding.chattingDetailSendBtn.isEnabled = true
-                            val chatAdapter = ChatRVAdapter()
+                            val chatAdapter = ChatRVAdapter(userId)
                             chatAdapter.addItem(chattingRoomId!!)
                             binding.chattingDetailContentRv.adapter = chatAdapter
                         }

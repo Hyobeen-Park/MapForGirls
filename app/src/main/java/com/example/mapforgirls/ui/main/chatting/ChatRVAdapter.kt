@@ -2,6 +2,7 @@ package com.example.mapforgirls.ui.main.chatting
 
 import android.annotation.SuppressLint
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
 
-class ChatRVAdapter() : RecyclerView.Adapter<ChatRVAdapter.ViewHolder>(){
+class ChatRVAdapter(private val userId: String) : RecyclerView.Adapter<ChatRVAdapter.ViewHolder>(){
     private val chatList = ArrayList<ChatModel.Comment>()
     private var database = FirebaseDatabase.getInstance().reference
 
@@ -42,6 +43,7 @@ class ChatRVAdapter() : RecyclerView.Adapter<ChatRVAdapter.ViewHolder>(){
                     chatList.add(i.getValue<ChatModel.Comment>()!!)
                 }
                 notifyDataSetChanged()
+
             }
             override fun onCancelled(error: DatabaseError) {
                 Log.d("chatRV", error.message)
@@ -54,13 +56,21 @@ class ChatRVAdapter() : RecyclerView.Adapter<ChatRVAdapter.ViewHolder>(){
         notifyDataSetChanged()
     }
 
+    fun getChatList(): ArrayList<ChatModel.Comment> {
+        return chatList
+    }
+
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val binding : ItemMessageBinding = ItemMessageBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
-
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if(chatList[position].uid.equals(userId)){ // 본인 채팅
+            holder.binding.itemMessageLlayout.gravity = Gravity.RIGHT
+        }else{ // 상대방 채팅
+            holder.binding.itemMessageLlayout.gravity = Gravity.LEFT
+        }
         holder.bind(chatList[position])
 //        holder.itemView.setOnClickListener { mItemClickListener.onItemClick(pharmacistList[position])}
     }
