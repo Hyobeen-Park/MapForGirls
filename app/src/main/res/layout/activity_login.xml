@@ -18,7 +18,7 @@
         android:src="@drawable/login_pill"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -75,31 +75,32 @@
         android:id="@+id/login_pw_open"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="313dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginEnd="15dp"
         android:background="@drawable/eye_open"
         android:inputType="textPassword"
         android:textColorHint="#DADADA"
         android:textSize="40px"
         app:layout_constraintBottom_toTopOf="@+id/login_pw_warn"
         app:layout_constraintEnd_toEndOf="@+id/login_pw_et"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/login_pw_et" />
 
     <Button
         android:id="@+id/login_pw_close"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="313dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginEnd="15dp"
         android:background="@drawable/eye_closed"
         android:inputType="textPassword"
         android:textColorHint="#DADADA"
         android:textSize="40px"
-        app:layout_constraintBottom_toTopOf="@+id/login_pw_warn"
+        app:layout_constraintBottom_toBottomOf="@+id/login_pw_et"
         app:layout_constraintEnd_toEndOf="@+id/login_pw_et"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/login_pw_et"
+        app:layout_constraintVertical_bias="0.538" />
 
     <Button
         android:id="@+id/login_btn"
@@ -118,15 +119,14 @@
         android:id="@+id/login_pw_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="비밀번호"
         android:textSize="45px"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/login_pw_et"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_email_et"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/login_email_warn" />
 
     <TextView
         android:id="@+id/login_signup_tvb"
@@ -162,12 +162,13 @@
         android:id="@+id/login_email_warn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:hint="이메일 형식에 맞지 않습니다"
         android:textColorHint="@color/red1"
         app:layout_constraintBottom_toTopOf="@+id/login_pw_tv"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintEnd_toEndOf="@+id/login_email_et"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_email_et"
         app:layout_constraintVertical_bias="0.0" />
@@ -176,10 +177,12 @@
         android:id="@+id/login_pw_warn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:hint="비밀번호가 일치하지 않습니다"
+
         android:textColorHint="@color/red1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.296"
+        app:layout_constraintEnd_toEndOf="@+id/login_pw_et"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_pw_et" />
 
