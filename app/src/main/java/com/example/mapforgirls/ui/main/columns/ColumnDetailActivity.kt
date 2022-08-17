@@ -56,7 +56,7 @@ class ColumnDetailActivity : AppCompatActivity() {
     private fun isScrappedColumn(sectionName : String, columnId: String): Boolean {
         val columnDB = ColumnDatabase.getInstance(this@ColumnDetailActivity)!!
 
-        val isScrapped: Int? = columnDB.columnDao().isScrapedColumn(sectionName, columnId)
+        // val isScrapped: Int? = columnDB.columnDao().isScrapedColumn(sectionName, columnId)
 
         return isScrapped != null
     }
