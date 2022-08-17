@@ -150,13 +150,6 @@ class MainActivity : AppCompatActivity() {
                             else
                                 Uri.parse("android.resource://" + R::class.java.getPackage().name + "/" + R.drawable.img_girls).toString()
 
-                        Log.d("----------------------------------------------------------------profileUri: ", profileUri)
-                        /*
-                        userList.add(UserInfo(
-                            name, email, userType, profileUri
-                        ))
-                         */
-
                         userEditor?.putString("name", name)
                         userEditor?.putString("email", email)
                         userEditor?.putString("userType", userType)
