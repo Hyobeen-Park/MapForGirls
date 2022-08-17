@@ -37,7 +37,9 @@ class DialogPharmacist(context: Context) {
         dialog.dialog_pharmacist_chat_btn.setOnClickListener {
             var intent = Intent(dialog.context, ChattingDetailActivity::class.java)
             intent.putExtra("pharmacist", pharmacist)
+            intent.putExtra("destinationUid", "9h36HYQ4WQQoq5FkftX2yhUBqlk2")
             dialog.context.startActivity(intent)
+            dialog.dismiss()
         }
     }
 
