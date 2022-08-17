@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.mapforgirls.MainActivity
 import com.example.mapforgirls.R
-import com.example.mapforgirls.TestActivity
+import com.example.mapforgirls.ui.test.TestActivity
 import com.example.mapforgirls.databinding.FragmentColumnsBinding
 
 class ColumnsFragment : Fragment(), View.OnClickListener {

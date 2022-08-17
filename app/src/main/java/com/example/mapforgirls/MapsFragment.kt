@@ -72,12 +72,12 @@ class MapsFragment : Fragment() {
                         document.data["longitude"].toString().toDouble()
                     )
 
-                    val markerIcon = BitmapUtils.resizeMapIcons(requireContext(), R.drawable.pharmacymarker, markerIconSize, markerIconSize)
+//                    val markerIcon = BitmapUtils.resizeMapIcons(requireContext(), R.drawable.pharmacymarker, markerIconSize, markerIconSize)
 
                     val markerOptions = MarkerOptions()
                     markerOptions.title(document.data["pharmacyName"].toString())
                     markerOptions.position(location)
-                    markerOptions.icon(BitmapDescriptorFactory.fromBitmap(markerIcon))
+//                    markerOptions.icon(BitmapDescriptorFactory.fromBitmap(markerIcon))
 
 
                     val marker: Marker? = googleMap.addMarker(markerOptions)
