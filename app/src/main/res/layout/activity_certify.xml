@@ -19,48 +19,52 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.912" />
+        app:layout_constraintVertical_bias="0.957" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:gravity="center"
         android:text="본인 인증을 통해\n소녀지도와 함께해요"
+        android:textColor="#AAAAAA"
         android:textSize="30px"
         android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="#AAAAAA"
 
-        app:layout_constraintBottom_toTopOf="@+id/certify_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.587" />
+        app:layout_constraintVertical_bias="0.174" />
 
     <Button
         android:id="@+id/certify_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:background="@drawable/round_greenbtn"
+
+        android:backgroundTint="#2DAF81"
+        android:paddingLeft="100dp"
+        android:paddingTop="15dp"
+
+        android:paddingRight="100dp"
+        android:paddingBottom="15dp"
+
         android:text="본인인증 하기"
+
         android:textColor="@color/white"
         android:textStyle="bold"
 
-        android:paddingLeft="100dp"
-        android:paddingRight="100dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
-
-        android:background="@drawable/round_greenbtn"
-        android:backgroundTint="#2DAF81"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
+        app:layout_constraintTop_toBottomOf="@+id/certify_fail_tv"
+        app:layout_constraintVertical_bias="0.045" />
 
     <ImageView
         android:layout_width="500px"
@@ -74,54 +78,59 @@
 
     <EditText
         android:id="@+id/certify_idNum_front_et"
-        android:layout_width="126dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="64dp"
+        android:layout_width="135dp"
+        android:layout_height="70dp"
+
+        android:layout_marginStart="50dp"
+
+
         android:ems="10"
         android:inputType="number"
         android:maxLength="6"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/certify_idNum_back_et"
-        app:layout_constraintHorizontal_bias="0.055"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.291" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.074" />
 
     <EditText
         android:id="@+id/certify_idNum_back_et"
         android:layout_width="135dp"
         android:layout_height="70dp"
-        android:layout_marginEnd="72dp"
+
+        android:layout_marginEnd="50dp"
         android:ems="10"
         android:inputType="numberPassword"
         android:maxLength="7"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.281" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.074" />
 
     <TextView
         android:id="@+id/certify_fail_tv"
-        android:textColor="@color/red1"
         android:layout_width="229dp"
         android:layout_height="24dp"
+        android:gravity="center"
+        android:textColor="@color/red1"
+
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.472" />
+        app:layout_constraintTop_toBottomOf="@+id/textView9"
+        app:layout_constraintVertical_bias="0.105" />
 
     <TextView
+        android:id="@+id/textView9"
         android:layout_width="34dp"
         android:layout_height="38dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
         android:text="-"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintEnd_toStartOf="@+id/certify_idNum_back_et"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toEndOf="@+id/certify_idNum_front_et"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
