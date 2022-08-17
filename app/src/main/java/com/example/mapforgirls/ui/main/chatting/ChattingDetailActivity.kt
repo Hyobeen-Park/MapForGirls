@@ -14,6 +14,6 @@ class ChattingDetailActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         var pharmacist = intent.getSerializableExtra("pharmacist") as PharmacyData
-        binding.chattingDetailPharmacyTv.text = pharmacist.pharmacyName
+        binding.chattingDetailPharmacistTv.text = pharmacist.pharmacyName + "약사"
     }
 }

@@ -23,7 +23,7 @@ class DialogPharmacist(context: Context) {
 
     fun setViews(pharmacy: PharmacyData) {
         this.pharmacist = pharmacy
-        dialog.dialog_pharmacist_pharmacy_tv.text = pharmacy.pharmacyName
+        dialog.dialog_pharmacist_pharmacist_tv.text = pharmacy.pharmacyName + " 약사"
         dialog.dialog_pharmacist_location_tv.text = getLocation(pharmacy)
     }
 
