@@ -35,10 +35,12 @@
         <activity android:name=".FindpwActivity" />
         <activity android:name=".UserActivity" />
         <activity android:name=".CertifyActivity" />
-        <activity android:name=".TestActivity" />
+        <activity android:name=".ui.test.TestActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ui.main.columns.ColumnDetailActivity" />
         <activity android:name=".ui.main.chatting.ChattingDetailActivity"/>
+        <activity android:name=".ui.test.TestResultActivity"/>
+        <activity android:name=".IntroduceActivity"/>
 
     </application>
 

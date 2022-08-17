@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.mapforgirls.MainActivity
 import com.example.mapforgirls.PharmacyData
 import com.example.mapforgirls.databinding.FragmentChattingBinding
 import com.google.firebase.firestore.FirebaseFirestore
+import java.lang.Exception
 
 class ChattingFragment : Fragment()  {
     lateinit var binding: FragmentChattingBinding
@@ -24,6 +26,12 @@ class ChattingFragment : Fragment()  {
         binding = FragmentChattingBinding.inflate(inflater, container, false)
 
         setPharmacistData()
+        try {
+            val chattingRoomAdapter = ChattingRoomsRVAdapter(requireContext())
+            binding.chattingRoomsRv.adapter = chattingRoomAdapter
+        } catch (e : Exception) {
+            Log.d("ChattingFragment", e.message.toString())
+        }
 
         return binding.root
     }
@@ -54,6 +62,12 @@ class ChattingFragment : Fragment()  {
                     Log.w("Result", "Listen failed", e)
                 }
             }
+    }
+
+    // 채팅방
+    private fun setChattingRoomsData() {
+        val chattingRoomAdapter = ChattingRoomsRVAdapter(requireContext())
+        binding.chattingRoomsRv.adapter = chattingRoomAdapter
     }
 
 }

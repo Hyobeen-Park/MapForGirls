@@ -1,12 +1,13 @@
 package com.example.mapforgirls.ui.main.chatting
 
-import android.annotation.SuppressLint
-import android.util.Log
+import android.content.Context
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mapforgirls.PharmacyData
+import com.example.mapforgirls.R
 import com.example.mapforgirls.data.entities.ColumnData
 import com.example.mapforgirls.data.model.ChatModel
 import com.example.mapforgirls.databinding.ActivityChattingDetailBinding
@@ -58,8 +59,10 @@ class ChatRVAdapter(private val chatList: ArrayList<ChatModel.Comment>, private 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         if(chatList[position].uid.equals(userId)){ // 본인 채팅
             holder.binding.itemMessageLlayout.gravity = Gravity.RIGHT
+            holder.binding.itemMessageTv.background = ContextCompat.getDrawable(holder.binding.root.context, R.drawable.img_chat_girls)
         }else{ // 상대방 채팅
             holder.binding.itemMessageLlayout.gravity = Gravity.LEFT
+            holder.binding.itemMessageTv.background = ContextCompat.getDrawable(holder.binding.root.context, R.drawable.img_chat_women_red)
         }
 
         holder.bind(chatList[position])
@@ -73,7 +76,5 @@ class ChatRVAdapter(private val chatList: ArrayList<ChatModel.Comment>, private 
             binding.itemMessageTv.text = chat.message
         }
     }
-
-
 
 }

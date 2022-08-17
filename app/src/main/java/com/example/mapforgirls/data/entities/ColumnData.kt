@@ -10,6 +10,7 @@ data class ColumnData(
     var columnId : String? = "00",
     var cover : Int? = null,
     var title : String = "",
+    var subTitle : String = "",
     var author : String = "",
     var content : String = "",
     @PrimaryKey(autoGenerate = true) var id: Int = 0

@@ -165,6 +165,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
         android:hint="이메일 형식에 맞지 않습니다"
+        android:visibility="invisible"
         android:textColorHint="@color/red1"
         app:layout_constraintBottom_toTopOf="@+id/login_pw_tv"
         app:layout_constraintEnd_toEndOf="@+id/login_email_et"
@@ -179,7 +180,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:hint="비밀번호가 일치하지 않습니다"
-
+        android:visibility="invisible"
         android:textColorHint="@color/red1"
         app:layout_constraintEnd_toEndOf="@+id/login_pw_et"
         app:layout_constraintHorizontal_bias="1.0"

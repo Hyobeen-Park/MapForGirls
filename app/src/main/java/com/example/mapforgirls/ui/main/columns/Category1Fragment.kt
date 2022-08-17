@@ -57,7 +57,7 @@ class Category1Fragment : Fragment() {
                     var img = activity?.resources!!.getIdentifier(i.child("image").value.toString(), "drawable", activity?.packageName)
                     columnList.add(
                         ColumnData(
-                        i.ref.parent?.parent?.key, i.key, img, i.child("title").value.toString(),
+                        i.ref.parent?.parent?.key, i.key, img, i.child("title").value.toString(), i.child("subTitle").value.toString(),
                         i.child("author").value.toString(), i.child("content").value.toString())
                     )
                 }

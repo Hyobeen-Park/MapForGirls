@@ -55,6 +55,10 @@ class MypageFragment : Fragment(){
             val intent = Intent(context, ProfileActivity::class.java)
             startActivity(intent)
         }
+        binding.mypageIntroTv.setOnClickListener {
+            val intent = Intent(context, IntroduceActivity::class.java)
+            startActivity(intent)
+        }
         binding.mypageGirlLogoutTv.setOnClickListener {  // 로그아웃
             auth.signOut()
             moveLoginPage()

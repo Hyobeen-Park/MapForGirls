@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -37,10 +38,16 @@ class LoginActivity : AppCompatActivity() {
             }
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 //텍스트 입력 전
+                login_email_warn.visibility = View.INVISIBLE
             }
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 //텍스트 입력 중
                 activate_login = isEmail(login_email_et.text.toString())  // 아이디가 이메일 형식일 경우에 로그인 버튼 활성화 준비
+                if(activate_login!!){
+                    login_email_warn.visibility = View.INVISIBLE
+                } else {
+                    login_email_warn.visibility = View.VISIBLE
+                }
                 isActive(activate_login, activate_pw)
             }
         })
@@ -104,9 +111,11 @@ class LoginActivity : AppCompatActivity() {
                     moveMainPage(task.result.user)
                 } else {  // 아이디와 패스워드가 틀렸을 경우
                     if (task.exception?.message.equals("The password is invalid or the user does not have a password.")) {  // 비밀번호가 틀렸을 경우
-                        Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG).show()
+                        login_pw_warn.visibility = View.VISIBLE
+                        login_pw_warn.text = "비밀번호가 일치하지 않습니다."
                     } else if (task.exception?.message.equals("There is no user record corresponding to this identifier. The user may have been deleted.")) {  // 존재하지 않는 계정일 경우
-                        Toast.makeText(this, "계정이 존재하지 않습니다.", Toast.LENGTH_LONG).show()
+                        login_pw_warn.visibility = View.VISIBLE
+                        login_pw_warn.text = "계정이 존재하지 않습니다."
                     } else {  // 로그인 오류
                         Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
                     }
