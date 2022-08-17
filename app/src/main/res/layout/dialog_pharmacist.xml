@@ -3,13 +3,14 @@
     android:layout_width="300dp"
     android:layout_height="400dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@drawable/round_white_50dp">
 
     <Button
         android:id="@+id/dialog_pharmacist_cancel_btn"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:background="@drawable/ic_launcher_background"
+        android:background="@drawable/ic_x"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -33,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="서울특별시 노원구 상계동"
+            android:maxWidth="150dp"
             android:textSize="12sp"/>
     </LinearLayout>
 
@@ -41,7 +43,7 @@
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/img_women"
         app:layout_constraintTop_toBottomOf="@id/dialog_pharmacist_location_llayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -71,16 +73,17 @@
 
     <Button
         android:id="@+id/dialog_pharmacist_chat_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/round_red"
         android:paddingHorizontal="20dp"
-        android:background="@color/red1"
         android:text="1:1 상담하기"
         android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/dialog_pharmacist_career_tv"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/dialog_pharmacist_career_tv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
