@@ -93,19 +93,19 @@ class MapsFragment : Fragment() {
             }
 
         // current marker
-        binding.mylocationButton.setOnClickListener {
-            var currentLocation : LatLng = getLocation()
-            if(currentLocation != LatLng(0.0, 0.0)) {       // 현재 위치 제대로 받아왔을 때
-                val markerOptions = MarkerOptions()
-                markerOptions.title("현재 위치")
-                markerOptions.icon(BitmapDescriptorFactory.fromBitmap(BitmapUtils.resizeMapIcons(requireContext(), R.drawable.marker, markerIconSize, markerIconSize)))
-                googleMap.addMarker(markerOptions.position(currentLocation))
-
-                moveCamera(googleMap, currentLocation.latitude, currentLocation.longitude)
-
-                googleMap!!.setOnMarkerClickListener(null)
-            }
-        }
+//        binding.mylocationButton.setOnClickListener {
+//            var currentLocation : LatLng = getLocation()
+//            if(currentLocation != LatLng(0.0, 0.0)) {       // 현재 위치 제대로 받아왔을 때
+//                val markerOptions = MarkerOptions()
+//                markerOptions.title("현재 위치")
+//                markerOptions.icon(BitmapDescriptorFactory.fromBitmap(BitmapUtils.resizeMapIcons(requireContext(), R.drawable.marker, markerIconSize, markerIconSize)))
+//                googleMap.addMarker(markerOptions.position(currentLocation))
+//
+//                moveCamera(googleMap, currentLocation.latitude, currentLocation.longitude)
+//
+//                googleMap!!.setOnMarkerClickListener(null)
+//            }
+//        }
 
         cardView.visibility = View.GONE
 
@@ -156,7 +156,7 @@ class MapsFragment : Fragment() {
     ): View? {
         binding = FragmentMapsBinding.inflate(inflater, container, false)
 
-        getLocation()
+//        getLocation()
 
         return binding.root
     }
@@ -168,52 +168,52 @@ class MapsFragment : Fragment() {
     }
 
 
-    private fun getLocation() : LatLng {
-        locationManager = mainActivity.getSystemService(LOCATION_SERVICE) as LocationManager?
-        var userLocation: Location = getLatLng()
-        if(userLocation != null){
-            latitude = userLocation.latitude
-            longitude = userLocation.longitude
-            Log.d("CheckCurrentLocation", "현재 내 위치 값: ${latitude}, ${longitude}")
-
-//            var mGeoCoder =  Geocoder(mainActivity.applicationContext, Locale.KOREAN)
-//            var mResultList: List<Address>? = null
-//            try{
-//                mResultList = mGeoCoder.getFromLocation(
-//                    latitude!!, longitude!!, 1
-//                )
-//            }catch(e: IOException){
-//                e.printStackTrace()
-//            }
-//            if(mResultList != null){
-//                Log.d("CheckCurrentLocation", mResultList[0].getAddressLine(0))
+//    private fun getLocation() : LatLng {
+//        locationManager = mainActivity.getSystemService(LOCATION_SERVICE) as LocationManager?
+//        var userLocation: Location = getLatLng()
+//        if(userLocation != null){
+//            latitude = userLocation.latitude
+//            longitude = userLocation.longitude
+//            Log.d("CheckCurrentLocation", "현재 내 위치 값: ${latitude}, ${longitude}")
 //
+////            var mGeoCoder =  Geocoder(mainActivity.applicationContext, Locale.KOREAN)
+////            var mResultList: List<Address>? = null
+////            try{
+////                mResultList = mGeoCoder.getFromLocation(
+////                    latitude!!, longitude!!, 1
+////                )
+////            }catch(e: IOException){
+////                e.printStackTrace()
+////            }
+////            if(mResultList != null){
+////                Log.d("CheckCurrentLocation", mResultList[0].getAddressLine(0))
+////
+////            }
+//        }
+//        return LatLng(latitude, longitude)
+//    }
+//
+//    private fun getLatLng(): Location {
+//        var currentLatLng: Location? = null
+//        var hasFineLocationPermission = ContextCompat.checkSelfPermission(mainActivity,
+//            Manifest.permission.ACCESS_FINE_LOCATION)
+//        var hasCoarseLocationPermission = ContextCompat.checkSelfPermission(mainActivity,
+//            Manifest.permission.ACCESS_COARSE_LOCATION)
+//
+//        if(hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
+//            hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED){
+//            currentLatLng = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER) ?: locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+//        }else{
+//            if(ActivityCompat.shouldShowRequestPermissionRationale(mainActivity, REQUIRED_PERMISSIONS[0])){
+//                Toast.makeText(mainActivity, "앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_SHORT).show()
+//                ActivityCompat.requestPermissions(mainActivity, REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE)
+//            }else{
+//                ActivityCompat.requestPermissions(mainActivity, REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE)
 //            }
-        }
-        return LatLng(latitude, longitude)
-    }
-
-    private fun getLatLng(): Location {
-        var currentLatLng: Location? = null
-        var hasFineLocationPermission = ContextCompat.checkSelfPermission(mainActivity,
-            Manifest.permission.ACCESS_FINE_LOCATION)
-        var hasCoarseLocationPermission = ContextCompat.checkSelfPermission(mainActivity,
-            Manifest.permission.ACCESS_COARSE_LOCATION)
-
-        if(hasFineLocationPermission == PackageManager.PERMISSION_GRANTED &&
-            hasCoarseLocationPermission == PackageManager.PERMISSION_GRANTED){
-            currentLatLng = locationManager?.getLastKnownLocation(LocationManager.GPS_PROVIDER) ?: locationManager?.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-        }else{
-            if(ActivityCompat.shouldShowRequestPermissionRationale(mainActivity, REQUIRED_PERMISSIONS[0])){
-                Toast.makeText(mainActivity, "앱을 실행하려면 위치 접근 권한이 필요합니다.", Toast.LENGTH_SHORT).show()
-                ActivityCompat.requestPermissions(mainActivity, REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE)
-            }else{
-                ActivityCompat.requestPermissions(mainActivity, REQUIRED_PERMISSIONS, PERMISSIONS_REQUEST_CODE)
-            }
-            currentLatLng = getLatLng()
-        }
-        return currentLatLng!!
-    }
+//            currentLatLng = getLatLng()
+//        }
+//        return currentLatLng!!
+//    }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
