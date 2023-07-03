@@ -1,5 +1,5 @@
 # MapForGirls(소녀지도)
-<p>Comprehensive medical assistant for girls</p>
+<b>Comprehensive medical assistant for girls</b><br>
 <p align="center"><img width="500" alt="logo-title-light" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/e319c4b0-1d4d-4dbd-961d-b5b36315849f"></p>
 
 ## 💭 Problem
