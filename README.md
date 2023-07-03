@@ -11,20 +11,20 @@
 
 ## 📱 How to use
 <p>지도(메인화면)</p>
-<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/d5369aaf-ea9c-4ac0-b721-a7e2d47e96fb"/>
-<br><br>
+<p><img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/d5369aaf-ea9c-4ac0-b721-a7e2d47e96fb"/></p>
+<br>
 <p>채팅</p>
-<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/4eba97c5-5883-41c7-bd00-d8784d6de750"/>
-<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/609a463b-7f98-4c3f-81a6-30a4efe7916c"/>
-<br><br>
+<p><img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/4eba97c5-5883-41c7-bd00-d8784d6de750"/>
+<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/609a463b-7f98-4c3f-81a6-30a4efe7916c"/></p>
+<br>
 <p>성 지식 칼럼</p>
-<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/cdb5dec6-71b2-401d-a21e-d951034d8b89"/>
-<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/2c16036b-e228-49e4-ae55-950f0ca197bb"/>
-<br><br>
+<p><img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/cdb5dec6-71b2-401d-a21e-d951034d8b89"/>
+<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/2c16036b-e228-49e4-ae55-950f0ca197bb"/></p>
+<br>
 <p>생리대 추천 테스트</p>
-<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/cc12d8cb-f792-4eea-9350-a8d192e8f1b7"/>
+<p><img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/cc12d8cb-f792-4eea-9350-a8d192e8f1b7"/>
 <img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/f3c57dee-f0e2-4459-906b-2d099a73cfe2"/>
-<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/079b99fd-41b1-44ca-b107-dbccb7daabb0"/>
-<br><br>
+<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/079b99fd-41b1-44ca-b107-dbccb7daabb0"/></p>
+<br>
 <p>마이페이지</p>
 <img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/5996e148-2e6a-4fbb-909c-98eb50cd359e"/>
