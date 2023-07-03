@@ -10,4 +10,21 @@
 '소녀지도'는 내 위치를 기반으로 주변의 소녀 돌봄 약국이 어디 있는지를 표시해 줌과 더불어 약사님과의 일대일 채팅 서비스를 제공한다. 또한, 다양한 성 지식 칼럼을 통해 10대 여성 청소년의 올바른 성 인식을 함양시킨다.
 
 ## 📱 How to use
-<img width="700" src=""/>
+<p>지도(메인화면)</p>
+<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/d5369aaf-ea9c-4ac0-b721-a7e2d47e96fb"/>
+<br><br>
+<p>채팅</p>
+<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/d5369aaf-ea9c-4ac0-b721-a7e2d47e96fb"/>
+<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/d5369aaf-ea9c-4ac0-b721-a7e2d47e96fb"/>
+<br><br>
+<p>성 지식 칼럼</p>
+<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/d5369aaf-ea9c-4ac0-b721-a7e2d47e96fb"/>
+<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/d5369aaf-ea9c-4ac0-b721-a7e2d47e96fb"/>
+<br><br>
+<p>생리대 추천 테스트</p>
+<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/d5369aaf-ea9c-4ac0-b721-a7e2d47e96fb"/>
+<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/d5369aaf-ea9c-4ac0-b721-a7e2d47e96fb"/>
+<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/d5369aaf-ea9c-4ac0-b721-a7e2d47e96fb"/>
+<br><br>
+<p>마이페이지</p>
+<img width="200" src="https://github.com/Hyobeen-Park/MapForGirls/assets/68230434/d5369aaf-ea9c-4ac0-b721-a7e2d47e96fb"/>
